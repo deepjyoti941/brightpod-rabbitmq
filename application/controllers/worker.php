@@ -9,7 +9,7 @@
 
     public function __construct() { 
       parent::__construct(); 
-      $this->connection = new AMQPConnection($this->config->item('host'), $this->config->item('port'), $this->config->item('user'), $this->config->item('pass')); 
+      $this->connection = new AMQPConnection($this->config->item('host'), $this->config->item('port'), $this->config->item('user'), $this->config->item('pass'), $this->config->item('path')); 
       $this->channel = $this->connection->channel(); 
     } 
 

@@ -14,6 +14,7 @@ class Rabbitmq {
     var $port = '';
     var $user = '';
     var $pass = '';
+    var $path = '';
     
     /**
      * Connection
@@ -39,7 +40,7 @@ class Rabbitmq {
 		}
 		
 		// Connecting to message server
-		$this->connection = new AMQPConnection($this->host, $this->port, $this->user, $this->pass);
+		$this->connection = new AMQPConnection($this->host, $this->port, $this->user, $this->pass, $this->path);
 		$this->channel = $this->connection->channel();
 	    
     }
