@@ -41,6 +41,9 @@
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 
+$route['notes/(:num)'] = 'notes/notes_by_id/$1';
+$route['notes'] = 'notes';
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
