@@ -7,11 +7,11 @@
       <div class="panel-body">
         <div class="form-group">
           <label>User Id</label>
-          <input type="text" id="user_id" class="form-control">
+          <input type="text" id="user_id" class="form-control" placeholder="enter any numeric value">
         </div>
         <div class="form-group">
           <label>Username</label>
-          <input type="text" id="username" class="form-control">
+          <input type="text" id="username" class="form-control" placeholder="enter any alphabetic name">
         </div>
        <button id="user_login" class="btn btn-primary btn-lg btn-block">Login
         <img src="<?php echo base_url('assets/images/loading.gif') ?>" id="login_loader" />

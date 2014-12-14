@@ -25,10 +25,10 @@ class Notes extends CI_Controller {
 
 			$notes_id = $this->notes_model->createNotes($this->input->post('note_title'), $this->input->post('note_content'), $channel);
 			$data = array(
-	      "status" => true,
-	      "notes_id" => $notes_id
-	    );
-	    echo json_encode($data);
+				"status" => true,
+				"notes_id" => $notes_id
+				);
+			echo json_encode($data);
 		} else {
 
 		}
@@ -38,19 +38,19 @@ class Notes extends CI_Controller {
 		if ($this->session->userdata('logged_in') == TRUE) {
 
 			$res = $this->notes_model->updateNotes($this->input->post('note_id'), $this->input->post('note_title'), $this->input->post('update_note_content'));
-	    if ($res == 1) {
-	        $data = array(
-	          "status" => true,
-	          "message" => 'Notes Updated Successfully'
-	        );
-	        echo json_encode($data);
-	    }else {
-	      $data = array(
-	        "status" => false,
-	        "message" => 'Some Error occured'
-	      );
-	      echo json_encode($data);
-	    }
+			if ($res == 1) {
+				$data = array(
+					"status" => true,
+					"message" => 'Notes Updated Successfully'
+					);
+				echo json_encode($data);
+			}else {
+				$data = array(
+					"status" => false,
+					"message" => 'Some Error occured'
+					);
+				echo json_encode($data);
+			}
 		} else {
 
 		}
@@ -103,15 +103,15 @@ class Notes extends CI_Controller {
 		$channel_name = $this->input->post('channel_name');
 
 		$presence_data = array(
-    	'username' => $this->session->userdata('username')
-		);
+			'username' => $this->session->userdata('username')
+			);
 
 		echo $this->pusher->presence_auth(
 			$channel_name,
 			$socket_id,
 			$this->session->userdata('session_id'),
 			$presence_data 
-		);
+			);
 	}
 
 	public function notification() {
