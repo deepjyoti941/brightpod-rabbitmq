@@ -27,7 +27,7 @@
       <label>Title </label>
       <input type="text" class="form-control" name="note_title" value="<?php echo $note['name'] ?>">
       <label>Content </label>
-      <textarea id="update_note_content" name="update_note_content" class="form-control" style="height:150px"><?php echo $note['description'] ?></textarea>
+      <textarea id="update_note_content" name="update_note_content" class="form-control" style="height:350px"><?php echo $note['description'] ?></textarea>
     </div>
     <div class="btn-panel">
       <input type="submit" class="col-lg-4 text-right btn   send-message-btn pull-right" value="Update">

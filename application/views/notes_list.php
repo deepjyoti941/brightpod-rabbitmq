@@ -16,7 +16,7 @@
 	  </div>
 	  <div class="form-group">
 	    <label>Content </label>
-			<textarea id="note_content" name="note_content" class="form-control" style="height:250px"></textarea>
+			<textarea id="note_content" name="note_content" class="form-control" style="height:350px"></textarea>
 		</div>
 		  <div class="btn-panel">
 		    <input type="submit" class="col-lg-3 btn send-message-btn pull-right" value="save">
