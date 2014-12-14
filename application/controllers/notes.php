@@ -6,7 +6,7 @@ class Notes extends CI_Controller {
 
 		parent::__construct();
 		$this->load->library('pusher');
-		$this->load->model(array('NotesModel'));
+		$this->load->model(array('notes_model'));
 
 	}
 
@@ -23,7 +23,7 @@ class Notes extends CI_Controller {
 			$channel = (explode(" ", $channel));
 			$channel = implode("_",$channel);
 
-			$notes_id = $this->NotesModel->createNotes($this->input->post('note_title'), $this->input->post('note_content'), $channel);
+			$notes_id = $this->notes_model->createNotes($this->input->post('note_title'), $this->input->post('note_content'), $channel);
 			$data = array(
 	      "status" => true,
 	      "notes_id" => $notes_id
@@ -37,7 +37,7 @@ class Notes extends CI_Controller {
 	public function updateNote() {
 		if ($this->session->userdata('logged_in') == TRUE) {
 
-			$res = $this->NotesModel->updateNotes($this->input->post('note_id'), $this->input->post('note_title'), $this->input->post('update_note_content'));
+			$res = $this->notes_model->updateNotes($this->input->post('note_id'), $this->input->post('note_title'), $this->input->post('update_note_content'));
 	    if ($res == 1) {
 	        $data = array(
 	          "status" => true,
@@ -58,7 +58,7 @@ class Notes extends CI_Controller {
 
 	public function listing() {
 		if ($this->session->userdata('logged_in') == TRUE) {
-			$data['notes'] = $this->NotesModel->getNotes();
+			$data['notes'] = $this->notes_model->getNotes();
 			$this->load->view('header');
 			$this->load->view('notes_list', $data);
 			$this->load->view('footer');
@@ -71,7 +71,7 @@ class Notes extends CI_Controller {
 
 	public function notes_by_id() {
 		if ($this->session->userdata('logged_in') == TRUE) {
-			$data['note'] = $this->NotesModel->getNotesById($this->uri->segment(2));
+			$data['note'] = $this->notes_model->getNotesById($this->uri->segment(2));
 			$this->load->view('header');
 			$this->load->view('note_details', $data);
 			$this->load->view('footer');
