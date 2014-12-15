@@ -116,6 +116,23 @@ class Notes extends CI_Controller {
 
 	public function notification() {
 
+		$channel_name = $this->input->post('channel_name');
+
+
+		$message = "<strong>$this->session->userdata('username') is Editing</strong>";
+		 
+		//trigger the 'new_message' event in our channel, 'presence-nettuts'
+		$pusher->trigger(
+		    $channel_name,
+		    'whos_editing',
+		    array('message' => $message) //the data to send
+		);
+		 
+		//echo the success array for the ajax call
+		echo json_encode(array(
+	    'message' => $message,
+	    'success' => true
+		));
 
 	}
 }

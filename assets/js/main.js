@@ -88,7 +88,7 @@
   function onfocus() {
     interval = setInterval(function() { 
       updateNote();
-    }, 6000);
+    }, 30000);
   }
   
   function onblur() {
