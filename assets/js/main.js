@@ -62,24 +62,39 @@
     "html":         true, //Button which allows you to edit the generated HTML
   });
 
-  $('#update_note_content').wysihtml5({
-    "font-styles":  true, //Font styling, e.g. h1, h2, etc
-    "color":        true, //Button to change color of font
-    "emphasis":     true, //Italics, bold, etc
-    "textAlign":    true, //Text align (left, right, center, justify)
-    "lists":        true, //(Un)ordered lists, e.g. Bullets, Numbers
-    "blockquote":   true, //Button to insert quote
-    "link":         true, //Button to insert a link
-    "table":        true, //Button to insert a table
-    "image":        true, //Button to insert an image
-    "video":        true, //Button to insert video
-    "html":         true, //Button which allows you to edit the generated HTML
-    events: {
-      change: function() {
-        updateNote();
+  opts = {
+    "font-styles":  true,
+    "color":        true,
+    "emphasis":     true,
+    "textAlign":    true, 
+    "lists":        true, 
+    "blockquote":   true,
+    "link":         true,
+    "table":        true,
+    "image":        true,
+    "video":        true,
+    "html":         true,
+    'format-code': false,
+    events: { 
+        focus : onfocus,
+        blur: onblur      
       }
-    }
-  });
+  };
+
+  $update_editor = $('#update_note_content');
+  $update_editor.wysihtml5(opts);
+
+  var interval;
+  function onfocus() {
+    interval = setInterval(function() { 
+      updateNote();
+    }, 6000);
+  }
+  
+  function onblur() {
+    updateNote();
+    clearInterval(interval);
+  }
 
   $('#cancel_notes').hide();
 
