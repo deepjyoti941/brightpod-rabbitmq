@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" context="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <title>Brightpod Email Queue</title>
+  <title>Brightpod Notes</title>
   <meta name="description" content="">
 
   <link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
@@ -29,7 +29,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="">Brightpod Email Queue</a>
+        <a class="navbar-brand" href="">Brightpod Notes</a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
