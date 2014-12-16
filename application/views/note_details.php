@@ -18,6 +18,9 @@
       </ul>
     </div>
     <div class="clear"></div>
+    <hr>
+      <label>Who is editing</label><br>
+      <span id="whos_editing"></span>
   </div>
 </div>
 
