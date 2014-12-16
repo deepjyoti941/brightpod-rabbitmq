@@ -1,14 +1,8 @@
 
 <script type="text/javascript">
 
-  function updateOnlineCount() {
-    $('#widget_counter_member').html($('.widget_member').length);
-  }
-  
-  function resetWhosEditing () {
-    $('#whos_editing').text('');
-  }
   var channel = "<?php echo 'presence-'.$note['channel'] ?>";
+  $.cookie('channel', channel);
   pusher = new Pusher('dd7bae8d4eea81d560ec');
   Pusher.channel_auth_endpoint = '/notes/auth';
   online_channel = pusher.subscribe(channel);
@@ -42,11 +36,4 @@
       $('#whos_editing').text(data.message)
     });
 
-
-  $('form.notes-update-form input, textarea').on('input propertychange change', function() {    
-    $.post( "/notes/whoisEditing", { channel_name: channel })
-    .done(function( data ) {
-
-    });
-  });
 </script>

@@ -119,13 +119,22 @@ class Notes extends CI_Controller {
 		$channel_name = $this->input->post('channel_name');
 
 		$message = $this->session->userdata('username')." is Editing...";
-		 
+   
 		$this->pusher->trigger($channel_name, 'whos_editing', array('message' => $message));
- 
+   
 		echo json_encode(array(
-	    'message' => $message,
-	    'success' => true
-		));
+     'message' => $message,
+     'success' => true
+     ));
+	}
+
+	public function resetWhoisEditing() {
+
+		$channel_name = $this->input->post('channel_name');
+
+		$message = '';
+   
+		$this->pusher->trigger($channel_name, 'whos_editing', array('message' => $message));
 
 	}
 }

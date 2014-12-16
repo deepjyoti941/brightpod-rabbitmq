@@ -1,5 +1,3 @@
-// jQuery.noConflict(); // jquery without conflict 
-
 (function ($) {
 
   /*
@@ -47,7 +45,6 @@
   * code for notes here
   */
 
-  //$('#note_content').wysihtml5({"font-styles": false});
   $('#note_content').wysihtml5({
     "font-styles":  true, //Font styling, e.g. h1, h2, etc
     "color":        true, //Button to change color of font
@@ -81,19 +78,35 @@
       }
   };
 
+  window.updateOnlineCount = function() {
+    $('#widget_counter_member').html($('.widget_member').length);
+  }
+  
+  window.resetWhosEditing = function() {
+    $('#whos_editing').text('');
+  }
+
   $update_editor = $('#update_note_content');
   $update_editor.wysihtml5(opts);
 
   var interval;
   function onfocus() {
+
+    $.post( "/notes/whoisEditing", { channel_name: $.cookie('channel') })
+      .done(function( data ) {});
+
     interval = setInterval(function() { 
       updateNote();
     }, 30000);
   }
   
   function onblur() {
+
     updateNote();
     clearInterval(interval);
+    resetWhosEditing();
+    $.post( "/notes/resetWhoisEditing", { channel_name: $.cookie('channel') })
+      .done(function( data ) {});
   }
 
   $('#cancel_notes').hide();
@@ -110,25 +123,18 @@
     $('#new_notes_section').hide();
   })
 
-  $('#user_login').click(function() {
 
-    $(this).hide(); 
-    $('#login_loader').show();
-    username = $('#username').val();
-    user_id = $('#user_id').val();
-    username = username.replace(/[^a-z0-9]/gi, '');
-    
-    if( username == '' && user_id == '') {
-      alert('Please provide a valid username (alphanumeric characters only)');
-    } else {
-      ajaxCall('/notes/session', { username : username, user_id:user_id }, function(msg) {
-        console.log(msg);
-        if (msg.success) {
-          window.location= ("notes/listing");
-        } else {}
-      });
-    }
+  $('.login-form').submit(function(e) {
+    e.preventDefault();
+    form = $(this);
+    var data = form.serializeArray();
+    ajaxCall('/notes/session', data, function(msg) {
+      if (msg.success) {
+        window.location= ("notes/listing");
+      } else {}
+    });
   });
+
 
   function ajaxCall(ajax_url, ajax_data, successCallback) {
     $.ajax({
@@ -196,7 +202,7 @@
       beforeSend: function(xhr) {
       },
       success: function(data) {
-        notification('note updated');
+        notification('note auto saved');
       }
     });
   }
