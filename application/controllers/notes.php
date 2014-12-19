@@ -122,7 +122,7 @@ class Notes extends CI_Controller {
 
 		$channel_name = $this->input->post('channel_name');
 
-		$message = "<span id='{$this->session->userdata('pusher_member_id')}'>{$this->session->userdata('username')} is editing..</span>";
+		$message = "<span id='{$this->session->userdata('pusher_member_id')}'>{$this->session->userdata('username')} is editing..</span><br>";
 
 		$this->pusher->trigger($channel_name, 'whos_editing', array('message' => $message));
    
