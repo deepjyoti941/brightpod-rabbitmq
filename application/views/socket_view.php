@@ -26,14 +26,16 @@
 
     online_channel.bind('pusher:member_removed', function(member) {
       $('#widget_member_' + member.id).remove();
-
-        resetWhosEditing();
         updateOnlineCount();
       });
     });
 
     online_channel.bind('whos_editing', function(data) {
-      $('#whos_editing').text(data.message)
+      $('#whos_editing').append(data.message);
+    });
+
+    online_channel.bind('reset_whos_editing', function(data) {
+      $('#whos_editing').find('#'+data.message).remove();
     });
 
 </script>

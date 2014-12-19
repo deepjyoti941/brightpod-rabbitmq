@@ -106,20 +106,24 @@ class Notes extends CI_Controller {
 			'username' => $this->session->userdata('username')
 			);
 
-		echo $this->pusher->presence_auth(
+		$response = $this->pusher->presence_auth(
 			$channel_name,
 			$socket_id,
 			$this->session->userdata('session_id'),
 			$presence_data 
 			);
+			echo $response;
+			$object = json_decode($response);
+			$channel_data = json_decode($object->channel_data);
+			$this->session->set_userdata('pusher_member_id', $channel_data->user_id);
 	}
 
 	public function whoisEditing() {
 
 		$channel_name = $this->input->post('channel_name');
 
-		$message = $this->session->userdata('username')." is Editing...";
-   
+		$message = "<span id='{$this->session->userdata('pusher_member_id')}'>{$this->session->userdata('username')} is editing..</span>";
+
 		$this->pusher->trigger($channel_name, 'whos_editing', array('message' => $message));
    
 		echo json_encode(array(
@@ -132,9 +136,9 @@ class Notes extends CI_Controller {
 
 		$channel_name = $this->input->post('channel_name');
 
-		$message = '';
+		$message = $this->session->userdata('pusher_member_id');
    
-		$this->pusher->trigger($channel_name, 'whos_editing', array('message' => $message));
+		$this->pusher->trigger($channel_name, 'reset_whos_editing', array('message' => $message));
 
 	}
 }

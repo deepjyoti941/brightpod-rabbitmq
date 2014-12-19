@@ -82,16 +82,11 @@
     $('#widget_counter_member').html($('.widget_member').length);
   }
   
-  window.resetWhosEditing = function() {
-    $('#whos_editing').text('');
-  }
-
   $update_editor = $('#update_note_content');
   $update_editor.wysihtml5(opts);
 
   var interval;
   function onfocus() {
-
     $.post( "/notes/whoisEditing", { channel_name: $.cookie('channel') })
       .done(function( data ) {});
 
@@ -101,10 +96,8 @@
   }
   
   function onblur() {
-
     updateNote();
     clearInterval(interval);
-    resetWhosEditing();
     $.post( "/notes/resetWhoisEditing", { channel_name: $.cookie('channel') })
       .done(function( data ) {});
   }
