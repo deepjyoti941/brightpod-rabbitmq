@@ -1,7 +1,7 @@
 (function ($) {
 
-  /*
-  * code for rabbitmq mail queue start here
+ /**
+   * code for rabbitmq mail queue start here
   */
 
   $("#user_list").on("click", '.send_mail', function () {
@@ -35,16 +35,16 @@
   });
 
 
-  /*
-  * end here
-  */
+ /**
+   * end here
+   */
 
 
+  /**
+   * code for notes feature goes here
+   */
 
-  /*
-  * code for notes here
-  */
-
+  // initializing editors
   $('#note_content').wysihtml5({
     "font-styles":  true, //Font styling, e.g. h1, h2, etc
     "color":        true, //Button to change color of font
@@ -78,6 +78,7 @@
       }
   };
 
+  // function to update the online member count
   window.updateOnlineCount = function() {
     $('#widget_counter_member').html($('.widget_member').length);
   }
@@ -85,6 +86,7 @@
   $update_editor = $('#update_note_content');
   $update_editor.wysihtml5(opts);
 
+  //trggering post request to pusher api when focus is inside editor (who is editing feature)
   var interval;
   function onfocus() {
     $.post( "/notes/whoisEditing", { channel_name: $.cookie('channel') })
@@ -94,7 +96,8 @@
       updateNote();
     }, 30000);
   }
-  
+
+  //trggering post request to pusher api when focus is out of editor (stopped editing notes)
   function onblur() {
     updateNote();
     clearInterval(interval);
@@ -102,8 +105,8 @@
       .done(function( data ) {});
   }
 
-  $('#cancel_notes').hide();
 
+  $('#cancel_notes').hide();
   $('#add_notes').click(function() {
     $(this).hide();
     $('#cancel_notes').show();
@@ -148,10 +151,7 @@
     });
   }
 
-  /*
-  * code to save and update notes to db
-  */
-
+  //code to save and update notes to db
   var timeoutId;
   $('form.notes-update-form input, textarea').on('input propertychange change', function() {    
     clearTimeout(timeoutId);
@@ -229,8 +229,8 @@
     e.preventDefault();
   });
 
-  /*
-  * end here
+ /**
+   * end here
   */
 
 })(jQuery);
