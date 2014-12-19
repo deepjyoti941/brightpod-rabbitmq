@@ -22,6 +22,9 @@
       <label>Who is editing</label><br>
       <ul id="whos_editing" class="list-group">
       </ul>
+<!--       <div id="whos_editing">
+        
+      </div> -->
  </div>
 </div>
 

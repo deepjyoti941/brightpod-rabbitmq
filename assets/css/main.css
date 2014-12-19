@@ -10,6 +10,10 @@
 	list-style:none;
 }
 
+#whos_editing {
+  list-style:none;
+}
+
 #widget_online_list >li {
 	margin-left:0px
 }
