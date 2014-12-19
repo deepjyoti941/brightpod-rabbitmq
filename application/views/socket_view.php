@@ -31,14 +31,12 @@
     });
 
     online_channel.bind('whos_editing', function(data) {
-      console.log(data.message);
       $('#whos_editing').append('<li class="widget_member" ' +
         'id="editing_member_' + data.message.pusher_member_id + '">' + data.message.username + ' is editing..</li>');
     });
 
     online_channel.bind('reset_whos_editing', function(data) {
       $('#editing_member_' + data.message).remove();
-      //$('#whos_editing').find('#'+data.message).remove();
     });
 
 </script>
