@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<calender>
+	<item0>
+		<item0>
+			<id>1155227</id>
+			<name>General</name>
+			<updated_at>2014-12-24T03:33:30.000-06:00</updated_at>
+			<color>ff9c00</color>
+			<url>https://basecamp.com/2820983/api/v1/calendars/1155227.json</url>
+			<app_url>https://basecamp.com/2820983/calendars/1155227</app_url>
+		</item0>
+		<item1>
+			<id>1160277</id>
+			<name>Project Planning</name>
+			<updated_at>2015-01-01T12:30:09.000-06:00</updated_at>
+			<color>009900</color>
+			<url>https://basecamp.com/2820983/api/v1/calendars/1160277.json</url>
+			<app_url>https://basecamp.com/2820983/calendars/1160277</app_url>
+		</item1>
+	</item0>
+</calender>

@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) {
+	exit('No direct script access allowed');
+}
+
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -36,14 +39,16 @@
 | This route will tell the Router what URI segments to use if those provided
 | in the URL cannot be matched to a valid route.
 |
-*/
+ */
 
 $route['default_controller'] = "welcome";
-$route['404_override'] = '';
+$route['404_override']       = '';
 
 $route['notes/(:num)'] = 'notes/notes_by_id/$1';
-$route['notes'] = 'notes';
+$route['notes']        = 'notes';
 
+$route['basecamp/projects/(:num)'] = 'basecamp/project_by_id/$1';
+$route['basecamp']                 = 'basecamp';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

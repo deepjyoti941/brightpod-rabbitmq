@@ -1,7 +1,7 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1>Brightpod RabbitMQ Mail-Queue</h1>
+      <h1>Basecamp Importer</h1>
     </div>
   </div>
   <table class="table table-bordered" id='user_list'>
@@ -89,4 +89,14 @@
     </tbody>
   </table>
   <button id="add_user" class="btn btn-success">Add Another User</button>
+</div> -->
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Basecamp Exporter</h1>
+    <p>
+    Welcome to Basecamp Exporter! Now you can migrate to brightpod with your clients, projects, tasks and time from Basecamp.
+    </p>
+</div>
+<a href="/basecamp" class="btn btn-primary">Lets Export !</a>
 </div>
