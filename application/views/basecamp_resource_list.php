@@ -15,7 +15,20 @@
           Projects
         </div>
       </a>
-      <a href="#" class="btn btn-default btn-lg btn-block">Export</a>
+      <a href="#" id="export_project" class="btn btn-default btn-lg btn-block">Export</a>
+      <div class="row">
+        <div id="project_progress" class="col-md-2 col-md-offset-5 display_hidden">
+          <img src="<?php echo base_url('assets/images/loader.gif')?>">
+          exporting...wait
+        </div>
+        <div id="project_done" class="col-md-2 col-md-offset-5 display_hidden">
+          <span class='label label-success'>Project exporeted successfully</span>
+        </div>
+        <div id="already_done" class="col-md-2 col-md-offset-5 display_hidden">
+          <span class='label label-info'>Project Already exporeted</span>
+        </div>
+      </div>
+
     </div>
 
     <div class="col-md-4 col-md-pull-4 ">
@@ -27,7 +40,16 @@
           Calenders
         </div>
       </a>
-      <a href="#" class="btn btn-default btn-lg btn-block">Export</a>
+      <a href="#" id="export_calender" class="btn btn-default btn-lg btn-block">Export</a>
+      <div class="row">
+        <div id="calender_progress" class="col-md-2 col-md-offset-5 display_hidden">
+          <img src="<?php echo base_url('assets/images/loader.gif')?>">
+          <label>exporting...</label>
+        </div>
+        <div id="calender_done" class="col-md-2 col-md-offset-5 display_hidden">
+          <span class="glyphicon glyphicon-ok" aria-hidden="true">Done</span>
+        </div>
+      </div>
     </div>
 
     <div class="col-md-4">
@@ -39,7 +61,16 @@
           People
         </div>
       </a>
-      <a href="#" class="btn btn-default btn-lg btn-block">Export</a>
+      <a href="#" id="export_people" class="btn btn-default btn-lg btn-block">Export</a>
+      <div class="row">
+        <div id="people_progress" class="col-md-2 col-md-offset-5 display_hidden">
+          <img src="<?php echo base_url('assets/images/loader.gif')?>">
+          <label>exporting...</label>
+        </div>
+        <div id="people_done" class="col-md-2 col-md-offset-5 display_hidden">
+          <span class="glyphicon glyphicon-ok" aria-hidden="true">Done</span>
+        </div>
+      </div>
     </div>
 
   </div>

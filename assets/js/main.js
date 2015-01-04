@@ -63,8 +63,8 @@
     "font-styles":  true,
     "color":        true,
     "emphasis":     true,
-    "textAlign":    true, 
-    "lists":        true, 
+    "textAlign":    true,
+    "lists":        true,
     "blockquote":   true,
     "link":         true,
     "table":        true,
@@ -72,9 +72,9 @@
     "video":        true,
     "html":         true,
     'format-code': false,
-    events: { 
+    events: {
         focus : onfocus,
-        blur: onblur      
+        blur: onblur
       }
   };
 
@@ -82,7 +82,7 @@
   window.updateOnlineCount = function() {
     $('#widget_counter_member').html($('.widget_member').length);
   }
-  
+
   $update_editor = $('#update_note_content');
   $update_editor.wysihtml5(opts);
 
@@ -92,7 +92,7 @@
     $.post( "/notes/whoisEditing", { channel_name: $.cookie('channel') })
       .done(function( data ) {});
 
-    interval = setInterval(function() { 
+    interval = setInterval(function() {
       updateNote();
     }, 30000);
   }
@@ -153,7 +153,7 @@
 
   //code to save and update notes to db
   var timeoutId;
-  $('form.notes-update-form input, textarea').on('input propertychange change', function() {    
+  $('form.notes-update-form input, textarea').on('input propertychange change', function() {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(function() {
       updateNote();
@@ -228,6 +228,26 @@
     updateNote();
     e.preventDefault();
   });
+
+  $('#export_project').click(function(e) {
+    e.preventDefault();
+    $(this).attr("disabled", true);
+    $('#project_progress').show();
+
+    $.post( "/basecamp/export-projects", {}, function(data) {
+      data = $.parseJSON(data);
+        if (data.status == 'already_exported') {
+        $('#project_progress').hide();
+        $('#already_done').show();
+        $('#already_done').append('<a href="'+data.export_path+'">'+data.export_path+'</a>');
+      } else {
+        $('#project_progress').hide();
+        $('#project_done').show();
+        $('#project_done').append('<a href="'+data.export_path+'">'+data.export_path+'</a>');
+
+      }
+    });
+  })
 
  /**
    * end here

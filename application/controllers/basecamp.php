@@ -59,9 +59,9 @@ class Basecamp extends CI_Controller {
 			$data = json_decode(json_encode($user->accounts[0]), true);
 
 			$this->session->set_userdata($data);
-			echo "<pre>";
-			print_r($user);
-			echo "</pre>";
+			// echo "<pre>";
+			// print_r($user);
+			// echo "</pre>";
 			$data['user'] = $user;
 			$this->load->view('header');
 			$this->load->view('basecamp_resource_list', $data);
@@ -228,6 +228,10 @@ class Basecamp extends CI_Controller {
 	}
 
 	public function exportProjects() {
+
+		$dir = $_SERVER['DOCUMENT_ROOT'].'/exports/' .$this->session->userdata('id').'/projects';
+
+		if (!is_dir($dir)) {
 		$project_details = array();
 
 		$success = $this->client->CallAPI(
@@ -388,23 +392,49 @@ class Basecamp extends CI_Controller {
 			print_r($this->client->error);
 		}
 			$json_string = json_encode($project_details, JSON_PRETTY_PRINT);
-			$dir = $_SERVER['DOCUMENT_ROOT'].'/exports/' .$this->session->userdata('id').'/projects';
 
 			if (!is_dir($dir)) {
 			  mkdir($dir, 0777, TRUE);
 			}
 
 			$path = $_SERVER['DOCUMENT_ROOT'].'/exports/' .$this->session->userdata('id').'/projects/data.json';
-			write_file($path, print_r($json_string,true), 'w+');
 
-			echo "<pre>";
-			print_r($json_string);
-			echo "</pre>";
-			echo "<br>";
+			if ( ! write_file($path, print_r($json_string,true), 'w+')) {
+				  $data = array(
+	        "status" => false,
+	        "message" => 'unable to write'
+	      );
+	      echo json_encode($data);
+			}
+			else {
+				$data = array(
+	        "status" => true,
+	        "message" => 'project exported successfully',
+	        "export_path" => '/exports/' .$this->session->userdata('id').'/projects/data.json'
+	      );
+	      echo json_encode($data);
+			}
+
+		} else {
+			$data = array(
+				"status" => "already_exported",
+        "message" => 'Project already exported',
+        "export_path"=> '/exports/' .$this->session->userdata('id').'/projects/data.json'
+      );
+      echo json_encode($data);
+		}
+
+
 	}
 
 
+	public function exportCalenders() {
 
+	}
+
+	public function exportPeople() {
+
+	}
 
 	public function test() {
 

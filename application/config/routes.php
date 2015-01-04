@@ -47,8 +47,11 @@ $route['404_override']       = '';
 $route['notes/(:num)'] = 'notes/notes_by_id/$1';
 $route['notes']        = 'notes';
 
-$route['basecamp/projects/(:num)'] = 'basecamp/project_by_id/$1';
-$route['basecamp']                 = 'basecamp';
+$route['basecamp/projects/(:num)'] 	= 'basecamp/project_by_id/$1';
+$route['basecamp/export-projects'] 	= 'basecamp/exportProjects';
+$route['basecamp/export-calenders'] = 'basecamp/exportCalenders';
+$route['basecamp/export-people'] 		= 'basecamp/exportPeople';
+$route['basecamp']                 	= 'basecamp';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
