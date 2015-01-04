@@ -4,7 +4,6 @@
 
     <small>Now you can export your projects,calender,people from here.
     </small>
-    <button class="btn btn-large btn-primary pull-right">Export everything</button>
     <hr>
 
     <div class="col-md-4 col-md-push-4">

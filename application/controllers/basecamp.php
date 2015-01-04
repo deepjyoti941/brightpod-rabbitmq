@@ -6,6 +6,7 @@ class Basecamp extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 
+		$this->load->helper('file');
 		$this->load->model(array('basecamp_exporter'));
 
 		$this->load->library('oauth');
@@ -55,6 +56,12 @@ class Basecamp extends CI_Controller {
 		}
 
 		if ($success) {
+			$data = json_decode(json_encode($user->accounts[0]), true);
+
+			$this->session->set_userdata($data);
+			echo "<pre>";
+			print_r($user);
+			echo "</pre>";
 			$data['user'] = $user;
 			$this->load->view('header');
 			$this->load->view('basecamp_resource_list', $data);
@@ -166,23 +173,6 @@ class Basecamp extends CI_Controller {
 			echo "</pre>";
 			echo "<br>";
 
-			// $data['people'] = $people;
-			// $this->load->view('header');
-			// $this->load->view('basecamp_people', $data);
-			// $this->load->view('footer');
-
-			$student_info = array($new_array);
-
-			// creating object of SimpleXMLElement
-			$xml_student_info = new SimpleXMLElement("<?xml version=\"1.0\"?><calender></calender>");
-
-			// function call to convert array to xml
-			$this->basecamp_exporter->array_to_xml($student_info,$xml_student_info);
-
-			//saving generated xml file
-			$path = $_SERVER['DOCUMENT_ROOT'].'/exports/calender1.xml';
-			$xml_student_info->asXML($path);
-
 			// echo "<pre>";
 			// print_r($calendars);
 			// echo "</pre>";
@@ -231,21 +221,224 @@ class Basecamp extends CI_Controller {
 			// $this->load->view('basecamp_people', $data);
 			// $this->load->view('footer');
 
-			$student_info = array($new_array);
-
-			// creating object of SimpleXMLElement
-			$xml_student_info = new SimpleXMLElement("<?xml version=\"1.0\"?><student_info></student_info>");
-
-			// function call to convert array to xml
-			$this->basecamp_exporter->array_to_xml($student_info,$xml_student_info);
-
-			//saving generated xml file
-			$path = $_SERVER['DOCUMENT_ROOT'].'/exports/myfile3.xml';
-			$xml_student_info->asXML($path);
-
 
 		} else {
 			print_r($this->client->error);
 		}
 	}
+
+	public function exportProjects() {
+		$project_details = array();
+
+		$success = $this->client->CallAPI(
+			$this->session->userdata('href').'/projects.json',
+			'GET',
+			array(),
+			array(
+				'FailOnAccessError' => true,
+			),
+			$projects
+		);
+
+		$projects_array = json_decode(json_encode($projects), true);
+		$project_details['project_list'] = $projects_array;
+
+		if ($success) {
+			$i = 0;
+			foreach ($projects as $key=>$row) {
+				$success = $this->client->CallAPI(
+					$row->url,
+					'GET',
+					array(),
+					array(
+						'FailOnAccessError' => true,
+					),
+					$project
+				);
+				$project_array = json_decode(json_encode($project), true);
+				$project_details['details'][$i] = $project_array;
+
+				if ($success) {
+
+					/* api call for accesses*/
+					$this->client->CallAPI(
+						$project->accesses->url,
+						'GET',
+						array(),
+						array(
+							'FailOnAccessError' => true,
+						),
+						$accesses
+					);
+					$accesses_array = json_decode(json_encode($accesses), true);
+					$project_details['accesses'][$i]['project_id'] = $project->id;
+					$project_details['accesses'][$i]['accesses_details'] = $accesses_array;
+
+					/* api call for attachments*/
+					$this->client->CallAPI(
+						$project->attachments->url,
+						'GET',
+						array(),
+						array(
+							'FailOnAccessError' => true,
+						),
+						$attachments
+					);
+					$attachments_array = json_decode(json_encode($attachments), true);
+					$project_details['attachments'][$i]['project_id'] = $project->id;
+					$project_details['attachments'][$i]['attachments_details'] = $attachments_array;
+
+					/* api call for calendar_events*/
+					$this->client->CallAPI(
+						$project->calendar_events->url,
+						'GET',
+						array(),
+						array(
+							'FailOnAccessError' => true,
+						),
+						$calendar_events
+					);
+					$calendar_events_array = json_decode(json_encode($calendar_events), true);
+					$project_details['calendar_events'][$i]['project_id'] = $project->id;
+					$project_details['calendar_events'][$i]['calendar_events_details'] = $calendar_events_array;
+
+					/* api call for documents*/
+					$this->client->CallAPI(
+						$project->documents->url,
+						'GET',
+						array(),
+						array(
+							'FailOnAccessError' => true,
+						),
+						$documents
+					);
+					$documents_array = json_decode(json_encode($documents), true);
+					$project_details['documents'][$i]['project_id'] = $project->id;
+					$project_details['documents'][$i]['documents_details'] = $documents_array;
+
+					/* api call for forwards*/
+					$this->client->CallAPI(
+						$project->forwards->url,
+						'GET',
+						array(),
+						array(
+							'FailOnAccessError' => true,
+						),
+						$forwards
+					);
+					$forwards_array = json_decode(json_encode($forwards), true);
+					$project_details['forwards'][$i]['project_id'] = $project->id;
+					$project_details['forwards'][$i]['forwards_details'] = $forwards_array;
+
+					/* api call for topics*/
+					$this->client->CallAPI(
+						$project->topics->url,
+						'GET',
+						array(),
+						array(
+							'FailOnAccessError' => true,
+						),
+						$topics
+					);
+					$topics_array = json_decode(json_encode($topics), true);
+					$project_details['topics'][$i]['project_id'] = $project->id;
+					$project_details['topics'][$i]['topics_details'] = $topics_array;
+
+					/* api call for todolists*/
+					$this->client->CallAPI(
+						$project->todolists->url,
+						'GET',
+						array(),
+						array(
+							'FailOnAccessError' => true,
+						),
+						$todolists
+					);
+					$todolists_array = json_decode(json_encode($todolists), true);
+					$project_details['todolists'][$i]['project_id'] = $project->id;
+					$project_details['todolists'][$i]['todolists_details'] = $todolists_array;
+
+					/* api call for todolists content*/
+					$j = 0;
+					foreach ($todolists as $key=>$row) {
+						$this->client->CallAPI(
+							$row->url,
+							'GET',
+							array(),
+							array(
+								'FailOnAccessError' => true,
+							),
+							$todolists_content
+						);
+						$todolists_content_array = json_decode(json_encode($todolists_content), true);
+						$project_details['todolists_content'][$j]['project_id'] = $project->id;
+						$project_details['todolists_content'][$j]['todo_id'] = $todolists_content->id;
+						$project_details['todolists_content'][$j]['todolists_content_details'] = $todolists_content_array;
+
+						$j++;
+					}
+
+					$i++;
+
+				} else {
+					print_r($this->client->error);
+				}
+			}
+		} else {
+			print_r($this->client->error);
+		}
+			$json_string = json_encode($project_details, JSON_PRETTY_PRINT);
+			$dir = $_SERVER['DOCUMENT_ROOT'].'/exports/' .$this->session->userdata('id').'/projects';
+
+			if (!is_dir($dir)) {
+			  mkdir($dir, 0777, TRUE);
+			}
+
+			$path = $_SERVER['DOCUMENT_ROOT'].'/exports/' .$this->session->userdata('id').'/projects/data.json';
+			write_file($path, print_r($json_string,true), 'w+');
+
+			echo "<pre>";
+			print_r($json_string);
+			echo "</pre>";
+			echo "<br>";
+	}
+
+
+
+
+	public function test() {
+
+		if (strlen($this->client->authorization_error)) {
+			$this->client->error = $this->client->authorization_error;
+			$success             = false;
+		} elseif (strlen($this->client->access_token)) {
+
+			$success = $this->client->CallAPI(
+				'https://basecamp.com/2820983/api/v1/people/9982383.json',
+				'GET',
+				array(),
+				array(
+					'FailOnAccessError' => true,
+				),
+				$people
+			);
+
+		}
+
+		$success = $this->client->Finalize($success);
+		if ($this->client->exit) {
+			exit;
+		}
+		if ($success) {
+			echo "<pre>";
+			print_r($people);
+			echo "</pre>";
+			echo "<br>";
+
+		} else {
+			print_r($this->client->error);
+		}
+	}
+
+
 }
