@@ -80,7 +80,7 @@ class Basecamp extends CI_Controller {
 		} elseif (strlen($this->client->access_token)) {
 
 			$success = $this->client->CallAPI(
-				'https://basecamp.com/2820983/api/v1/projects.json',
+				$this->session->userdata('href').'/projects.json',
 				'GET',
 				array(),
 				array(
@@ -114,7 +114,7 @@ class Basecamp extends CI_Controller {
 		} elseif (strlen($this->client->access_token)) {
 
 			$success = $this->client->CallAPI(
-				'https://basecamp.com/2820983/api/v1/projects/' . $this->uri->segment(3) . '.json',
+				$this->session->userdata('href').'/projects/' . $this->uri->segment(3) . '.json',
 				'GET',
 				array(),
 				array(
@@ -150,7 +150,7 @@ class Basecamp extends CI_Controller {
 		} elseif (strlen($this->client->access_token)) {
 
 			$success = $this->client->CallAPI(
-				'https://basecamp.com/2820983/api/v1/calendars.json',
+				$this->session->userdata('href').'/calendars.json',
 				'GET',
 				array(),
 				array(
@@ -193,7 +193,7 @@ class Basecamp extends CI_Controller {
 		} elseif (strlen($this->client->access_token)) {
 
 			$success = $this->client->CallAPI(
-				'https://basecamp.com/2820983/api/v1/people.json',
+				$this->session->userdata('href').'/people.json',
 				'GET',
 				array(),
 				array(
