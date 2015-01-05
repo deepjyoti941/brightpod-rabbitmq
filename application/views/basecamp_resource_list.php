@@ -15,8 +15,8 @@
           Projects
         </div>
       </a>
-      <a href="#" id="export_project" class="btn btn-default btn-lg btn-block">Export</a>
-      <div class="row">
+<!--       <a href="#" id="export_project" class="btn btn-default btn-lg btn-block">Export All</a>
+ -->      <div class="row">
         <div id="project_progress" class="col-md-2 col-md-offset-5 display_hidden">
           <img src="<?php echo base_url('assets/images/loader.gif')?>">
           exporting...wait
@@ -40,8 +40,8 @@
           Calenders
         </div>
       </a>
-      <a href="#" id="export_calender" class="btn btn-default btn-lg btn-block">Export</a>
-      <div class="row">
+<!--       <a href="#" id="export_calender" class="btn btn-default btn-lg btn-block">Export All</a>
+ -->      <div class="row">
         <div id="calender_progress" class="col-md-2 col-md-offset-5 display_hidden">
           <img src="<?php echo base_url('assets/images/loader.gif')?>">
           <label>exporting...</label>
@@ -61,8 +61,8 @@
           People
         </div>
       </a>
-      <a href="#" id="export_people" class="btn btn-default btn-lg btn-block">Export</a>
-      <div class="row">
+<!--       <a href="#" id="export_people" class="btn btn-default btn-lg btn-block">Export All</a>
+ -->      <div class="row">
         <div id="people_progress" class="col-md-2 col-md-offset-5 display_hidden">
           <img src="<?php echo base_url('assets/images/loader.gif')?>">
           <label>exporting...</label>

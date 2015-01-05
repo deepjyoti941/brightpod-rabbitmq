@@ -425,6 +425,14 @@ class Basecamp extends CI_Controller {
 		}
 	}
 
+	public function exportSelectedProjects () {
+
+		$this->basecamp_exporter->exportSelectedProjects($this->input->post('project_list'));
+
+	}
+
+
+
 
 	public function exportCalenders() {
 
@@ -442,7 +450,7 @@ class Basecamp extends CI_Controller {
 		} elseif (strlen($this->client->access_token)) {
 
 			$success = $this->client->CallAPI(
-				'https://basecamp.com/2820983/api/v1/people/9982383.json',
+				'https://basecamp.com/2820983/api/v1/projects/7907092/documents/7412292.json',
 				'GET',
 				array(),
 				array(

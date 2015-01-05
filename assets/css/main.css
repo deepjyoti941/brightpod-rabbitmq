@@ -231,3 +231,13 @@ border-left-color: #f0ad4e;
 .display_hidden {
   display: none;
 }
+
+.project_list tbody tr:hover {
+    background: #eee;
+}
+.project_list tbody td {
+    border: 1px solid #eee;
+}
+.highlight_row {
+    background: #eee;
+}

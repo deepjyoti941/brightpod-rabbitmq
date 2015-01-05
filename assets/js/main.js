@@ -249,6 +249,43 @@
     });
   })
 
+  var project_list_arr = [];
+  $('.project_list tbody tr').click(function (event) {
+      if (event.target.type !== 'checkbox') {
+          $(':checkbox', this).trigger('click');
+      }
+  });
+
+  $("input[type='checkbox']").change(function (e) {
+      var val
+      if ($(this).is(":checked")) {
+        $(this).closest('tr').addClass("highlight_row");
+        val = $(this).closest('tr td').next().html();
+        project_list_arr.push(val);
+        console.log(val);
+      } else {
+        $(this).closest('tr').removeClass("highlight_row");
+        val = $(this).closest('tr td').next().html();
+        var index = project_list_arr.indexOf(val);
+        if (index > -1) {
+          project_list_arr.splice(index, 1);
+        }
+      }
+  });
+
+  $("#export_project_list").click(function() {
+    var $this = $(this);
+    $this.attr("disabled", true);
+    $('#project_list_progress').show();
+    $.post( "/basecamp/export-selected-projects", {project_list:project_list_arr})
+      .done(function( data ) {
+        $('#project_list_progress').hide();
+        $('#project__list_done').show();
+        $this.removeAttr("disabled");
+    });
+  })
+
+
  /**
    * end here
   */
