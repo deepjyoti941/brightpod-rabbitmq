@@ -50,6 +50,7 @@ $route['notes']        = 'notes';
 $route['basecamp/projects/(:num)'] 					= 'basecamp/project_by_id/$1';
 $route['basecamp/export-projects'] 					= 'basecamp/exportProjects';
 $route['basecamp/export-selected-projects'] = 'basecamp/exportSelectedProjects';
+$route['basecamp/export-selected-calenders'] = 'basecamp/exportSelectedCalenders';
 
 $route['basecamp/export-calenders'] 				= 'basecamp/exportCalenders';
 $route['basecamp/export-people'] 						= 'basecamp/exportPeople';

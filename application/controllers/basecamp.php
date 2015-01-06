@@ -168,18 +168,11 @@ class Basecamp extends CI_Controller {
 		if ($success) {
 
 			$new_array = json_decode(json_encode($calendars), true);
-			echo "<pre>";
-			print_r($new_array);
-			echo "</pre>";
-			echo "<br>";
 
-			// echo "<pre>";
-			// print_r($calendars);
-			// echo "</pre>";
-			// $data['calendars'] = $calendars;
-			// $this->load->view('header');
-			// $this->load->view('basecamp_calenders', $data);
-			// $this->load->view('footer');
+			$data['calendars'] = $calendars;
+			$this->load->view('header');
+			$this->load->view('basecamp_calenders', $data);
+			$this->load->view('footer');
 		} else {
 			print_r($this->client->error);
 		}
@@ -211,15 +204,15 @@ class Basecamp extends CI_Controller {
 		if ($success) {
 
 			$new_array = json_decode(json_encode($people), true);
-			echo "<pre>";
-			print_r($new_array);
-			echo "</pre>";
-			echo "<br>";
+			// echo "<pre>";
+			// print_r($new_array);
+			// echo "</pre>";
+			// echo "<br>";
 
-			// $data['people'] = $people;
-			// $this->load->view('header');
-			// $this->load->view('basecamp_people', $data);
-			// $this->load->view('footer');
+			$data['people'] = $people;
+			$this->load->view('header');
+			$this->load->view('basecamp_people', $data);
+			$this->load->view('footer');
 
 
 		} else {
@@ -431,8 +424,17 @@ class Basecamp extends CI_Controller {
 
 	}
 
+	public function exportSelectedCalenders () {
+		//print_r($this->input->post('calender_list'));
+		$this->basecamp_exporter->exportSelectedCalenders($this->input->post('calender_list'));
 
+	}
 
+	public function exportSelectedPeople () {
+
+		// $this->basecamp_exporter->exportSelectedProjects($this->input->post('project_list'));
+
+	}
 
 	public function exportCalenders() {
 
@@ -450,7 +452,7 @@ class Basecamp extends CI_Controller {
 		} elseif (strlen($this->client->access_token)) {
 
 			$success = $this->client->CallAPI(
-				'https://basecamp.com/2820983/api/v1/projects/7907092/documents/7412292.json',
+				'https://basecamp.com/2820983/api/v1/calendars/1160277/calendar_events/past.json',
 				'GET',
 				array(),
 				array(

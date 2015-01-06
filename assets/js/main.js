@@ -250,13 +250,27 @@
   })
 
   var project_list_arr = [];
+  var people_list_arr = [];
+  var calender_list_arr = [];
+
   $('.project_list tbody tr').click(function (event) {
       if (event.target.type !== 'checkbox') {
           $(':checkbox', this).trigger('click');
       }
   });
 
-  $("input[type='checkbox']").change(function (e) {
+  $('.people_list tbody tr').click(function (event) {
+      if (event.target.type !== 'checkbox') {
+          $(':checkbox', this).trigger('click');
+      }
+  });
+
+  $('.calender_list tbody tr').click(function (event) {
+      if (event.target.type !== 'checkbox') {
+          $(':checkbox', this).trigger('click');
+      }
+  });
+  $(".project_list input[type='checkbox']").change(function (e) {
       var val
       if ($(this).is(":checked")) {
         $(this).closest('tr').addClass("highlight_row");
@@ -273,18 +287,95 @@
       }
   });
 
+  $(".people_list input[type='checkbox']").change(function (e) {
+      var val
+      if ($(this).is(":checked")) {
+        $(this).closest('tr').addClass("highlight_row");
+        val = $(this).closest('tr td').next().html();
+        people_list_arr.push(val);
+        console.log(val);
+      } else {
+        $(this).closest('tr').removeClass("highlight_row");
+        val = $(this).closest('tr td').next().html();
+        var index = people_list_arr.indexOf(val);
+        if (index > -1) {
+          people_list_arr.splice(index, 1);
+        }
+      }
+  });
+
+  $(".calender_list input[type='checkbox']").change(function (e) {
+      var val
+      if ($(this).is(":checked")) {
+        $(this).closest('tr').addClass("highlight_row");
+        val = $(this).closest('tr td').next().html();
+        calender_list_arr.push(val);
+        console.log(val);
+      } else {
+        $(this).closest('tr').removeClass("highlight_row");
+        val = $(this).closest('tr td').next().html();
+        var index = calender_list_arr.indexOf(val);
+        if (index > -1) {
+          calender_list_arr.splice(index, 1);
+        }
+      }
+  });
+
   $("#export_project_list").click(function() {
-    var $this = $(this);
-    $this.attr("disabled", true);
-    $('#project_list_progress').show();
-    $.post( "/basecamp/export-selected-projects", {project_list:project_list_arr})
-      .done(function( data ) {
-        $('#project_list_progress').hide();
-        $('#project__list_done').show();
-        $this.removeAttr("disabled");
-    });
+
+    if (typeof project_list_arr !== 'undefined' && project_list_arr.length > 0) {
+      var $this = $(this);
+      $this.attr("disabled", true);
+      $('#project_list_progress').show();
+      $.post( "/basecamp/export-selected-projects", {project_list:project_list_arr})
+        .done(function( data ) {
+          $('#project_list_progress').hide();
+          $('#project_list_done').show();
+          $this.removeAttr("disabled");
+      });
+    } else {
+      bootbox.alert("You must select atleast one project to export", function() {
+      });
+    }
   })
 
+
+  $("#export_people_list").click(function() {
+
+    if (typeof people_list_arr !== 'undefined' && people_list_arr.length > 0) {
+      var $this = $(this);
+      $this.attr("disabled", true);
+      $('#project_list_progress').show();
+      $.post( "/basecamp/export-selected-people", {people_list:people_list_arr})
+        .done(function( data ) {
+          $('#people_list_progress').hide();
+          $('#people_list_done').show();
+          $this.removeAttr("disabled");
+      });
+    } else {
+      bootbox.alert("You must select atleast one people to export", function() {
+      });
+    }
+  })
+
+
+  $("#export_calender_list").click(function() {
+
+    if (typeof calender_list_arr !== 'undefined' && calender_list_arr.length > 0) {
+      var $this = $(this);
+      $this.attr("disabled", true);
+      $('#calender_list_progress').show();
+      $.post( "/basecamp/export-selected-calenders", {calender_list:calender_list_arr})
+        .done(function( data ) {
+          $('#calender_list_progress').hide();
+          $('#calender_list_done').show();
+          $this.removeAttr("disabled");
+      });
+    } else {
+      bootbox.alert("You must select atleast one calender to export", function() {
+      });
+    }
+  })
 
  /**
    * end here

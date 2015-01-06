@@ -30,7 +30,7 @@
 	    <img src="<?php echo base_url('assets/images/loader.gif')?>">
 	    exporting projects...please wait
 	  </div>
-	  <div id="project__list_done" class="col-md-4 col-md-offset-5 display_hidden">
+	  <div id="project_list_done" class="col-md-4 col-md-offset-5 display_hidden">
 	    <span class='label label-success'>Projects exporeted successfully</span>
 	    <p>You can see exports at <a href="<?php echo base_url('exports')?>">HERE</a></p>
 	  </div>

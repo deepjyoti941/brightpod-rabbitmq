@@ -58,8 +58,8 @@ class Basecamp_exporter extends CI_Model {
         $accesses
       );
       $accesses_array = json_decode(json_encode($accesses), true);
-      $project_details['accesses'][$i]['project_id'] = $project->id;
-      $project_details['accesses'][$i]['accesses_details'] = $accesses_array;
+      $project_details['accesses']['project_id'] = $project->id;
+      $project_details['accesses']['accesses_details'] = $accesses_array;
 
 
       /* api call for people associated with project*/
@@ -95,8 +95,8 @@ class Basecamp_exporter extends CI_Model {
         $attachments
       );
       $attachments_array = json_decode(json_encode($attachments), true);
-      $project_details['attachments'][$i]['project_id'] = $project->id;
-      $project_details['attachments'][$i]['attachments_details'] = $attachments_array;
+      $project_details['attachments']['project_id'] = $project->id;
+      $project_details['attachments']['attachments_details'] = $attachments_array;
 
 
       /* api call for calendar_events*/
@@ -110,8 +110,8 @@ class Basecamp_exporter extends CI_Model {
         $calendar_events
       );
       $calendar_events_array = json_decode(json_encode($calendar_events), true);
-      $project_details['calendar_events'][$i]['project_id'] = $project->id;
-      $project_details['calendar_events'][$i]['calendar_events_details'] = $calendar_events_array;
+      $project_details['calendar_events']['project_id'] = $project->id;
+      $project_details['calendar_events']['calendar_events_details'] = $calendar_events_array;
 
       /* api call for documents*/
       $this->client->CallAPI(
@@ -124,8 +124,8 @@ class Basecamp_exporter extends CI_Model {
         $documents
       );
       $documents_array = json_decode(json_encode($documents), true);
-      $project_details['documents'][$i]['project_id'] = $project->id;
-      $project_details['documents'][$i]['documents_details'] = $documents_array;
+      $project_details['documents']['project_id'] = $project->id;
+      $project_details['documents']['documents_details'] = $documents_array;
 
       /* api call for document details*/
       $p = 0;
@@ -158,8 +158,8 @@ class Basecamp_exporter extends CI_Model {
         $forwards
       );
       $forwards_array = json_decode(json_encode($forwards), true);
-      $project_details['forwards'][$i]['project_id'] = $project->id;
-      $project_details['forwards'][$i]['forwards_details'] = $forwards_array;
+      $project_details['forwards']['project_id'] = $project->id;
+      $project_details['forwards']['forwards_details'] = $forwards_array;
 
       /* api call for topics*/
       $this->client->CallAPI(
@@ -172,8 +172,8 @@ class Basecamp_exporter extends CI_Model {
         $topics
       );
       $topics_array = json_decode(json_encode($topics), true);
-      $project_details['topics'][$i]['project_id'] = $project->id;
-      $project_details['topics'][$i]['topics_details'] = $topics_array;
+      $project_details['topics']['project_id'] = $project->id;
+      $project_details['topics']['topics_details'] = $topics_array;
 
       /* api call for todolists*/
       $this->client->CallAPI(
@@ -186,8 +186,8 @@ class Basecamp_exporter extends CI_Model {
         $todolists
       );
       $todolists_array = json_decode(json_encode($todolists), true);
-      $project_details['todolists'][$i]['project_id'] = $project->id;
-      $project_details['todolists'][$i]['todolists_details'] = $todolists_array;
+      $project_details['todolists']['project_id'] = $project->id;
+      $project_details['todolists']['todolists_details'] = $todolists_array;
 
       /* api call for todolists content*/
       $k = 0;
@@ -237,6 +237,137 @@ class Basecamp_exporter extends CI_Model {
 
     }
 
+  }
+
+  public function exportSelectedCalenders ($calender_list) {
+
+    foreach ($calender_list as $calender) {
+      $calender_id_ = $calender;
+      $calender_details = array();
+      $success = $this->client->CallAPI(
+        $this->session->userdata('href').'/calendars/'.$calender.'.json',
+        'GET',
+        array(),
+        array(
+          'FailOnAccessError' => true,
+        ),
+        $calender
+      );
+
+      $calender_array = json_decode(json_encode($calender), true);
+      $calender_details['basic_details']= $calender_array;
+
+
+      /* api call for accesses for calender*/
+      $this->client->CallAPI(
+        $calender->accesses->url,
+        'GET',
+        array(),
+        array(
+          'FailOnAccessError' => true,
+        ),
+        $accesses
+      );
+      $accesses_array = json_decode(json_encode($accesses), true);
+      $calender_details['accesses']['calender_id'] = $calender->id;
+      $calender_details['accesses']['accesses_details'] = $accesses_array;
+
+      /* api call for upcoming calender events*/
+      $this->client->CallAPI(
+        $calender->calendar_events->urls->upcoming,
+        'GET',
+        array(),
+        array(
+          'FailOnAccessError' => true,
+        ),
+        $upcoming_event
+      );
+      $upcoming_array = json_decode(json_encode($upcoming_event), true);
+      $calender_details['upcoming_calender_event']['calender_id'] = $calender->id;
+      $calender_details['upcoming_calender_event']['upcoming_details'] = $upcoming_array;
+
+      /* api call for upcoming calender events full details*/
+      $j = 0;
+      foreach ($upcoming_event as $key=>$row) {
+        $this->client->CallAPI(
+          $row->url,
+          'GET',
+          array(),
+          array(
+            'FailOnAccessError' => true,
+          ),
+          $upcoming_event_full
+        );
+        $upcoming_event_full_array = json_decode(json_encode($upcoming_event_full), true);
+        $calender_details['upcoming_calender_event_details'][$j]['calender_id'] = $calender->id;
+        $calender_details['upcoming_calender_event_details'][$j]['upcoming_event_id'] = $upcoming_event_full->id;
+        $calender_details['upcoming_calender_event_details'][$j]['upcoming_event_content'] = $upcoming_event_full_array;
+
+        $j++;
+      }
+
+      /* api call for past calender events*/
+      $this->client->CallAPI(
+        $calender->calendar_events->urls->past,
+        'GET',
+        array(),
+        array(
+          'FailOnAccessError' => true,
+        ),
+        $past_event
+      );
+      $past_array = json_decode(json_encode($past_event), true);
+      $calender_details['past_calender_event']['calender_id'] = $calender->id;
+      $calender_details['past_calender_event']['past_details'] = $past_array;
+
+
+      /* api call for past calender events full details*/
+      $k = 0;
+      foreach ($past_event as $key=>$row) {
+        $this->client->CallAPI(
+          $row->url,
+          'GET',
+          array(),
+          array(
+            'FailOnAccessError' => true,
+          ),
+          $past_event_full
+        );
+        $past_event_full_array = json_decode(json_encode($past_event_full), true);
+        $calender_details['past_calender_event_details'][$k]['calender_id'] = $calender->id;
+        $calender_details['past_calender_event_details'][$k]['past_event_id'] = $past_event_full->id;
+        $calender_details['past_calender_event_details'][$k]['past_event_content'] = $past_event_full_array;
+
+        $k++;
+      }
+
+      $json_string = json_encode($calender_details, JSON_PRETTY_PRINT);
+      // echo "<pre>";
+      // print_r($calender_details);
+      // echo "</pre>";
+
+      $dir = $_SERVER['DOCUMENT_ROOT'].'/exports/' .$this->session->userdata('id').'/calenders/';
+      if (!is_dir($dir)) {
+        mkdir($dir,0777, TRUE);
+      }
+      $path = $dir.$calender_id_.'.json';
+      if ( ! write_file($path, print_r($json_string,true), 'w+')) {
+          $data = array(
+          "status" => false,
+          "message" => 'unable to write'
+        );
+        echo json_encode($data);
+      }
+      else {
+        $data = array(
+          "status" => true,
+          "message" => 'calenders exported successfully',
+          "export_path" => '/exports/' .$this->session->userdata('id').'/calenders'
+        );
+        echo json_encode($data);
+      }
+
+    }
   }
 
 }
