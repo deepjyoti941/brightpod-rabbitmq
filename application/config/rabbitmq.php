@@ -7,10 +7,10 @@
 |
 */
 
-// $config['host'] = 'localhost';
-// $config['port'] = '5672';
-// $config['user'] = 'guest';
-// $config['pass'] = 'guest';
+$config['host'] = 'localhost';
+$config['port'] = '15672';
+$config['user'] = 'admin';
+$config['pass'] = 'admin';
 // $config['connection_timeout'] =10;
 
 /*
@@ -19,11 +19,11 @@
 | -------------------------------------------------------------------------
 |
 */
-$config['host'] = 'tiger.cloudamqp.com';
-$config['port'] = '5672';
-$config['user'] = 'wzbqrcmt';
-$config['pass'] = 'xxxxxxxxx';
-$config['path'] = 'wzbqrcmt';
+// $config['host'] = 'tiger.cloudamqp.com';
+// $config['port'] = '5672';
+// $config['user'] = 'wzbqrcmt';
+// $config['pass'] = 'xxxxxxxxx';
+// $config['path'] = 'wzbqrcmt';
 
 /* End of file rabbitmq.php */
 /* Location: ./application/config/rabbitmq.php */

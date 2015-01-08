@@ -17,11 +17,11 @@ class Worker extends CI_Controller {
 
 	public function index() {
 		$this->channel->queue_declare('email_queue', false, true, false, false);
-		echo ' [*] Waiting for messages. To exit press CTRL+C', "\n";
+		// echo ' [*] Waiting for messages. To exit press CTRL+C', "\n";
 
 		$callback = function ($msg) {
 			$data = json_decode($msg->body, true);
-			echo "sending mail to: " . $data['email'], "\n";
+			// echo "sending mail to: " . $data['email'], "\n";
 			$from       = 'Deepjyoti Khakhlary';
 			$from_email = 'avirajsaikia@gmail.com';
 			$to_email   = $data['email'];
@@ -40,7 +40,7 @@ class Worker extends CI_Controller {
 			->setBody($message);
 
 			$mailer->send($message);
-			echo " * Message was sent", "\n";
+			// echo " * Message was sent", "\n";
 			$msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
 		};
 
