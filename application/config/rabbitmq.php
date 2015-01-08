@@ -9,8 +9,8 @@
 
 $config['host'] = 'localhost';
 $config['port'] = '15672';
-$config['user'] = 'admin';
-$config['pass'] = 'admin';
+$config['user'] = 'guest';
+$config['pass'] = 'guest';
 // $config['connection_timeout'] =10;
 
 /*
