@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database','session');
+$autoload['libraries'] = array('database','session', 'lib_gearman');
 
 
 /*
@@ -80,7 +80,7 @@ $autoload['helper'] = array('url','form');
 |
 */
 
-$autoload['config'] = array('rabbitmq');
+$autoload['config'] = array('rabbitmq', 'gearman');
 
 
 /*
