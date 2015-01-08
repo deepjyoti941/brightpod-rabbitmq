@@ -9,24 +9,21 @@ class Cli extends CI_Controller
         //$this->load->spark('codeigniter-gearman/1.0.0');
     }
 
-    public static function doSendEmail($job)
-    {
+    public static function doSendEmail($job) {
         $data = unserialize($job->workload());
         print_r($data);
         sleep(2);
         echo "Email sending is done really.\n\n";
     }
 
-    public static function doResizeImage($job)
-    {
+    public static function doResizeImage($job) {
         $data = unserialize($job->workload());
         print_r($data);
         sleep(2);
         echo "Image resizing is really done.\n\n";
     }
 
-    public function client()
-    {
+    public function client() {
         $this->lib_gearman->gearman_client();
 
         $emailData = array(
@@ -43,8 +40,7 @@ class Cli extends CI_Controller
         echo "Image resizing is done.\n";
     }
 
-    public function worker()
-    {
+    public function worker() {
         $worker = $this->lib_gearman->gearman_worker();
 
         $this->lib_gearman->add_worker_function('sendEmail', 'Cli::doSendEmail');
