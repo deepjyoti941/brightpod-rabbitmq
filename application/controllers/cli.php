@@ -32,12 +32,9 @@ class Cli extends CI_Controller
         //$this->basecamp_exporter->exportSelectedProjects($this->input->post('project_list'));
 
       $json_string = json_encode($data, JSON_PRETTY_PRINT);
-      $dir = $_SERVER['DOCUMENT_ROOT'].'/gearman-log/';
-      if (!is_dir($dir)) {
-        mkdir($dir,0777, TRUE);
-      }
-      $path = $dir.'log.json';
-      if ( ! write_file($path, print_r($json_string,true), 'w+')) {
+      $dir = $_SERVER['DOCUMENT_ROOT'].'/gearman-log/log.json';
+
+      if ( ! write_file($dir, print_r($json_string,true), 'w+')) {
           $data = array(
           "status" => false,
           "message" => 'unable to write'
