@@ -9,7 +9,7 @@ class Basecamp extends CI_Controller {
 		$this->load->helper('file');
 		$this->load->model(array('basecamp_exporter'));
 
-		$this->load->library('oauth');
+		$this->load->library('oauth','lib_gearman');
 		$this->CI = get_instance();
 		$this->CI->load->config('oauth');
 
