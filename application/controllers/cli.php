@@ -27,7 +27,7 @@ class Cli extends CI_Controller
 
     public static function doExportProjects($job) {
         $data = unserialize($job->workload());
-
+        print_r($data);
         //$this->basecamp_exporter->exportSelectedProjects($this->input->post('project_list'));
 
       $json_string = json_encode($data, JSON_PRETTY_PRINT);
@@ -52,9 +52,10 @@ class Cli extends CI_Controller
     public function client() {
         $this->lib_gearman->gearman_client();
 
-        $data = array();
-        $data['user_email'] = $this->input->post('user_email');
-        $data['project_list'] = $this->input->post('project_list');
+        $data = array(
+          'user_email' => $this->input->post('user_email'),
+          'project_list' => $this->input->post('project_list')
+          );
 
         $this->lib_gearman->do_job_background('exportProjects', serialize($data));
 
