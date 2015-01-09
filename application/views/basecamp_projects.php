@@ -22,17 +22,25 @@
 		    <?php endforeach?>
       </tbody>
 		</table>
-		<button id="export_project_list" class="btn btn-primary pull-right">export selected projects</button>
-
+		<div class="row">
+			<div class="col-md-10">
+				<input type="text" id="user_email" class="form-control" placeholder="enter email address to get notification when export is done">
+			</div>
+			<div class="col-md-2">
+				<button id="export_project_list" class="btn btn-primary pull-right">export selected projects</button>
+			</div>
+		</div>
+		<br><br><br><br>
 	</div>
+
 	<div class="row">
-	  <div id="project_list_progress" class="col-md-4 col-md-offset-5 display_hidden">
+<!-- 	  <div id="project_list_progress" class="col-md-4 col-md-offset-5 display_hidden">
 	    <img src="<?php echo base_url('assets/images/loader.gif')?>">
 	    exporting projects...please wait
-	  </div>
+	  </div> -->
 	  <div id="project_list_done" class="col-md-4 col-md-offset-5 display_hidden">
-	    <span class='label label-success'>Projects exporeted successfully</span>
-	    <p>You can see exports at <a href="<?php echo base_url('exports')?>">HERE</a></p>
+	    <span class='label label-success'>You exports are in progress.You will get mail when it is done</span>
+	    <p>You can your exports <a href="<?php echo base_url('exports')?>">HERE</a></p>
 	  </div>
 	</div>
 </div>

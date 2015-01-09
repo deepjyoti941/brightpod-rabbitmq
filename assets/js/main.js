@@ -322,19 +322,17 @@
   });
 
   $("#export_project_list").click(function() {
-
-    if (typeof project_list_arr !== 'undefined' && project_list_arr.length > 0) {
+    var user_email = $('#user_email').val();
+    if (typeof project_list_arr !== 'undefined' && project_list_arr.length > 0 && user_email != '') {
       var $this = $(this);
       $this.attr("disabled", true);
-      $('#project_list_progress').show();
-      $.post( "/basecamp/export-selected-projects", {project_list:project_list_arr})
+      $('#project_list_done').show();
+      $.post( "/basecamp/export-selected-projects", {project_list:project_list_arr, user_email:user_email})
         .done(function( data ) {
-          $('#project_list_progress').hide();
-          $('#project_list_done').show();
           $this.removeAttr("disabled");
       });
     } else {
-      bootbox.alert("You must select atleast one project to export", function() {
+      bootbox.alert("You must select atleast one project and enter valid email to export", function() {
       });
     }
   })

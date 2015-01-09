@@ -5,22 +5,48 @@ class Cli extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model(array('basecamp_exporter'));
+
         // load gearman library
         //$this->load->spark('codeigniter-gearman/1.0.0');
     }
 
-    public static function doSendEmail($job) {
-        $data = unserialize($job->workload());
-        print_r($data);
-        sleep(2);
-        echo "Email sending is done really.\n\n";
-    }
+    // public static function doSendEmail($job) {
+    //     $data = unserialize($job->workload());
+    //     print_r($data);
+    //     sleep(2);
+    //     echo "Email sending is done really.\n\n";
+    // }
 
-    public static function doResizeImage($job) {
+    // public static function doResizeImage($job) {
+    //     $data = unserialize($job->workload());
+    //     print_r($data);
+    //     sleep(2);
+    //     echo "Image resizing is really done.\n\n";
+    // }
+
+    public static function doExportProjects($job) {
         $data = unserialize($job->workload());
-        print_r($data);
-        sleep(2);
-        echo "Image resizing is really done.\n\n";
+
+        //$this->basecamp_exporter->exportSelectedProjects($this->input->post('project_list'));
+
+      $json_string = json_encode($data, JSON_PRETTY_PRINT);
+      $dir = $_SERVER['DOCUMENT_ROOT'].'/gearman-log/';
+      if (!is_dir($dir)) {
+        mkdir($dir,0777, TRUE);
+      }
+      $path = $dir.'log.json';
+      if ( ! write_file($path, print_r($json_string,true), 'w+')) {
+          $data = array(
+          "status" => false,
+          "message" => 'unable to write'
+        );
+        echo json_encode($data);
+      }
+      else {
+
+      }
+
     }
 
     public function client() {
@@ -43,8 +69,9 @@ class Cli extends CI_Controller
     public function worker() {
         $worker = $this->lib_gearman->gearman_worker();
 
-        $this->lib_gearman->add_worker_function('sendEmail', 'Cli::doSendEmail');
-        $this->lib_gearman->add_worker_function('resizeImage', 'Cli::doResizeImage');
+        // $this->lib_gearman->add_worker_function('sendEmail', 'Cli::doSendEmail');
+        // $this->lib_gearman->add_worker_function('resizeImage', 'Cli::doResizeImage');
+        $this->lib_gearman->add_worker_function('exportProjects', 'Cli::doExportProjects');
 
         while ($this->lib_gearman->work()) {
             if (!$worker->returnCode()) {
