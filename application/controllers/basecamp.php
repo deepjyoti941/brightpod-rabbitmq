@@ -419,7 +419,7 @@ class Basecamp extends CI_Controller {
 	}
 
 	public function exportSelectedProjects () {
-		//$this->lib_gearman->gearman_client();
+		$this->lib_gearman->gearman_client();
 
 		$data = array();
 		$data['user_email'] = $this->input->post('user_email');
