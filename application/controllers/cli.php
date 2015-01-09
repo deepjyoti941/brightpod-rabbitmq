@@ -5,6 +5,7 @@ class Cli extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper('file');
         $this->load->model(array('basecamp_exporter'));
 
         // load gearman library
