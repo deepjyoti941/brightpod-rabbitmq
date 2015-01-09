@@ -419,15 +419,13 @@ class Basecamp extends CI_Controller {
 	}
 
 	public function exportSelectedProjects () {
-		$this->lib_gearman->gearman_client();
+		//$this->lib_gearman->gearman_client();
 
 		$data = array();
 		$data['user_email'] = $this->input->post('user_email');
 		$data['project_list'] = $this->input->post('project_list');
-
-		$this->lib_gearman->do_job_background('exportProjects', serialize($data));
-
-		$this->basecamp_exporter->exportSelectedProjects($this->input->post('project_list'));
+		print_r($data);
+		//$this->lib_gearman->do_job_background('exportProjects', serialize($data));
 
 	}
 
