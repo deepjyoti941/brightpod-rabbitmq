@@ -52,18 +52,24 @@ class Cli extends CI_Controller
     public function client() {
         $this->lib_gearman->gearman_client();
 
-        $emailData = array(
-            'name'  => 'web',
-            'email' => 'member@example.com',
-        );
-        $imageData = array(
-            'image' => '/var/www/pub/image/test.png',
-        );
+        $data = array();
+        $data['user_email'] = $this->input->post('user_email');
+        $data['project_list'] = $this->input->post('project_list');
 
-        $this->lib_gearman->do_job_background('sendEmail', serialize($emailData));
-        echo "Email sending is done.\n";
-        $this->lib_gearman->do_job_background('resizeImage', serialize($imageData));
-        echo "Image resizing is done.\n";
+        $this->lib_gearman->do_job_background('exportProjects', serialize($data));
+
+        // $emailData = array(
+        //     'name'  => 'web',
+        //     'email' => 'member@example.com',
+        // );
+        // $imageData = array(
+        //     'image' => '/var/www/pub/image/test.png',
+        // );
+
+        // $this->lib_gearman->do_job_background('sendEmail', serialize($emailData));
+        // echo "Email sending is done.\n";
+        // $this->lib_gearman->do_job_background('resizeImage', serialize($imageData));
+        // echo "Image resizing is done.\n";
     }
 
     public function worker() {

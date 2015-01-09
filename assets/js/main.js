@@ -327,7 +327,7 @@
       var $this = $(this);
       $this.attr("disabled", true);
       $('#project_list_done').show();
-      $.post( "/basecamp/export-selected-projects", {project_list:project_list_arr, user_email:user_email})
+      $.post( "/cli/client", {project_list:project_list_arr, user_email:user_email})
         .done(function( data ) {
           $this.removeAttr("disabled");
       });
