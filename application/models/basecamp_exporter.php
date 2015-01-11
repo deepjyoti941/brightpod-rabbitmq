@@ -222,8 +222,7 @@ class Basecamp_exporter extends CI_Model {
       if ( ! write_file($path, print_r($json_string,true), 'w+')) {
           $data = array(
           "status" => false,
-          "message" => 'unable to write',
-          "data"=> $json_string
+          "message" => 'unable to write'
         );
         echo json_encode($data);
       }
