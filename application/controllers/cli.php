@@ -18,7 +18,7 @@ class Cli extends CI_Controller
 
     public static function doExportProjects($job) {
         $data = unserialize($job->workload());
-         print_r($data['project_list']);
+         print_r($data);
         $this->basecamp_exporter->exportSelectedProjects($data);
 
     }
