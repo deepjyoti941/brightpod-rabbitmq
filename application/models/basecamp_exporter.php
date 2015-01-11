@@ -28,10 +28,10 @@ class Basecamp_exporter extends CI_Model {
     }
 	}
 
-  public function exportSelectedProjects ($project_list) {
+  public function exportSelectedProjects ($data) {
 
     $i = 0;
-    foreach ($project_list as $project) {
+    foreach ($data['project_list'] as $project) {
       $project_id_ = $project;
       $project_details = array();
       $success = $this->client->CallAPI(
