@@ -1,0 +1,177 @@
+{
+    "basic_details": {
+        "id": 7973626,
+        "name": "client new functionality",
+        "description": "project for adding new functionality in website",
+        "archived": false,
+        "is_client_project": false,
+        "created_at": "2015-01-05T12:34:12.000-06:00",
+        "updated_at": "2015-01-05T12:35:10.000-06:00",
+        "trashed": false,
+        "color": "009900",
+        "draft": false,
+        "template": false,
+        "last_event_at": "2015-01-05T12:34:12.000-06:00",
+        "starred": false,
+        "url": "https:\/\/basecamp.com\/2827759\/api\/v1\/projects\/7973626.json",
+        "app_url": "https:\/\/basecamp.com\/2827759\/projects\/7973626",
+        "creator": {
+            "id": 10041950,
+            "name": "deepu das",
+            "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_0\/avatar.gif?r=3",
+            "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_0\/original.gif?r=3"
+        },
+        "accesses": {
+            "count": 1,
+            "updated_at": "2015-01-05T12:35:10.000-06:00",
+            "url": "https:\/\/basecamp.com\/2827759\/api\/v1\/projects\/7973626\/accesses.json",
+            "app_url": "https:\/\/basecamp.com\/2827759\/projects\/7973626\/accesses"
+        },
+        "attachments": {
+            "count": 0,
+            "updated_at": null,
+            "url": "https:\/\/basecamp.com\/2827759\/api\/v1\/projects\/7973626\/attachments.json",
+            "app_url": "https:\/\/basecamp.com\/2827759\/projects\/7973626\/attachments"
+        },
+        "calendar_events": {
+            "count": 0,
+            "updated_at": null,
+            "url": "https:\/\/basecamp.com\/2827759\/api\/v1\/projects\/7973626\/calendar_events.json",
+            "app_url": "https:\/\/basecamp.com\/2827759\/projects\/7973626\/calendar_events"
+        },
+        "documents": {
+            "count": 0,
+            "updated_at": null,
+            "url": "https:\/\/basecamp.com\/2827759\/api\/v1\/projects\/7973626\/documents.json",
+            "app_url": "https:\/\/basecamp.com\/2827759\/projects\/7973626\/documents"
+        },
+        "forwards": {
+            "count": 0,
+            "updated_at": null,
+            "url": "https:\/\/basecamp.com\/2827759\/api\/v1\/projects\/7973626\/forwards.json",
+            "app_url": "https:\/\/basecamp.com\/2827759\/projects\/7973626\/forwards"
+        },
+        "topics": {
+            "count": 0,
+            "updated_at": null,
+            "url": "https:\/\/basecamp.com\/2827759\/api\/v1\/projects\/7973626\/topics.json",
+            "app_url": "https:\/\/basecamp.com\/2827759\/projects\/7973626\/topics"
+        },
+        "todolists": {
+            "remaining_count": 0,
+            "completed_count": 0,
+            "updated_at": null,
+            "url": "https:\/\/basecamp.com\/2827759\/api\/v1\/projects\/7973626\/todolists.json",
+            "app_url": "https:\/\/basecamp.com\/2827759\/projects\/7973626\/todolists"
+        }
+    },
+    "accesses": {
+        "project_id": 7973626,
+        "accesses_details": [
+            {
+                "id": 10041950,
+                "name": "deepu das",
+                "email_address": "deepdas88@outlook.com",
+                "admin": true,
+                "created_at": "2015-01-05T12:28:22.000-06:00",
+                "updated_at": "2015-01-05T12:34:12.000-06:00",
+                "trashed": false,
+                "identity_id": 10275388,
+                "can_create_projects": true,
+                "is_client": false,
+                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_0\/avatar.gif?r=3",
+                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_0\/original.gif?r=3",
+                "url": "https:\/\/basecamp.com\/2827759\/api\/v1\/people\/10041950.json",
+                "app_url": "https:\/\/basecamp.com\/2827759\/people\/10041950"
+            }
+        ]
+    },
+    "people_details": [
+        {
+            "project_id": 7973626,
+            "people_id": 10041950,
+            "people_full_details": {
+                "id": 10041950,
+                "name": "deepu das",
+                "email_address": "deepdas88@outlook.com",
+                "admin": true,
+                "has_basecamp_siblings": false,
+                "created_at": "2015-01-05T12:28:22.000-06:00",
+                "updated_at": "2015-01-05T12:34:12.000-06:00",
+                "account_owner": true,
+                "identity_id": 10275388,
+                "can_create_projects": true,
+                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_0\/avatar.gif?r=3",
+                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_0\/original.gif?r=3",
+                "events": {
+                    "count": 4,
+                    "updated_at": "2015-01-05T12:34:12.000-06:00",
+                    "url": "https:\/\/basecamp.com\/2827759\/api\/v1\/people\/10041950\/events.json",
+                    "app_url": "https:\/\/basecamp.com\/2827759\/people\/10041950\/events"
+                },
+                "calendar_events": {
+                    "today_count": 0
+                },
+                "assigned_todos": {
+                    "count": 0,
+                    "updated_at": null,
+                    "url": "https:\/\/basecamp.com\/2827759\/api\/v1\/people\/10041950\/assigned_todos.json"
+                },
+                "outstanding_todos": {
+                    "count": 0
+                }
+            }
+        }
+    ],
+    "attachments": {
+        "project_id": 7973626,
+        "attachments_details": [
+            {
+                "id": 10041950,
+                "name": "deepu das",
+                "email_address": "deepdas88@outlook.com",
+                "admin": true,
+                "created_at": "2015-01-05T12:28:22.000-06:00",
+                "updated_at": "2015-01-05T12:34:12.000-06:00",
+                "trashed": false,
+                "identity_id": 10275388,
+                "can_create_projects": true,
+                "is_client": false,
+                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_0\/avatar.gif?r=3",
+                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_0\/original.gif?r=3",
+                "url": "https:\/\/basecamp.com\/2827759\/api\/v1\/people\/10041950.json",
+                "app_url": "https:\/\/basecamp.com\/2827759\/people\/10041950"
+            }
+        ]
+    },
+    "calendar_events": {
+        "project_id": 7973626,
+        "calendar_events_details": [
+
+        ]
+    },
+    "documents": {
+        "project_id": 7973626,
+        "documents_details": [
+
+        ]
+    },
+    "forwards": {
+        "project_id": 7973626,
+        "forwards_details": [
+
+        ]
+    },
+    "topics": {
+        "project_id": 7973626,
+        "topics_details": [
+
+        ]
+    },
+    "todolists": {
+        "project_id": 7973626,
+        "todolists_details": [
+
+        ]
+    }
+}

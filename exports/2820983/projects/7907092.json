@@ -1,0 +1,865 @@
+{
+    "basic_details": {
+        "id": 7907092,
+        "name": "Explore Basecamp!",
+        "description": "A sample project to help you discover Basecamp.",
+        "archived": false,
+        "is_client_project": false,
+        "created_at": "2014-12-22T02:36:21.000-06:00",
+        "updated_at": "2015-01-01T12:20:38.000-06:00",
+        "trashed": false,
+        "color": "3185c5",
+        "draft": false,
+        "template": false,
+        "last_event_at": "2015-01-01T12:20:17.000-06:00",
+        "starred": false,
+        "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092.json",
+        "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092",
+        "creator": {
+            "id": 9982384,
+            "name": "Basecamp",
+            "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+            "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+        },
+        "accesses": {
+            "count": 1,
+            "updated_at": "2014-12-22T02:36:25.000-06:00",
+            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/accesses.json",
+            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/accesses"
+        },
+        "attachments": {
+            "count": 17,
+            "updated_at": "2014-06-26T11:48:00.000-05:00",
+            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/attachments.json",
+            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/attachments"
+        },
+        "calendar_events": {
+            "count": 1,
+            "updated_at": "2015-01-01T12:20:38.000-06:00",
+            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/calendar_events.json",
+            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/calendar_events"
+        },
+        "documents": {
+            "count": 3,
+            "updated_at": "2014-02-04T20:25:02.000-06:00",
+            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/documents.json",
+            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/documents"
+        },
+        "forwards": {
+            "count": 0,
+            "updated_at": null,
+            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/forwards.json",
+            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/forwards"
+        },
+        "topics": {
+            "count": 8,
+            "updated_at": "2014-06-26T11:48:00.000-05:00",
+            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/topics.json",
+            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/topics"
+        },
+        "todolists": {
+            "remaining_count": 2,
+            "completed_count": 0,
+            "updated_at": "2014-12-24T03:33:18.000-06:00",
+            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todolists.json",
+            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todolists"
+        }
+    },
+    "accesses": {
+        "project_id": 7907092,
+        "accesses_details": [
+            {
+                "id": 9982383,
+                "name": "Deepjyoti Khakhlary",
+                "email_address": "deepjyoti941@gmail.com",
+                "admin": true,
+                "created_at": "2014-12-22T02:36:21.000-06:00",
+                "updated_at": "2015-01-08T04:40:41.000-06:00",
+                "trashed": false,
+                "identity_id": 10239917,
+                "can_create_projects": true,
+                "is_client": false,
+                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_3\/avatar.gif?r=3",
+                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_3\/original.gif?r=3",
+                "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/people\/9982383.json",
+                "app_url": "https:\/\/basecamp.com\/2820983\/people\/9982383"
+            }
+        ]
+    },
+    "people_details": [
+        {
+            "project_id": 7907092,
+            "people_id": 9982383,
+            "people_full_details": {
+                "id": 9982383,
+                "name": "Deepjyoti Khakhlary",
+                "email_address": "deepjyoti941@gmail.com",
+                "admin": true,
+                "has_basecamp_siblings": false,
+                "created_at": "2014-12-22T02:36:21.000-06:00",
+                "updated_at": "2015-01-08T04:40:41.000-06:00",
+                "account_owner": true,
+                "identity_id": 10239917,
+                "can_create_projects": true,
+                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_3\/avatar.gif?r=3",
+                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_3\/original.gif?r=3",
+                "events": {
+                    "count": 42,
+                    "updated_at": "2015-01-08T04:40:41.000-06:00",
+                    "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/people\/9982383\/events.json",
+                    "app_url": "https:\/\/basecamp.com\/2820983\/people\/9982383\/events"
+                },
+                "calendar_events": {
+                    "today_count": 1
+                },
+                "assigned_todos": {
+                    "count": 0,
+                    "updated_at": null,
+                    "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/people\/9982383\/assigned_todos.json"
+                },
+                "outstanding_todos": {
+                    "count": 0
+                }
+            }
+        }
+    ],
+    "attachments": {
+        "project_id": 7907092,
+        "attachments_details": [
+            {
+                "id": 9982383,
+                "name": "Deepjyoti Khakhlary",
+                "email_address": "deepjyoti941@gmail.com",
+                "admin": true,
+                "created_at": "2014-12-22T02:36:21.000-06:00",
+                "updated_at": "2015-01-08T04:40:41.000-06:00",
+                "trashed": false,
+                "identity_id": 10239917,
+                "can_create_projects": true,
+                "is_client": false,
+                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_3\/avatar.gif?r=3",
+                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_3\/original.gif?r=3",
+                "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/people\/9982383.json",
+                "app_url": "https:\/\/basecamp.com\/2820983\/people\/9982383"
+            }
+        ]
+    },
+    "calendar_events": {
+        "project_id": 7907092,
+        "calendar_events_details": [
+            {
+                "id": 16001786,
+                "created_at": "2015-01-01T12:20:16.000-06:00",
+                "updated_at": "2015-01-01T12:20:38.000-06:00",
+                "summary": "testing calender",
+                "description": "meeting second half",
+                "private": false,
+                "trashed": false,
+                "all_day": true,
+                "starts_at": "2015-01-01",
+                "ends_at": "2015-01-15",
+                "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/calendar_events\/16001786.json",
+                "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/calendar_events\/16001786",
+                "creator": {
+                    "id": 9982383,
+                    "name": "Deepjyoti Khakhlary",
+                    "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_3\/avatar.gif?r=3",
+                    "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/builtin\/default_avatar_v1_3\/original.gif?r=3"
+                },
+                "comments_count": 0
+            }
+        ]
+    },
+    "documents": {
+        "project_id": 7907092,
+        "documents_details": [
+            {
+                "id": 7412294,
+                "title": "People who have inspired us",
+                "private": false,
+                "trashed": false,
+                "created_at": "2014-12-22T02:36:25.000-06:00",
+                "updated_at": "2014-12-22T02:36:25.000-06:00",
+                "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/documents\/7412294.json",
+                "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/documents\/7412294"
+            },
+            {
+                "id": 7412293,
+                "title": "Fun Basecamp stats",
+                "private": false,
+                "trashed": false,
+                "created_at": "2014-12-22T02:36:25.000-06:00",
+                "updated_at": "2014-12-22T02:36:25.000-06:00",
+                "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/documents\/7412293.json",
+                "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/documents\/7412293"
+            },
+            {
+                "id": 7412292,
+                "title": "What customers are saying about the new Basecamp",
+                "private": false,
+                "trashed": false,
+                "created_at": "2014-12-22T02:36:25.000-06:00",
+                "updated_at": "2014-12-22T02:36:25.000-06:00",
+                "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/documents\/7412292.json",
+                "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/documents\/7412292"
+            }
+        ]
+    },
+    "document_details": [
+        {
+            "project_id": 7907092,
+            "document_id": 7412294,
+            "document_full_details": {
+                "id": 7412294,
+                "title": "People who have inspired us",
+                "private": false,
+                "trashed": false,
+                "created_at": "2014-12-22T02:36:25.000-06:00",
+                "updated_at": "2014-12-22T02:36:25.000-06:00",
+                "creator": {
+                    "id": 9982384,
+                    "name": "Basecamp",
+                    "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                    "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                },
+                "content": "The crew Basecamp are a diverse bunch from all over the world. We've been inspired by all sorts of people over the years.<br><br>Here's a list of some those we look up to, in no particular order:<br><br><div><ul><li>Kathy Sierra<br><\/li><li>Edward Tufte<br><\/li><li>Richard Feynman<br><\/li><li>Frank Lloyd Wright<br><\/li><li>Jonathan Ive<\/li><li>Jacob Nielsen<br><\/li><li>Christopher Alexander<br><\/li><li>Sally Menke<br><\/li><li>Phil Knight<br><\/li><li>Clayton Christensen<br><\/li><li>Lee Clow<br><\/li><li>Anne Carson<br><\/li><li>William Eggleston<\/li><li>Edward Land<br><\/li><li>Kent Beck<br><\/li><li>Shigeru Miyamoto<br><\/li><li>Mindy Kaling<br><\/li><li>Dean Kamen<br><\/li><li>Rick Olson<br><\/li><li>Haruki Murakami<br><\/li><li>Ernest Shackleton<br><\/li><li>Liz Phair<br><\/li><li>Neal Stephenson<br><\/li><li>Andy Law<br><\/li><li>Steve Prefontaine<br><\/li><li>Tina Fey<br><\/li><li>Michael Jordan<br><\/li><li>Carl Sagan<br><\/li><li>Ed Catmull<br><\/li><li>Terence Malick<br><\/li><li>Sol LeWitt<br><\/li><li>Jim Henson<br><\/li><li>Vladimir Nabokov<br><\/li><li>Judith Sheindlin<br><\/li><li>Dieter Rams<br><\/li><li>Ludwig Mies van der Rohe<br><\/li><li>Amy Franceschini<br><\/li><li>Lawrence Lessig<br><\/li><li>Paul Rand<br><\/li><li>Joshua Davis<br><\/li><li>Shel Silverstein<br><\/li><li>Jim Davis<br><\/li><li>Neil deGrasse Tyson<br><\/li><li>John Coltrane<br><\/li><li>Doug Engelbart<br><\/li><li>Hayao Miyazaki<br><\/li><li>Steve Jobs<br><\/li><li>Nikola Tesla<br><\/li><li>John Carmack<br><\/li><li>Wangari Maathai<br><\/li><li>Andrew Vachss<br><\/li><li>Ronda Rousey<br><\/li><li>Bill Nye<br><\/li><li>John Cobb<br><\/li><li>J.J. Gibson<br><\/li><li>Les Paul<br><\/li><li>Mario Batali<br><\/li><li>John Allspaw<br><\/li><li>Bill Atkinson<br><\/li><li>Fred Rogers<br><\/li><li>Richard Stallman<br><\/li><li>Italo Calvino<br><\/li><li>Gary Larson<br><\/li><li>Ruth Westheimer<br><\/li><li>Paul Graham<br><\/li><li>David Ogilvy<br><\/li><li>Charlie Parker<br><\/li><li>Eric Evans<br><\/li><li>Buckminster Fuller<br><\/li><li>Jeff Bezos<br><\/li><li>Ann Marie MacDonald<br><\/li><li>Robert C. Martin<br><\/li><li>Antonio Gaudi<br><\/li><li>The Coen Brothers<br><\/li><li>John Lennon<br><\/li><li>Jim Henson<br><\/li><li>David Ogilvy<br><\/li><li>Alan Turing<br><\/li><\/ul><br>Who inspires you?<\/div>",
+                "last_updater": {
+                    "id": 9982384,
+                    "name": "Basecamp"
+                },
+                "comments": [
+
+                ],
+                "subscribers": [
+
+                ],
+                "bucket": {
+                    "type": "Project",
+                    "id": 7907092,
+                    "name": "Explore Basecamp!",
+                    "color": "3185c5",
+                    "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092.json",
+                    "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092"
+                }
+            }
+        },
+        {
+            "project_id": 7907092,
+            "document_id": 7412293,
+            "document_full_details": {
+                "id": 7412293,
+                "title": "Fun Basecamp stats",
+                "private": false,
+                "trashed": false,
+                "created_at": "2014-12-22T02:36:25.000-06:00",
+                "updated_at": "2014-12-22T02:36:25.000-06:00",
+                "creator": {
+                    "id": 9982384,
+                    "name": "Basecamp",
+                    "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                    "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                },
+                "content": "Since 2004:<br><br><ul><li>Over 8,000,000 Basecamp projects have been created.<\/li><li>Over 9,000,000 people have Basecamp accounts.<\/li><li>Over 50,000,000 to-dos have been added.<\/li><li>Over 100,000,000 files have been shared.<\/li><li>Over 23 terabytes of data is hosted by Basecamp.<\/li><li><span>96% of our customers say they\u2019d recommend Basecamp to a friend, colleague, or co-worker.<\/span><br><\/li><\/ul>",
+                "last_updater": {
+                    "id": 9982384,
+                    "name": "Basecamp"
+                },
+                "comments": [
+
+                ],
+                "subscribers": [
+
+                ],
+                "bucket": {
+                    "type": "Project",
+                    "id": 7907092,
+                    "name": "Explore Basecamp!",
+                    "color": "3185c5",
+                    "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092.json",
+                    "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092"
+                }
+            }
+        },
+        {
+            "project_id": 7907092,
+            "document_id": 7412292,
+            "document_full_details": {
+                "id": 7412292,
+                "title": "What customers are saying about the new Basecamp",
+                "private": false,
+                "trashed": false,
+                "created_at": "2014-12-22T02:36:25.000-06:00",
+                "updated_at": "2014-12-22T02:36:25.000-06:00",
+                "creator": {
+                    "id": 9982384,
+                    "name": "Basecamp",
+                    "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                    "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                },
+                "content": "<div>\"The new Basecamp feels more obvious to me; easier to hold in my head. That\u2019s the highest compliment I can give for an app design\u2014it doesn\u2019t feel like I have to look for anything, since everything\u2019s right there. Yes, change is hard and reinventing something people like is hard, too. But when the result works so well, it doesn\u2019t feel like change. It feels natural.\"<br><\/div><div><b>-Marc Hedlund, Etsy<\/b><\/div><div><br><\/div><div>\"I really didn\u2019t think it was possible for Basecamp to be any cleaner or simpler to use\u2026 Kudos for elevating the project management space to an entirely new level of productivity.\"<br><b>-Kyle Stauffer, Signal Factory<\/b><\/div><div><br><\/div><div>\"Simpler, easier, faster! That's how I'd describe the new Basecamp. It takes everything that was great about the original Basecamp and makes it better. We'd be lost without the new Basecamp!\"<br><b>-Tyler Jones, Slice 'n Dice<\/b><\/div><div><br><\/div><div>\"Basecamp is a godsend. It\u2019s a brilliant product done in a brilliant manner. Thanks so much! It\u2019s surprisingly wonderful to deal with an excellent service and receive great support\"<br><b>-Kenny Flores, Progress Label<\/b><\/div><div><br><\/div><div>\"The team had no reason to redo the already awesome Basecamp. They did it anyway and managed to make new version infinitely better. The only thing it doesn\u2019t make easier is breakfast.\"<br><b>-Dan Mall, SuperFriendly<\/b><\/div><div><br><\/div><div>\"Since being a Basecamp user for the last few years I can honestly say that I\u2019m not sure how we would run our company without it. The new upgrade is more than an upgrade and has raised the bar for other systems. From the functionality and the layout of a project to the little details in the design this new version is an amazing upgrade. Great job guys.\"<br><b>-James Cottis, Twist Interactive<\/b><\/div><div><br><\/div><div>\"Basecamp is our Mission Control. Whenever a team member is 'lost in space' they can check in and get back on track.\"<br><b>-Meghan Phillips, Honey Agency<\/b><\/div><div><br><\/div><div>\"So clean, so simple, so effective. I can tell a lot of thought was put into it. The tasks and collaboration flows more naturally than in the legacy system. And since we track time carefully, the numbers show we get more done, faster with Basecamp. We\u2019re seeing clear improvements in our collaboration and productivity. To us, that\u2019s gold!\"<br><b>-Mana Ionescu, Lightspan Digital<\/b><\/div><div><br><\/div><div>\"My business simply wouldn\u2019t be where it is today without Basecamp. We\u2019ve been active customers since 2005, and Basecamp has impressed our clients in how it keeps everything together. The new Basecamp is faster, has real-time updates, and is clean and concise. We like it, and our clients will love it.\"<br><b>-Jeff Mackey, SIX15 Solutions, LLC<\/b><\/div><div><br><\/div><div>\"After one day with the new Basecamp it\u2019s impossible to go back to my old software. Jumping between projects, discussions and to-dos is THAT quick.\"<br><b>-Emil Sundberg, Snowfire<\/b><\/div>",
+                "last_updater": {
+                    "id": 9982384,
+                    "name": "Basecamp"
+                },
+                "comments": [
+
+                ],
+                "subscribers": [
+
+                ],
+                "bucket": {
+                    "type": "Project",
+                    "id": 7907092,
+                    "name": "Explore Basecamp!",
+                    "color": "3185c5",
+                    "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092.json",
+                    "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092"
+                }
+            }
+        }
+    ],
+    "forwards": {
+        "project_id": 7907092,
+        "forwards_details": [
+
+        ]
+    },
+    "topics": {
+        "project_id": 7907092,
+        "topics_details": [
+            {
+                "id": 77937098,
+                "title": "Thanks for choosing Basecamp!",
+                "excerpt": "Thanks for choosing Basecamp to help manage and collaborate on your projects. We think you're goi...",
+                "created_at": "2014-12-22T02:36:25.000-06:00",
+                "updated_at": "2014-12-22T02:36:25.000-06:00",
+                "private": false,
+                "trashed": false,
+                "attachments": 1,
+                "last_updater": {
+                    "id": 9982384,
+                    "name": "Basecamp"
+                },
+                "topicable": {
+                    "id": 35373050,
+                    "type": "Message",
+                    "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/messages\/35373050.json",
+                    "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/messages\/35373050"
+                }
+            },
+            {
+                "id": 77937097,
+                "title": "Some pictures of the folks who built Basecamp",
+                "excerpt": "Here are some more!",
+                "created_at": "2014-12-22T02:36:24.000-06:00",
+                "updated_at": "2014-12-22T02:36:24.000-06:00",
+                "private": false,
+                "trashed": false,
+                "attachments": 6,
+                "last_updater": {
+                    "id": 9982384,
+                    "name": "Basecamp"
+                },
+                "topicable": {
+                    "id": 35373049,
+                    "type": "Message",
+                    "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/messages\/35373049.json",
+                    "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/messages\/35373049"
+                }
+            },
+            {
+                "id": 77937095,
+                "title": "Check out these great new features",
+                "excerpt": "Here are a few video demos of some of the great new features in the all new Basecamp. They're on ...",
+                "created_at": "2014-12-22T02:36:24.000-06:00",
+                "updated_at": "2014-12-22T02:36:24.000-06:00",
+                "private": false,
+                "trashed": false,
+                "attachments": 0,
+                "last_updater": {
+                    "id": 9982384,
+                    "name": "Basecamp"
+                },
+                "topicable": {
+                    "id": 35373048,
+                    "type": "Message",
+                    "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/messages\/35373048.json",
+                    "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/messages\/35373048"
+                }
+            },
+            {
+                "id": 77937091,
+                "title": "The beautiful Basecamp calendar",
+                "excerpt": "Be sure to click the \"Calendar\" link at the top of the screen to check out the beautiful Basecamp...",
+                "created_at": "2014-12-22T02:36:23.000-06:00",
+                "updated_at": "2014-12-22T02:36:23.000-06:00",
+                "private": false,
+                "trashed": false,
+                "attachments": 7,
+                "last_updater": {
+                    "id": 9982384,
+                    "name": "Basecamp"
+                },
+                "topicable": {
+                    "id": 35373046,
+                    "type": "Message",
+                    "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/messages\/35373046.json",
+                    "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/messages\/35373046"
+                }
+            },
+            {
+                "id": 77937090,
+                "title": "A brief writeup of the long history of Basecamp",
+                "excerpt": "Speaking of our book REWORK, here's a five-chapter excerpt from our book in PDF format.",
+                "created_at": "2014-12-22T02:36:22.000-06:00",
+                "updated_at": "2014-12-22T02:36:22.000-06:00",
+                "private": false,
+                "trashed": false,
+                "attachments": 1,
+                "last_updater": {
+                    "id": 9982384,
+                    "name": "Basecamp"
+                },
+                "topicable": {
+                    "id": 35373045,
+                    "type": "Message",
+                    "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/messages\/35373045.json",
+                    "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/messages\/35373045"
+                }
+            },
+            {
+                "id": 77937089,
+                "title": "Behind the scenes of the new Basecamp",
+                "excerpt": "Here's a collection of blogs posts sharing some of the behind the scenes work that went into buil...",
+                "created_at": "2014-12-22T02:36:22.000-06:00",
+                "updated_at": "2014-12-22T02:36:22.000-06:00",
+                "private": false,
+                "trashed": false,
+                "attachments": 0,
+                "last_updater": {
+                    "id": 9982384,
+                    "name": "Basecamp"
+                },
+                "topicable": {
+                    "id": 35373044,
+                    "type": "Message",
+                    "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/messages\/35373044.json",
+                    "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/messages\/35373044"
+                }
+            },
+            {
+                "id": 77937088,
+                "title": "Explore Basecamp's totally unique page stacking interface. Click me to see how it works.",
+                "excerpt": "Here's a video showing how Basecamp's exclusive paper-like interface works. It's easy, fast, intu...",
+                "created_at": "2014-12-22T02:36:22.000-06:00",
+                "updated_at": "2014-12-22T02:36:22.000-06:00",
+                "private": false,
+                "trashed": false,
+                "attachments": 0,
+                "last_updater": {
+                    "id": 9982384,
+                    "name": "Basecamp"
+                },
+                "topicable": {
+                    "id": 145072555,
+                    "type": "Todo",
+                    "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todos\/145072555.json",
+                    "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todos\/145072555"
+                }
+            },
+            {
+                "id": 77937086,
+                "title": "Click me > here < to see a discussion on a to-do.",
+                "excerpt": "Test it out yourself. Post your own comment below. Attach a file if you want, too.",
+                "created_at": "2014-12-22T02:36:21.000-06:00",
+                "updated_at": "2014-12-22T02:36:22.000-06:00",
+                "private": false,
+                "trashed": false,
+                "attachments": 2,
+                "last_updater": {
+                    "id": 9982384,
+                    "name": "Basecamp"
+                },
+                "topicable": {
+                    "id": 145072546,
+                    "type": "Todo",
+                    "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todos\/145072546.json",
+                    "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todos\/145072546"
+                }
+            }
+        ]
+    },
+    "todolists": {
+        "project_id": 7907092,
+        "todolists_details": [
+            {
+                "id": 23178418,
+                "name": "Some quick things to explore in Basecamp",
+                "description": "A nice way to get acclimated.",
+                "created_at": "2014-12-22T02:36:22.000-06:00",
+                "updated_at": "2014-12-24T03:33:18.000-06:00",
+                "completed": false,
+                "position": 1,
+                "private": false,
+                "trashed": false,
+                "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todolists\/23178418.json",
+                "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todolists\/23178418",
+                "remaining_count": 4,
+                "completed_count": 0,
+                "creator": {
+                    "id": 9982384,
+                    "name": "Basecamp",
+                    "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                    "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                }
+            },
+            {
+                "id": 23178417,
+                "name": "To-do list basics",
+                "description": "",
+                "created_at": "2014-12-22T02:36:21.000-06:00",
+                "updated_at": "2014-12-22T02:36:22.000-06:00",
+                "completed": false,
+                "position": 2,
+                "private": false,
+                "trashed": false,
+                "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todolists\/23178417.json",
+                "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todolists\/23178417",
+                "remaining_count": 7,
+                "completed_count": 0,
+                "creator": {
+                    "id": 9982384,
+                    "name": "Basecamp",
+                    "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                    "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                }
+            }
+        ]
+    },
+    "todolists_content": [
+        {
+            "project_id": 7907092,
+            "todo_id": 23178418,
+            "todolists_content_details": {
+                "id": 23178418,
+                "name": "Some quick things to explore in Basecamp",
+                "description": "A nice way to get acclimated.",
+                "created_at": "2014-12-22T02:36:22.000-06:00",
+                "updated_at": "2014-12-24T03:33:18.000-06:00",
+                "completed": false,
+                "position": 1,
+                "private": false,
+                "trashed": false,
+                "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todolists\/23178418.json",
+                "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todolists\/23178418",
+                "remaining_count": 4,
+                "completed_count": 0,
+                "creator": {
+                    "id": 9982384,
+                    "name": "Basecamp",
+                    "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                    "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                },
+                "todos": {
+                    "remaining": [
+                        {
+                            "id": 145072553,
+                            "todolist_id": 23178418,
+                            "position": 1,
+                            "content": "Click the name of the project (\"Explore Basecamp\") in the top left corner to rename the project or change the description. Then click it again and change it to something else.",
+                            "completed": false,
+                            "created_at": "2014-12-22T02:36:22.000-06:00",
+                            "updated_at": "2014-12-24T03:33:18.000-06:00",
+                            "comments_count": 0,
+                            "private": false,
+                            "trashed": false,
+                            "due_on": null,
+                            "due_at": null,
+                            "creator": {
+                                "id": 9982384,
+                                "name": "Basecamp",
+                                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                            },
+                            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todos\/145072553.json",
+                            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todos\/145072553"
+                        },
+                        {
+                            "id": 145072554,
+                            "todolist_id": 23178418,
+                            "position": 2,
+                            "content": "Upload a file to this project by just dragging a file (a picture, a Word doc, a PDF, whatever) right into your web browser and dropping it anywhere into this project.",
+                            "completed": false,
+                            "created_at": "2014-12-22T02:36:22.000-06:00",
+                            "updated_at": "2014-12-24T03:33:18.000-06:00",
+                            "comments_count": 0,
+                            "private": false,
+                            "trashed": false,
+                            "due_on": null,
+                            "due_at": null,
+                            "creator": {
+                                "id": 9982384,
+                                "name": "Basecamp",
+                                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                            },
+                            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todos\/145072554.json",
+                            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todos\/145072554"
+                        },
+                        {
+                            "id": 145072555,
+                            "todolist_id": 23178418,
+                            "position": 3,
+                            "content": "Explore Basecamp's totally unique page stacking interface. Click me to see how it works.",
+                            "completed": false,
+                            "created_at": "2014-12-22T02:36:22.000-06:00",
+                            "updated_at": "2014-12-24T03:33:18.000-06:00",
+                            "comments_count": 1,
+                            "private": false,
+                            "trashed": false,
+                            "due_on": null,
+                            "due_at": null,
+                            "creator": {
+                                "id": 9982384,
+                                "name": "Basecamp",
+                                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                            },
+                            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todos\/145072555.json",
+                            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todos\/145072555"
+                        },
+                        {
+                            "id": 145072552,
+                            "todolist_id": 23178418,
+                            "position": 4,
+                            "content": "Click the \"Invite more people\" link at the top right corner to invite other people to this project.",
+                            "completed": false,
+                            "created_at": "2014-12-22T02:36:22.000-06:00",
+                            "updated_at": "2014-12-24T03:33:18.000-06:00",
+                            "comments_count": 0,
+                            "private": false,
+                            "trashed": false,
+                            "due_on": "2014-12-22",
+                            "due_at": "2014-12-22",
+                            "creator": {
+                                "id": 9982384,
+                                "name": "Basecamp",
+                                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                            },
+                            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todos\/145072552.json",
+                            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todos\/145072552"
+                        }
+                    ],
+                    "completed": [
+
+                    ],
+                    "trashed": [
+
+                    ]
+                },
+                "comments": [
+
+                ],
+                "subscribers": [
+
+                ]
+            }
+        },
+        {
+            "project_id": 7907092,
+            "todo_id": 23178417,
+            "todolists_content_details": {
+                "id": 23178417,
+                "name": "To-do list basics",
+                "description": "",
+                "created_at": "2014-12-22T02:36:21.000-06:00",
+                "updated_at": "2014-12-22T02:36:22.000-06:00",
+                "completed": false,
+                "position": 2,
+                "private": false,
+                "trashed": false,
+                "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todolists\/23178417.json",
+                "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todolists\/23178417",
+                "remaining_count": 7,
+                "completed_count": 0,
+                "creator": {
+                    "id": 9982384,
+                    "name": "Basecamp",
+                    "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                    "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                },
+                "todos": {
+                    "remaining": [
+                        {
+                            "id": 145072545,
+                            "todolist_id": 23178417,
+                            "position": 1,
+                            "content": "This to-do has a due date.",
+                            "completed": false,
+                            "created_at": "2014-12-22T02:36:21.000-06:00",
+                            "updated_at": "2014-12-22T02:36:21.000-06:00",
+                            "comments_count": 0,
+                            "private": false,
+                            "trashed": false,
+                            "due_on": "2014-12-22",
+                            "due_at": "2014-12-22",
+                            "creator": {
+                                "id": 9982384,
+                                "name": "Basecamp",
+                                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                            },
+                            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todos\/145072545.json",
+                            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todos\/145072545"
+                        },
+                        {
+                            "id": 145072546,
+                            "todolist_id": 23178417,
+                            "position": 2,
+                            "content": "Click me > here < to see a discussion on a to-do.",
+                            "completed": false,
+                            "created_at": "2014-12-22T02:36:21.000-06:00",
+                            "updated_at": "2014-12-22T02:36:22.000-06:00",
+                            "comments_count": 3,
+                            "private": false,
+                            "trashed": false,
+                            "due_on": null,
+                            "due_at": null,
+                            "creator": {
+                                "id": 9982384,
+                                "name": "Basecamp",
+                                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                            },
+                            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todos\/145072546.json",
+                            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todos\/145072546"
+                        },
+                        {
+                            "id": 145072547,
+                            "todolist_id": 23178417,
+                            "position": 3,
+                            "content": "< Click the box to my left to check me off as done.",
+                            "completed": false,
+                            "created_at": "2014-12-22T02:36:22.000-06:00",
+                            "updated_at": "2014-12-22T02:36:22.000-06:00",
+                            "comments_count": 0,
+                            "private": false,
+                            "trashed": false,
+                            "due_on": null,
+                            "due_at": null,
+                            "creator": {
+                                "id": 9982384,
+                                "name": "Basecamp",
+                                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                            },
+                            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todos\/145072547.json",
+                            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todos\/145072547"
+                        },
+                        {
+                            "id": 145072548,
+                            "todolist_id": 23178417,
+                            "position": 4,
+                            "content": "Click and hold me anywhere on this line and drag me up to reorder.",
+                            "completed": false,
+                            "created_at": "2014-12-22T02:36:22.000-06:00",
+                            "updated_at": "2014-12-22T02:36:22.000-06:00",
+                            "comments_count": 0,
+                            "private": false,
+                            "trashed": false,
+                            "due_on": null,
+                            "due_at": null,
+                            "creator": {
+                                "id": 9982384,
+                                "name": "Basecamp",
+                                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                            },
+                            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todos\/145072548.json",
+                            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todos\/145072548"
+                        },
+                        {
+                            "id": 145072549,
+                            "todolist_id": 23178417,
+                            "position": 5,
+                            "content": "Hover over me and click the button to my right to assign a due date >",
+                            "completed": false,
+                            "created_at": "2014-12-22T02:36:22.000-06:00",
+                            "updated_at": "2014-12-22T02:36:22.000-06:00",
+                            "comments_count": 0,
+                            "private": false,
+                            "trashed": false,
+                            "due_on": null,
+                            "due_at": null,
+                            "creator": {
+                                "id": 9982384,
+                                "name": "Basecamp",
+                                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                            },
+                            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todos\/145072549.json",
+                            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todos\/145072549"
+                        },
+                        {
+                            "id": 145072550,
+                            "todolist_id": 23178417,
+                            "position": 6,
+                            "content": "Click the name of this to-do list to focus just on this list.",
+                            "completed": false,
+                            "created_at": "2014-12-22T02:36:22.000-06:00",
+                            "updated_at": "2014-12-22T02:36:22.000-06:00",
+                            "comments_count": 0,
+                            "private": false,
+                            "trashed": false,
+                            "due_on": null,
+                            "due_at": null,
+                            "creator": {
+                                "id": 9982384,
+                                "name": "Basecamp",
+                                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                            },
+                            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todos\/145072550.json",
+                            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todos\/145072550"
+                        },
+                        {
+                            "id": 145072551,
+                            "todolist_id": 23178417,
+                            "position": 7,
+                            "content": "Click the \"Add a to-do\" link right below me to add your own to-do.",
+                            "completed": false,
+                            "created_at": "2014-12-22T02:36:22.000-06:00",
+                            "updated_at": "2014-12-22T02:36:22.000-06:00",
+                            "comments_count": 0,
+                            "private": false,
+                            "trashed": false,
+                            "due_on": null,
+                            "due_at": null,
+                            "creator": {
+                                "id": 9982384,
+                                "name": "Basecamp",
+                                "avatar_url": "http:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/avatar.gif?r=3",
+                                "fullsize_avatar_url": "https:\/\/dge9rmgqjs8m1.cloudfront.net\/global\/56932044f64da36d76aae07d082859c30010\/original.gif?r=3"
+                            },
+                            "url": "https:\/\/basecamp.com\/2820983\/api\/v1\/projects\/7907092\/todos\/145072551.json",
+                            "app_url": "https:\/\/basecamp.com\/2820983\/projects\/7907092\/todos\/145072551"
+                        }
+                    ],
+                    "completed": [
+
+                    ],
+                    "trashed": [
+
+                    ]
+                },
+                "comments": [
+
+                ],
+                "subscribers": [
+
+                ]
+            }
+        }
+    ]
+}
