@@ -57,11 +57,9 @@ class Basecamp extends CI_Controller {
 
 		if ($success) {
 			$data = json_decode(json_encode($user->accounts[0]), true);
-
 			$this->session->set_userdata($data);
-			// echo "<pre>";
-			// print_r($user);
-			// echo "</pre>";
+			$this->session->set_userdata('access_token', $this->client->access_token);
+			
 			$data['user'] = $user;
 			$this->load->view('header');
 			$this->load->view('basecamp_resource_list', $data);
@@ -130,9 +128,6 @@ class Basecamp extends CI_Controller {
 			exit;
 		}
 		if ($success) {
-			// echo "<pre>";
-			// print_r($project);
-			// echo "</pre>";
 			$data['project'] = $project;
 			$this->load->view('header');
 			$this->load->view('basecamp_project_details', $data);

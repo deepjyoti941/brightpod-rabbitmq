@@ -30,7 +30,6 @@ class Basecamp_exporter extends CI_Model {
 
   public function exportSelectedProjects ($data) {
 
-    $i = 0;
     foreach ($data['project_list'] as $project) {
       $project_id_ = $project;
       $project_details = array();
@@ -209,7 +208,6 @@ class Basecamp_exporter extends CI_Model {
         $k++;
       }
 
-      $i++;
 
       $json_string = json_encode($project_details, JSON_PRETTY_PRINT);
 
