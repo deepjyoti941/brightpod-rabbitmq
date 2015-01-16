@@ -23,7 +23,7 @@
 
     notification('email sent');
 
-    $.post("/welcome/queue", post_data)
+    $.post("/cli/clientMailSend", post_data)
     .done(function (data) {});
   });
 

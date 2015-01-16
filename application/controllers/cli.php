@@ -15,9 +15,24 @@ class Cli extends CI_Controller {
 
   public static function doSendEmail($job) {
     $data = unserialize($job->workload());
-    print_r($data);
-    sleep(2);
-    echo "Email sending is done really.\n\n";
+    $from       = 'Deepjyoti Khakhlary';
+    $from_email = 'avirajsaikia@gmail.com';
+    $to_email   = $data['email'];
+    $subject    = 'Brightpod mail queue testing';
+    $message    = 'Just testing mail queue in Brightpod';
+
+    $transporter = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')
+    ->setUsername('avirajsaikia@gmail.com')
+    ->setPassword('');
+
+    $mailer  = Swift_Mailer::newInstance($transporter);
+    $message = Swift_Message::newInstance($transporter)
+    ->setSubject($subject)
+    ->setFrom(array($from_email => $from))
+    ->setTo(array($to_email))
+    ->setBody($message);
+
+    $mailer->send($message);
   }
 
 
@@ -236,7 +251,7 @@ class Cli extends CI_Controller {
 
       sleep(2);
 
-      $from       = 'Aviraj Saikia';
+      $from       = 'Deepjyoti Khakhlary';
       $from_email = 'avirajsaikia@gmail.com';
       $to_email   = $data['user_email'];
       $subject    = 'Project export status';
@@ -244,7 +259,7 @@ class Cli extends CI_Controller {
 
       $transporter = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')
       ->setUsername('avirajsaikia@gmail.com')
-      ->setPassword('sristi123456');
+      ->setPassword('');
 
       $mailer  = Swift_Mailer::newInstance($transporter);
       $message = Swift_Message::newInstance($transporter)
@@ -260,14 +275,20 @@ class Cli extends CI_Controller {
     }
 
   }
-
-  public function client() {
+  public function clientMailSend() {
     $this->lib_gearman->gearman_client();
 
     $emailData = array(
-      'name'  => 'web',
-      'email' => 'member@example.com',
-    );
+      'name'  => $this->input->post('name'),
+      'email' => $this->input->post('email'),
+      );
+
+    $this->lib_gearman->do_job_background('sendEmail', serialize($emailData));
+    echo "Email sending is done.\n";
+  }
+
+  public function client() {
+    $this->lib_gearman->gearman_client();
 
     $exportData = array(
       'user_email'   => $this->input->post('user_email'),
@@ -275,14 +296,11 @@ class Cli extends CI_Controller {
       'access_token' => $this->session->userdata('access_token'),
       'account_url'  => $this->session->userdata('href'),
       'project_dir'  => $dir = $_SERVER['DOCUMENT_ROOT'].'/exports/' .$this->session->userdata('id').'/projects/'
-    );
+      );
 
 
     $this->lib_gearman->do_job_background('exportProject', serialize($exportData));
     echo "exporting project is done.\n";
-
-    $this->lib_gearman->do_job_background('sendEmail', serialize($emailData));
-    echo "Email sending is done.\n";
 
   }
 
