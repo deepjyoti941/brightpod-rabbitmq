@@ -3,6 +3,6 @@
 }
 
 // REQUIRED VARIABLES
-$config['client_id']     = '6a9e3bb60f9299685ec1074a19174142f150a2d';
+$config['client_id']     = '6ca9e3bb60f9299685ec1074a19174142f150a2d';
 $config['client_secret'] = 'f85021fd9d3e90086282ce4a410ecca3589ba64c';
 $config['redirect_uri']  = base_url() . 'basecamp';
