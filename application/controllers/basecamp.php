@@ -420,7 +420,6 @@ class Basecamp extends CI_Controller {
 		$data['user_email'] = $this->input->post('user_email');
 		$data['project_list'] = $this->input->post('project_list');
 		print_r($data);
-		//$this->lib_gearman->do_job_background('exportProjects', serialize($data));
 
 	}
 
