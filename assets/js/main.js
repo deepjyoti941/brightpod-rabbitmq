@@ -2,37 +2,37 @@
 
  /**
    * code for rabbitmq mail queue start here
-  */
+   */
 
-  $("#user_list").on("click", '.send_mail', function () {
-    var data = [];
-    var post_data = {};
-    var $this = $(this);
-    var parent_tr = $this.closest('td').parent('tr');
-    parent_tr.addClass("highlite");
-    $(parent_tr).find('td').each(function () {
-      data.push($(this).find('input').val());
-    });
-    data.splice(-1, 1);
-    post_data.name = data[0];
-    post_data.email = data[1];
-    post_data.task_id = data[2];
-    post_data.user_id = data[3];
-    post_data.client_id = data[4];
-    post_data.added_datetime = data[5];
+   $("#user_list").on("click", '.send_mail', function () {
+   	var data = [];
+   	var post_data = {};
+   	var $this = $(this);
+   	var parent_tr = $this.closest('td').parent('tr');
+   	parent_tr.addClass("highlite");
+   	$(parent_tr).find('td').each(function () {
+   		data.push($(this).find('input').val());
+   	});
+   	data.splice(-1, 1);
+   	post_data.name = data[0];
+   	post_data.email = data[1];
+   	post_data.task_id = data[2];
+   	post_data.user_id = data[3];
+   	post_data.client_id = data[4];
+   	post_data.added_datetime = data[5];
 
-    notification('email sent');
+   	notification('email sent');
 
-    $.post("/cli/clientMailSend", post_data)
-    .done(function (data) {});
-  });
+   	$.post("/cli/clientMailSend", post_data)
+   	.done(function (data) {});
+   });
 
-  $("#add_user").on("click", function () {
-    var $tableBody = $('#user_list').find("tbody"),
-    $trLast = $tableBody.find("tr:last"),
-    $trNew = $trLast.clone();
-    $trLast.after($trNew);
-  });
+   $("#add_user").on("click", function () {
+   	var $tableBody = $('#user_list').find("tbody"),
+   	$trLast = $tableBody.find("tr:last"),
+   	$trNew = $trLast.clone();
+   	$trLast.after($trNew);
+   });
 
 
  /**
@@ -60,27 +60,27 @@
   });
 
   opts = {
-    "font-styles":  true,
-    "color":        true,
-    "emphasis":     true,
-    "textAlign":    true,
-    "lists":        true,
-    "blockquote":   true,
-    "link":         true,
-    "table":        true,
-    "image":        true,
-    "video":        true,
-    "html":         true,
-    'format-code': false,
-    events: {
-        focus : onfocus,
-        blur: onblur
-      }
+  	"font-styles":  true,
+  	"color":        true,
+  	"emphasis":     true,
+  	"textAlign":    true,
+  	"lists":        true,
+  	"blockquote":   true,
+  	"link":         true,
+  	"table":        true,
+  	"image":        true,
+  	"video":        true,
+  	"html":         true,
+  	'format-code': false,
+  	events: {
+  		focus : onfocus,
+  		blur: onblur
+  	}
   };
 
   // function to update the online member count
   window.updateOnlineCount = function() {
-    $('#widget_counter_member').html($('.widget_member').length);
+  	$('#widget_counter_member').html($('.widget_member').length);
   }
 
   $update_editor = $('#update_note_content');
@@ -89,164 +89,164 @@
   //trggering post request to pusher api when focus is inside editor (who is editing feature)
   var interval;
   function onfocus() {
-    $.post( "/notes/whoisEditing", { channel_name: $.cookie('channel') })
-      .done(function( data ) {});
+  	$.post( "/notes/whoisEditing", { channel_name: $.cookie('channel') })
+  	.done(function( data ) {});
 
-    interval = setInterval(function() {
-      updateNote();
-    }, 30000);
+  	interval = setInterval(function() {
+  		updateNote();
+  	}, 30000);
   }
 
   //trggering post request to pusher api when focus is out of editor (stopped editing notes)
   function onblur() {
-    updateNote();
-    clearInterval(interval);
-    $.post( "/notes/resetWhoisEditing", { channel_name: $.cookie('channel') })
-      .done(function( data ) {});
+  	updateNote();
+  	clearInterval(interval);
+  	$.post( "/notes/resetWhoisEditing", { channel_name: $.cookie('channel') })
+  	.done(function( data ) {});
   }
 
 
   $('#cancel_notes').hide();
   $('#add_notes').click(function() {
-    $(this).hide();
-    $('#cancel_notes').show();
-    $('#new_notes_section').show();
+  	$(this).hide();
+  	$('#cancel_notes').show();
+  	$('#new_notes_section').show();
   })
 
   $('#cancel_notes').click(function() {
-    $(this).hide();
-    $('#add_notes').show();
-    $('#new_notes_section').hide();
+  	$(this).hide();
+  	$('#add_notes').show();
+  	$('#new_notes_section').hide();
   })
 
 
   $('.login-form').submit(function(e) {
-    e.preventDefault();
-    form = $(this);
-    var data = form.serializeArray();
-    ajaxCall('/notes/session', data, function(msg) {
-      if (msg.success) {
-        window.location= ("notes/listing");
-      } else {}
-    });
+  	e.preventDefault();
+  	form = $(this);
+  	var data = form.serializeArray();
+  	ajaxCall('/notes/session', data, function(msg) {
+  		if (msg.success) {
+  			window.location= ("notes/listing");
+  		} else {}
+  	});
   });
 
 
   function ajaxCall(ajax_url, ajax_data, successCallback) {
-    $.ajax({
-      type : "POST",
-      url : ajax_url,
-      dataType : "json",
-      data: ajax_data,
-      time : 10,
-      success : function(msg) {
-        if( msg.success ) {
-          successCallback(msg);
-        } else {
-          alert(msg.errormsg);
-        }
-      },
-      error: function(msg) {
-      }
-    });
+  	$.ajax({
+  		type : "POST",
+  		url : ajax_url,
+  		dataType : "json",
+  		data: ajax_data,
+  		time : 10,
+  		success : function(msg) {
+  			if( msg.success ) {
+  				successCallback(msg);
+  			} else {
+  				alert(msg.errormsg);
+  			}
+  		},
+  		error: function(msg) {
+  		}
+  	});
   }
 
   //code to save and update notes to db
   var timeoutId;
   $('form.notes-update-form input, textarea').on('input propertychange change', function() {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(function() {
-      updateNote();
-    }, 1000);
+  	clearTimeout(timeoutId);
+  	timeoutId = setTimeout(function() {
+  		updateNote();
+  	}, 1000);
   });
 
   function saveToDB() {
-    form = $('.notes-form');
-    var notes_content = $('#note_content').val();
-    var data = form.serializeArray();
-    data.push({name: 'note_content', value: notes_content});
-    $.ajax({
-      url: "/notes/createNotes",
-      type: "POST",
-      data: data,
-      beforeSend: function(xhr) {
+  	form = $('.notes-form');
+  	var notes_content = $('#note_content').val();
+  	var data = form.serializeArray();
+  	data.push({name: 'note_content', value: notes_content});
+  	$.ajax({
+  		url: "/notes/createNotes",
+  		type: "POST",
+  		data: data,
+  		beforeSend: function(xhr) {
 
-      },
-      success: function(data) {
-        notification('note saved');
-        form.each(function(){
-          this.reset();
-        });
-        console.log(data);
-      }
-    });
+  		},
+  		success: function(data) {
+  			notification('note saved');
+  			form.each(function(){
+  				this.reset();
+  			});
+  			console.log(data);
+  		}
+  	});
   }
 
   function updateNote() {
-    var url = window.location.pathname;
-    var note_id = url.substring(url.lastIndexOf('/') + 1);
-    form = $('.notes-update-form');
-    var data = form.serializeArray();
-    data.push({name: 'note_id', value: note_id});
-    $.ajax({
-      url: "/notes/updateNote",
-      type: "POST",
-      data: data,
-      beforeSend: function(xhr) {
-      },
-      success: function(data) {
-        notification('note auto saved');
-      }
-    });
+  	var url = window.location.pathname;
+  	var note_id = url.substring(url.lastIndexOf('/') + 1);
+  	form = $('.notes-update-form');
+  	var data = form.serializeArray();
+  	data.push({name: 'note_id', value: note_id});
+  	$.ajax({
+  		url: "/notes/updateNote",
+  		type: "POST",
+  		data: data,
+  		beforeSend: function(xhr) {
+  		},
+  		success: function(data) {
+  			notification('note auto saved');
+  		}
+  	});
   }
 
   function notification(msg) {
-    toastr.success(msg);
-    toastr.options = {
-      "closeButton": false,
-      "debug": false,
-      "progressBar": false,
-      "positionClass": "toast-top-right",
-      "onclick": null,
-      "showDuration": "300",
-      "hideDuration": "1000",
-      "timeOut": "5000",
-      "extendedTimeOut": "1000",
-      "showEasing": "swing",
-      "hideEasing": "linear",
-      "showMethod": "fadeIn",
-      "hideMethod": "fadeOut"
-    }
+  	toastr.success(msg);
+  	toastr.options = {
+  		"closeButton": false,
+  		"debug": false,
+  		"progressBar": false,
+  		"positionClass": "toast-top-right",
+  		"onclick": null,
+  		"showDuration": "300",
+  		"hideDuration": "1000",
+  		"timeOut": "5000",
+  		"extendedTimeOut": "1000",
+  		"showEasing": "swing",
+  		"hideEasing": "linear",
+  		"showMethod": "fadeIn",
+  		"hideMethod": "fadeOut"
+  	}
   }
 
   $('.notes-form').submit(function(e) {
-    saveToDB();
-    e.preventDefault();
+  	saveToDB();
+  	e.preventDefault();
   });
 
   $('.notes-update-form').submit(function(e) {
-    updateNote();
-    e.preventDefault();
+  	updateNote();
+  	e.preventDefault();
   });
 
   $('#export_project').click(function(e) {
-    e.preventDefault();
-    $(this).attr("disabled", true);
-    $('#project_progress').show();
+  	e.preventDefault();
+  	$(this).attr("disabled", true);
+  	$('#project_progress').show();
 
-    $.post( "/basecamp/export-projects", {}, function(data) {
-      data = $.parseJSON(data);
-        if (data.status == 'already_exported') {
-        $('#project_progress').hide();
-        $('#already_done').show();
-        $('#already_done').append('<a href="'+data.export_path+'">'+data.export_path+'</a>');
-      } else {
-        $('#project_progress').hide();
-        $('#project_done').show();
-        $('#project_done').append('<a href="'+data.export_path+'">'+data.export_path+'</a>');
+  	$.post( "/basecamp/export-projects", {}, function(data) {
+  		data = $.parseJSON(data);
+  		if (data.status == 'already_exported') {
+  			$('#project_progress').hide();
+  			$('#already_done').show();
+  			$('#already_done').append('<a href="'+data.export_path+'">'+data.export_path+'</a>');
+  		} else {
+  			$('#project_progress').hide();
+  			$('#project_done').show();
+  			$('#project_done').append('<a href="'+data.export_path+'">'+data.export_path+'</a>');
 
-      }
-    });
+  		}
+  	});
   })
 
   var project_list_arr = [];
@@ -254,129 +254,437 @@
   var calender_list_arr = [];
 
   $('.project_list tbody tr').click(function (event) {
-      if (event.target.type !== 'checkbox') {
-          $(':checkbox', this).trigger('click');
-      }
+  	if (event.target.type !== 'checkbox') {
+  		$(':checkbox', this).trigger('click');
+  	}
   });
 
   $('.people_list tbody tr').click(function (event) {
-      if (event.target.type !== 'checkbox') {
-          $(':checkbox', this).trigger('click');
-      }
+  	if (event.target.type !== 'checkbox') {
+  		$(':checkbox', this).trigger('click');
+  	}
   });
 
   $('.calender_list tbody tr').click(function (event) {
-      if (event.target.type !== 'checkbox') {
-          $(':checkbox', this).trigger('click');
-      }
+  	if (event.target.type !== 'checkbox') {
+  		$(':checkbox', this).trigger('click');
+  	}
   });
   $(".project_list input[type='checkbox']").change(function (e) {
-      var val
-      if ($(this).is(":checked")) {
-        $(this).closest('tr').addClass("highlight_row");
-        val = $(this).closest('tr td').next().html();
-        project_list_arr.push(val);
-        console.log(val);
-      } else {
-        $(this).closest('tr').removeClass("highlight_row");
-        val = $(this).closest('tr td').next().html();
-        var index = project_list_arr.indexOf(val);
-        if (index > -1) {
-          project_list_arr.splice(index, 1);
-        }
-      }
+  	var val
+  	if ($(this).is(":checked")) {
+  		$(this).closest('tr').addClass("highlight_row");
+  		val = $(this).closest('tr td').next().html();
+  		project_list_arr.push(val);
+  		console.log(val);
+  	} else {
+  		$(this).closest('tr').removeClass("highlight_row");
+  		val = $(this).closest('tr td').next().html();
+  		var index = project_list_arr.indexOf(val);
+  		if (index > -1) {
+  			project_list_arr.splice(index, 1);
+  		}
+  	}
   });
 
   $(".people_list input[type='checkbox']").change(function (e) {
-      var val
-      if ($(this).is(":checked")) {
-        $(this).closest('tr').addClass("highlight_row");
-        val = $(this).closest('tr td').next().html();
-        people_list_arr.push(val);
-        console.log(val);
-      } else {
-        $(this).closest('tr').removeClass("highlight_row");
-        val = $(this).closest('tr td').next().html();
-        var index = people_list_arr.indexOf(val);
-        if (index > -1) {
-          people_list_arr.splice(index, 1);
-        }
-      }
+  	var val
+  	if ($(this).is(":checked")) {
+  		$(this).closest('tr').addClass("highlight_row");
+  		val = $(this).closest('tr td').next().html();
+  		people_list_arr.push(val);
+  		console.log(val);
+  	} else {
+  		$(this).closest('tr').removeClass("highlight_row");
+  		val = $(this).closest('tr td').next().html();
+  		var index = people_list_arr.indexOf(val);
+  		if (index > -1) {
+  			people_list_arr.splice(index, 1);
+  		}
+  	}
   });
 
   $(".calender_list input[type='checkbox']").change(function (e) {
-      var val
-      if ($(this).is(":checked")) {
-        $(this).closest('tr').addClass("highlight_row");
-        val = $(this).closest('tr td').next().html();
-        calender_list_arr.push(val);
-        console.log(val);
-      } else {
-        $(this).closest('tr').removeClass("highlight_row");
-        val = $(this).closest('tr td').next().html();
-        var index = calender_list_arr.indexOf(val);
-        if (index > -1) {
-          calender_list_arr.splice(index, 1);
-        }
-      }
+  	var val
+  	if ($(this).is(":checked")) {
+  		$(this).closest('tr').addClass("highlight_row");
+  		val = $(this).closest('tr td').next().html();
+  		calender_list_arr.push(val);
+  		console.log(val);
+  	} else {
+  		$(this).closest('tr').removeClass("highlight_row");
+  		val = $(this).closest('tr td').next().html();
+  		var index = calender_list_arr.indexOf(val);
+  		if (index > -1) {
+  			calender_list_arr.splice(index, 1);
+  		}
+  	}
   });
 
   $("#export_project_list").click(function() {
-    var user_email = $('#user_email').val();
-    if (typeof project_list_arr !== 'undefined' && project_list_arr.length > 0 && user_email != '') {
-      var $this = $(this);
-      $this.attr("disabled", true);
-      $('#project_list_done').show();
-      $.post( "/cli/client", {project_list:project_list_arr, user_email:user_email})
-        .done(function( data ) {
-          $this.removeAttr("disabled");
-      });
-    } else {
-      bootbox.alert("You must select atleast one project and enter valid email to export", function() {
-      });
-    }
+  	var user_email = $('#user_email').val();
+  	if (typeof project_list_arr !== 'undefined' && project_list_arr.length > 0 && user_email != '') {
+  		var $this = $(this);
+  		$this.attr("disabled", true);
+  		$('#project_list_done').show();
+  		$.post( "/cli/client", {project_list:project_list_arr, user_email:user_email})
+  		.done(function( data ) {
+  			$this.removeAttr("disabled");
+  		});
+  	} else {
+  		bootbox.alert("You must select atleast one project and enter valid email to export", function() {
+  		});
+  	}
   })
 
 
   $("#export_people_list").click(function() {
 
-    if (typeof people_list_arr !== 'undefined' && people_list_arr.length > 0) {
-      var $this = $(this);
-      $this.attr("disabled", true);
-      $('#project_list_progress').show();
-      $.post( "/basecamp/export-selected-people", {people_list:people_list_arr})
-        .done(function( data ) {
-          $('#people_list_progress').hide();
-          $('#people_list_done').show();
-          $this.removeAttr("disabled");
-      });
-    } else {
-      bootbox.alert("You must select atleast one people to export", function() {
-      });
-    }
+  	if (typeof people_list_arr !== 'undefined' && people_list_arr.length > 0) {
+  		var $this = $(this);
+  		$this.attr("disabled", true);
+  		$('#project_list_progress').show();
+  		$.post( "/basecamp/export-selected-people", {people_list:people_list_arr})
+  		.done(function( data ) {
+  			$('#people_list_progress').hide();
+  			$('#people_list_done').show();
+  			$this.removeAttr("disabled");
+  		});
+  	} else {
+  		bootbox.alert("You must select atleast one people to export", function() {
+  		});
+  	}
   })
 
 
   $("#export_calender_list").click(function() {
 
-    if (typeof calender_list_arr !== 'undefined' && calender_list_arr.length > 0) {
-      var $this = $(this);
-      $this.attr("disabled", true);
-      $('#calender_list_progress').show();
-      $.post( "/basecamp/export-selected-calenders", {calender_list:calender_list_arr})
-        .done(function( data ) {
-          $('#calender_list_progress').hide();
-          $('#calender_list_done').show();
-          $this.removeAttr("disabled");
-      });
-    } else {
-      bootbox.alert("You must select atleast one calender to export", function() {
-      });
-    }
+  	if (typeof calender_list_arr !== 'undefined' && calender_list_arr.length > 0) {
+  		var $this = $(this);
+  		$this.attr("disabled", true);
+  		$('#calender_list_progress').show();
+  		$.post( "/basecamp/export-selected-calenders", {calender_list:calender_list_arr})
+  		.done(function( data ) {
+  			$('#calender_list_progress').hide();
+  			$('#calender_list_done').show();
+  			$this.removeAttr("disabled");
+  		});
+  	} else {
+  		bootbox.alert("You must select atleast one calender to export", function() {
+  		});
+  	}
   })
 
  /**
    * end here
-  */
+   */
 
-})(jQuery);
+
+
+  /**
+   * code for timer feature goes here
+   */
+
+   $('.timer_button').click(function(e) {
+    e.preventDefault(); //cancel native click event
+    $("#timer_modal").modal('show'); //insert retrieved data into modal, and then show it
+    console.log();
+
+    if ($('#project_list > option').length == 1) {
+    	$.ajax({
+    		type: "POST",
+    		url: "/timer/projects",
+    		success: function (data) {
+    			$.each(JSON.parse(data),function(i,obj) {
+    				console.log(obj);
+    				var project_list = "<option value="+obj.project_id+">"+obj.name+"</option>";
+    				$(project_list).appendTo('#project_list'); 
+    			});
+    		},
+    		error: function() {
+    			alert('Ajax did not succeed');
+    		}
+    	});
+    };
+  });
+
+  function doc_keyUp(e) {
+    //shift + z key combination
+    if (e.shiftKey && e.keyCode == 90) {
+    	$('.timer_button').click();
+    }
+  }
+
+  document.addEventListener('keyup', doc_keyUp, false);
+
+  $('#project_list').on('change', function (e) {
+  	$('#task_list').empty()
+  	var project_id = this.value;
+  	$.ajax({
+  		type: "POST",
+  		data: {project_id: project_id},
+  		url: "/timer/tasklist",
+  		success: function (data) {
+  			$.each(JSON.parse(data),function(i,obj) {
+  				console.log(obj);
+  				var task_list = "<li class='list-group-item'>"+obj.task_name+"</li>";
+  				$(task_list).appendTo('#task_list');
+
+  			});
+  		},
+  		error: function() {
+  			alert('Ajax did not succeed');
+  		}
+  	});
+  });
+
+  var counter = 0;
+
+  var runClock;
+
+
+  $stopwatch = {
+  	container: document.getElementById('time-container')
+  };
+
+  function displayTime() {
+  	$stopwatch.container.innerHTML = moment().hour(0).minute(0).second(counter++).format('HH : mm : ss');
+  }
+
+  function startWatch() {
+  	runClock = setInterval(displayTime, 1000);
+  }
+
+  function stopWatch() {
+  	clearInterval(runClock);
+  }
+
+
+  $('#start_timer').click(function(){
+  	$(this).hide();
+  	$('#stop_timer').show();
+  	startWatch();
+  })
+
+  $('#stop_timer').click(function(){
+  	$(this).hide();
+  	$('#start_timer').show();
+  	$('#submit_timer').show();
+  	stopWatch();
+  })
+
+
+
+
+	var jTask = {
+		showArchived: false,
+		showCompleted: false,
+		intervals: [],
+		timer: [],
+		bind: function () {
+			$(".tracking-create").on("click", function (e) {
+				e.preventDefault();
+				$(".tracking-form").hide();
+				$("#tracking-form-create").show();
+			});
+			$(".tracking-form").on("click",".tracking-item .tracking-update", function (e) {
+				e.preventDefault();
+				$(".tracking-form").hide();
+				var namespace = $(this).attr("rel");
+				$("#tracking-button-update").attr("rel", namespace);
+				var est = $.DOMCached.get('estimate', namespace);
+				if (est !== null) {
+					$("#tracking-form-update input[name='tracking-task-name']").val(namespace);
+					$("#tracking-form-update input[name='tracking-task-estimate']").val(est);
+					$("#tracking-form-update input[name='tracking-task-completed']").attr("checked", $.DOMCached.get("completed", namespace));
+					$("#tracking-form-update input[name='tracking-task-archived']").attr("checked", $.DOMCached.get("archived", namespace));								
+					$("#tracking-form-update span#created").text($.DOMCached.get('created', namespace));
+				}
+				$("#tracking-form-update").show();
+			});
+			$(".tracking-form").on("click",".tracking-item .tracking-remove", function (e) {
+				e.preventDefault();
+				$(".tracking-form").hide();
+				$("#tracking-button-remove").attr("rel", $(this).attr("rel"));
+				$("#tracking-remove-confirm").html("Are you sure you want to delete <strong>" + $(this).attr("rel") + "</strong>?");
+				$("#tracking-form-remove").show();
+			});
+			$(".tracking-remove-all").on("click", function (e) {
+				e.preventDefault();
+				$(".tracking-form").hide();
+				$("#tracking-form-remove-all").show();
+			});
+			$("#tracking-show-archived").bind("click change", function () {
+				jTask.showArchived = $(this).is(":checked");
+				jTask.index();
+			});
+			$("#tracking-show-completed").bind("click change", function () {
+				jTask.showCompleted = $(this).is(":checked");
+				jTask.index();
+			});
+			$(".tracking-cancel").on("click", function (e) {
+				e.preventDefault();
+				$("#" + $(this).attr("rel")).hide().find("input:text").val("");
+				$("#tracking-form-list").show();
+			});
+
+			$('.tracking-form').on('click','.tracking-item .tracking-power', function (e) {
+				e.preventDefault();
+				jTask.toggleTimer($(this), $(this).attr('rel'));
+			});
+			$("#tracking-button-remove").on("click", function () {
+				$.DOMCached.deleteNamespace($(this).attr("rel"));
+				$(this).attr("rel", "");
+				$("#tracking-form-remove").hide();
+				jTask.index();		
+			});		
+			$("#tracking-button-remove-all").on("click", function () {
+				$.DOMCached.flush_all();
+				$("#tracking-form-remove-all").hide();
+				jTask.index();		
+			});
+			$("#tracking-button-create").on("click", function () {
+				var namespace = $("#tracking-form-create :input[name='tracking-task-name']").val();		
+				if ($.DOMCached.get('estimate', namespace) === null) {
+					$.DOMCached.set('estimate', $("#tracking-form-create :input[name='tracking-task-estimate']").val(), false, namespace);
+					$.DOMCached.set('timer', 0, false, namespace);
+					$.DOMCached.set('started', false, false, namespace);
+					$.DOMCached.set('completed', false, false, namespace);
+					$.DOMCached.set('archived', false, false, namespace);
+					var d = new Date();
+					var created = [d.getDate(), d.getMonth() + 1, d.getFullYear()]; 
+					$.DOMCached.set('created', created.join("."), false, namespace);
+					$("#tracking-create-status").hide().text("");
+					// $("#tracking-form-create").hide().find("input:text").val("");
+
+					jTask.index();
+				} else {
+					$("#tracking-create-status").text("Task with the same name already exists.").show();
+				}
+			});
+      
+      $(".save-tasks").on("click", function() {
+        var data = $.parseJSON(localStorage.dom_storage);
+        console.log(localStorage.dom_storage);
+      });
+
+			$("#tracking-button-update").on("click", function () {
+				var ns = $(this).attr("rel");
+				var namespace = $("#tracking-form-update :input[name='tracking-task-name']").val();
+				
+				if (ns === namespace) {
+					// update
+					$.DOMCached.set('estimate', $("#tracking-form-update :input[name='tracking-task-estimate']").val(), false, namespace);
+					if ($("#tracking-form-update input[name='tracking-task-completed']").is(":checked")) {
+						$.DOMCached.set("completed", true, false, namespace);
+						$.DOMCached.set("started", false, false, namespace);
+					} else {
+						$.DOMCached.set("completed", false, false, namespace);
+					}
+					if ($("#tracking-form-update input[name='tracking-task-archived']").is(":checked")) {
+						$.DOMCached.set("archived", true, false, namespace);
+						$.DOMCached.set("started", false, false, namespace);
+					} else {
+						$.DOMCached.set("archived", false, false, namespace);
+					}
+				} else {
+					// rename
+					if ($.DOMCached.getNamespace(namespace) === null) {
+						var timer = $.DOMCached.get('timer', ns),
+							created = $.DOMCached.get('created', ns);
+						$.DOMCached.set('estimate', $("#tracking-form-update :input[name='tracking-task-estimate']").val(), false, namespace);
+						$.DOMCached.set('timer', timer, false, namespace);
+						$.DOMCached.set('created', created, false, namespace);
+						$.DOMCached.deleteNamespace(ns);
+					} else {
+						$("#tracking-update-status").text("Task with the same name already exists.").show();
+						return;
+					}			
+				}
+				$(this).attr("rel", "");
+				$("#tracking-update-status").hide().text("");
+				$("#tracking-form-update").hide().find("input:text").val("");
+				jTask.index();
+			});
+		},
+		index: function () {
+			var p = '',
+				conditions = [],
+				created,
+				archived,
+				completed,
+				namespace,
+				started = [],
+				storage = $.DOMCached.getStorage();
+			conditions.push('true');
+			if (!this.showArchived) {
+				conditions.push('!archived');
+			}
+			if (!this.showCompleted) {
+				conditions.push('!completed');
+			}
+			for (namespace in storage) {
+				archived = $.DOMCached.get("archived", namespace);
+				completed = $.DOMCached.get("completed", namespace);			
+				if (eval(conditions.join(' && '))) {
+					created = $.DOMCached.get("created", namespace);							
+					started[namespace] = $.DOMCached.get("started", namespace);
+					jTask.timer[namespace] = $.DOMCached.get("timer", namespace);
+					p += '<p class="tracking-item' + (archived ? ' tracking-archived' : '') + (completed ? ' tracking-completed' : '') + '">' + created + '<label>' + namespace + '</label><a href="#" class="tracking-update" rel="' + namespace + '">Edit</a> | <a href="#" class="tracking-remove" rel="' + namespace + '">Delete</a><span class="tracking-timer">' + this.hms(jTask.timer[namespace]) + '</span><a href="#" class="tracking-power' + (started[namespace] ? ' tracking-power-on' : '') + '" title="Timer on/off" rel="' + namespace + '"></a></p>';
+					if (started[namespace]) {
+						this.timerScheduler(namespace);
+					}
+				}
+			}
+			if (p === '') {
+				p = '<p><label>No tasks</label></p>';
+			}
+			$("#tracking-form-list").empty().append(p).show();
+      $("#tracking-form-create").show();
+		},
+		init: function () {
+			this.bind();
+			this.index();
+		},
+		timerScheduler: function (namespace) {
+			clearInterval(this.intervals[namespace]);
+			this.intervals[namespace] = setInterval(function () {
+				if ($.DOMCached.get("started", namespace)) {
+					jTask.timer[namespace]++;
+					$.DOMCached.set("timer", jTask.timer[namespace], false, namespace);
+					$(".tracking-power[rel='" + namespace + "']").siblings(".tracking-timer").eq(0).text(jTask.hms(jTask.timer[namespace]));
+				}
+			}, 1000);
+		},
+		toggleTimer: function (jQ, namespace) {
+			if (!$.DOMCached.get("started", namespace)) {
+				$.DOMCached.set("started", true, false, namespace);
+				this.timer[namespace] = $.DOMCached.get("timer", namespace);
+				this.timerScheduler(namespace);
+				jQ.addClass("tracking-power-on");
+			} else {
+				$.DOMCached.set("started", false, false, namespace);
+				jQ.removeClass("tracking-power-on");
+			}
+		},
+		hms: function (secs) {
+			secs = secs % 86400;
+			var time = [0, 0, secs], i;
+			for (i = 2; i > 0; i--) {
+				time[i - 1] = Math.floor(time[i] / 60);
+				time[i] = time[i] % 60;
+				if (time[i] < 10) {
+					time[i] = '0' + time[i];
+				}
+			}
+			return time.join(':');
+		}
+	};
+
+	jTask.init();
+
+ /**
+   * end here
+   */
+
+ })(jQuery);
