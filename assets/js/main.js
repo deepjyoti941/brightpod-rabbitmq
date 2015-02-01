@@ -601,11 +601,13 @@
           var project_id = parent.find($('span[rel]')).attr("rel");
           $("#tracking-task-name").val(task_name);
           $("#project_list").val(project_id);
+          $(".loader").show();
           $.ajax({
             type: "POST",
             data: {project_id: project_id},
             url: "/timer/tasklist",
             success: function (data) {
+              $(".loader").hide();
               $.each(JSON.parse(data),function(i,obj) {
                 console.log(obj);
                   var task_list = "<option value="+obj.list_id+">"+obj.list_name+"</option>";
@@ -650,38 +652,43 @@
 			});
 
       $('.tracking-form').on('click','#timer-container #tracking-button-create', function (e) {
-        var task_list_details = {};
-        task_list_details.id = $('#task_list').val();
-        task_list_details.name = $('#task_list option:selected').text();
-				var namespace = $("#tracking-form-create :input[name='tracking-task-name']").val();		
-				if ($.DOMCached.get('estimate', namespace) === null) {
-					$.DOMCached.set('estimate', $("#tracking-form-create :input[name='tracking-task-estimate']").val(), false, namespace);
-					$.DOMCached.set('timer', 0, false, namespace);
-          $.DOMCached.set('project_id', $('#project_list').val(), false, namespace);
-          $.DOMCached.set('task_list_details', task_list_details, false, namespace);
+        e.preventDefault();
+        if ($("#tracking-task-name").val() == '' || $("#project_list").val()==0 || $("#task_list").val()==0) {
+          alert('you must select task name with project and task list')
+        } else {
+          var task_list_details = {};
+          task_list_details.id = $('#task_list').val();
+          task_list_details.name = $('#task_list option:selected').text();
+          var namespace = $("#tracking-form-create :input[name='tracking-task-name']").val();   
+          if ($.DOMCached.get('estimate', namespace) === null) {
+            $.DOMCached.set('estimate', $("#tracking-form-create :input[name='tracking-task-estimate']").val(), false, namespace);
+            $.DOMCached.set('timer', 0, false, namespace);
+            $.DOMCached.set('project_id', $('#project_list').val(), false, namespace);
+            $.DOMCached.set('task_list_details', task_list_details, false, namespace);
 
 
-          var started = [];
-					var d = new Date();
-					var created = [d.getFullYear(), d.getMonth() + 1, d.getDate()]; 
-					$.DOMCached.set('created', created.join("-"), false, namespace);
-					$("#tracking-create-status").hide().text("");
-          started[namespace] = $.DOMCached.get("started", namespace);
-          jTask.timer[namespace] = $.DOMCached.get("timer", namespace);
-          console.log(started[namespace]);
-					//$("#tracking-form-create").hide().find("input:text").val("");
-          console.log(jTask.hms(jTask.timer[namespace]));
-          var timer_dom = '<span class="tracking-timer">' + jTask.hms(jTask.timer[namespace]) + '</span><a href="#" class="tracking-power tracking-power-on' + (started[namespace] ? ' tracking-power-on' : '') + '" title="Timer on/off" rel="' + namespace + '"></a>'
-					timer_dom += '<a href="#" class="pull-right" title="Save Task" id="save-task"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span></a>&nbsp'
-          $('.tracking-remove-all').show();
-          $('#timer-container').empty();
-          $('#timer-container').append(timer_dom);
-          //jTask.index();
-          jTask.toggleTimer($(this), namespace);
+            var started = [];
+            var d = new Date();
+            var created = [d.getFullYear(), d.getMonth() + 1, d.getDate()]; 
+            $.DOMCached.set('created', created.join("-"), false, namespace);
+            $("#tracking-create-status").hide().text("");
+            started[namespace] = $.DOMCached.get("started", namespace);
+            jTask.timer[namespace] = $.DOMCached.get("timer", namespace);
+            console.log(started[namespace]);
+            //$("#tracking-form-create").hide().find("input:text").val("");
+            console.log(jTask.hms(jTask.timer[namespace]));
+            var timer_dom = '<span class="tracking-timer">' + jTask.hms(jTask.timer[namespace]) + '</span><a href="#" class="tracking-power tracking-power-on' + (started[namespace] ? ' tracking-power-on' : '') + '" title="Timer on/off" rel="' + namespace + '"></a>'
+            timer_dom += '<a href="#" class="pull-right" title="Save Task" id="save-task"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span></a>&nbsp'
+            $('.tracking-remove-all').show();
+            $('#timer-container').empty();
+            $('#timer-container').append(timer_dom);
+            //jTask.index();
+            jTask.toggleTimer($(this), namespace);
 
-				} else {
-					$("#tracking-create-status").text("Task with the same name already exists.").show();
-				}
+          } else {
+            $("#tracking-create-status").text("Task with the same name already exists.").show();
+          }
+        }
 			});
       
       $(".save-tasks").on("click", function() {
