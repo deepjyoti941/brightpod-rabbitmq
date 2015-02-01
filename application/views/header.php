@@ -33,11 +33,11 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><a href="/mailQueue">Mail Queue</a></li>
-          <li><a href="/notes">Notes</a></li>
-          <li><a href="/">Basecamp exporter</a></li>
-          <li><a href="/timer">Timer</a></li>
-
+          <li <?php if ( '/'.$this->uri->uri_string() == '/mailQueue'): ?> class="active"<?php endif; ?>><a href="/mailQueue">Mail Queue</a></li>
+          <li <?php if ( '/'.$this->uri->uri_string() == '/notes'): ?> class="active"<?php endif; ?>><a href="/notes">Notes</a></li>
+          <li <?php if ( '/'.$this->uri->uri_string() == '/'): ?> class="active"<?php endif; ?>><a href="/">Basecamp exporter</a></li>
+          <li <?php if ( '/'.$this->uri->uri_string() == '/timer'): ?> class="active"<?php endif; ?>><a href="/timer">Timer</a></li>
+          <li class="loader" style="color:#ffffff; opacity: 0.6; display: none"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></li>
         </ul>
       </div>
     </div>

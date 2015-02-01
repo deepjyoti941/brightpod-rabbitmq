@@ -11,8 +11,11 @@ class Timer extends CI_Controller {
 	}
 	
 	public function index() {
+		$data['projects'] = $this->timer_model->getProjects();
+		$data['tasks'] = $this->timer_model->getTasks();
+		
 		$this->load->view('header');
-		$this->load->view('timer');
+		$this->load->view('timer', $data);
 		$this->load->view('footer');
 	}
 
@@ -25,6 +28,11 @@ class Timer extends CI_Controller {
 	public function tasklist() {
 		$data = $this->timer_model->getTaskList($this->input->post('project_id'));
 		echo json_encode($data);
+	}
+
+	public function saveTask() {
+		$this->timer_model->saveTask($this->input->post('task_name'), $this->input->post('timer'), $this->input->post('timer_duration'), $this->input->post('project_id'), $this->input->post('created_date'), $this->input->post('task_list_id'));
+
 	}
 
 }

@@ -4,60 +4,41 @@
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel">
-            <div class="row">
+            TIMER STATUS
+<!--             <div class="row">
               <div id="tracking-bar">
                 <input type="checkbox" name="tracking-show-completed" id="tracking-show-completed" value="1" title="Toggle completed" /> Completed
                 <input type="checkbox" name="tracking-show-archived" id="tracking-show-archived" value="1" title="Toggle archived" /> Archived
                 <button class="tracking-remove-all btn btn-danger pull-right custom-position">Delete all</button>
                 <button class="save-tasks btn btn-success pull-right custom-position">Save Tasks</button>
-
               </div>    
-            </div>
+            </div> -->
           </h4>
         </div>
         <div class="modal-body">
-<!--           <div class="row">
-            <div class="col-md-4">
-              <input type="text" class="form-control" placeholder="what are you working on?">
-            </div>
-            <div class="col-md-3">
-              <select class="form-control" id="project_list">
-                <option value="0">select a project</option>
-              </select>
-            </div>
-            <div class="col-md-2">
-              <div id="time-container" class="container"></div>
-            </div>
-            <div class="col-md-3">
-              <button class="btn btn-success" id="start_timer">Start</button>
-              <button class="btn btn-danger" style="display:none" id="stop_timer">Stop</button>
-              <button class="btn btn-primary" style="display:none" id="submit_timer">Submit</button>
-            </div>
-          </div>
-          <br>
-          <ul class="list-group" id="task_list">
-            <li class="list-group-item"></li>
-          </ul> -->
-
-
-
-
           <div class="row">
             <div id="tracking-content">
               <div id="tracking-form-create" class="tracking-form">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
+                  <label>Task Name</label>
                     <input type="text" name="tracking-task-name" id="tracking-task-name" class="form-control" placeholder="what are you working on?">
                   </div>
-                  <div class="col-md-3">
-                      <select class="form-control" id="project_list">
-                    <option value="0">select a project</option>
-                  </select>
+                  <div class="col-md-4">
+                    <label>Task List Name</label>
+                    <select class="form-control" id="task_list">
+                      <option value="0">select a tasklist</option>
+                    </select>                    
                   </div>
-                  <div class="col-md-3">
-                    <input type="button" id="tracking-button-create" class="btn btn-success col-lg-6 pull-right" value="Create Task" />
-<!--                   <a href="#" class="tracking-cancel btn btn-danger" rel="tracking-form-create">Cancel</a>
- -->                  </div>
+                  <div class="col-md-4">
+                    <label>Timer</label>
+                    <div id="timer-container">
+
+<!--                       <span id="current-timer"></span>
+ -->                     <!--  <a href="#" class="start-timer" title="Timer play/pause" id="tracking-button-create"></a> -->
+<!--                       <input type="button" id="tracking-button-create" class="btn btn-sm btn-success col-lg-6 pull-right" value="Start">
+ -->                    </div>
+                  </div>
                 </div>
                 <p style="display: none" id="tracking-create-status"></p>
               </div>
