@@ -417,6 +417,7 @@
   document.addEventListener('keyup', doc_keyUp, false);
 
   $('#project_list').on('change', function (e) {
+    $(".loader").show();
   	$('#task_list').empty()
   	var project_id = this.value;
   	$.ajax({
@@ -424,6 +425,7 @@
   		data: {project_id: project_id},
   		url: "/timer/tasklist",
   		success: function (data) {
+        $(".loader").hide();
   			$.each(JSON.parse(data),function(i,obj) {
   				console.log(obj);
             var task_list = "<option value="+obj.list_id+">"+obj.list_name+"</option>";
