@@ -11,6 +11,30 @@
 <!--timer code start here -->
 
  	<div class="row">
+	 	<div class="btn-group pull-right custom-position mannual-time" role="group">
+	    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+	      Add Manually
+	      <span class="caret"></span>
+	    </button>
+	    <ul class="dropdown-menu" role="menu">
+	    <div class="row">
+	    	<div class="col-md-6">
+	    		<label>start</label>
+					<input type="text" name="basic_example_3" id="from-time" value="" class="form-control">
+	    	</div>
+	    	<div class="col-md-6">
+	    		<label>stop</label>
+					<input type="text" name="basic_example_3" id="to-time" value="" class="form-control">
+	    	</div>
+	    </div>
+	    <br>
+	    <div class="row">
+	    	<div class="col-md-12">
+	    	  <button class="form-control btn btn-success">Apply</button>
+	    	</div>
+	    </div>
+	    </ul>
+	  </div>
     <button class="tracking-remove-all btn btn-danger pull-right custom-position" style="display:none">Discard</button>
   </div>
 

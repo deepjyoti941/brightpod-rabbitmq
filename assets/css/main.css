@@ -262,6 +262,11 @@ border-left-color: #f0ad4e;
   margin: 0 auto;
   width: 95%;
 }*/
+.dropdown-menu {
+  min-width: 500px;
+  padding: 10px;
+  min-height: 150px;
+}
 
 #timer-container a.start-timer{
   background: url(../images/control_power.png) 0 0 no-repeat;

@@ -439,6 +439,24 @@
   	});
   });
 
+  $(".mannual-time").on('click', '.dropdown-menu', function (e) {
+    e.stopPropagation();
+  });
+
+
+  $('#from-time').timepicker({
+    timeFormat: 'hh:mm tt'
+  });
+
+  $('#to-time').timepicker({
+    timeFormat: 'hh:mm tt'
+  });
+
+  $('#alt_example_4').datetimepicker({
+    altField: "#alt_example_4_alt",
+    altFieldTimeOnly: false
+  });
+
 	var jTask = {
 		showArchived: false,
 		showCompleted: false,
@@ -481,7 +499,7 @@
 
 			$(".tracking-remove-all").on("click", function (e) {
 				e.preventDefault();
-        var confirmation = confirm("Press a button!");
+        var confirmation = confirm("Are you sure you want to discard!");
         if (confirmation == true) {
           $(this).hide();
           $.DOMCached.flush_all();
