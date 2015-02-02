@@ -428,8 +428,8 @@
         $(".loader").hide();
   			$.each(JSON.parse(data),function(i,obj) {
   				console.log(obj);
-            var task_list = "<option value="+obj.list_id+">"+obj.list_name+"</option>";
-            $(task_list).appendTo('#task_list');
+          var task_list = "<option value="+obj.list_id+">"+obj.list_name+"</option>";
+          $(task_list).appendTo('#task_list');
 
   			});
   		},
@@ -438,46 +438,6 @@
   		}
   	});
   });
-
-  var counter = 0;
-
-  var runClock;
-
-
-  $stopwatch = {
-  	container: document.getElementById('time-container')
-  };
-
-  function displayTime() {
-  	$stopwatch.container.innerHTML = moment().hour(0).minute(0).second(counter++).format('HH : mm : ss');
-  }
-
-  function startWatch() {
-  	runClock = setInterval(displayTime, 1000);
-  }
-
-  function stopWatch() {
-  	clearInterval(runClock);
-  }
-
-
-  $('#start_timer').click(function(){
-  	$(this).hide();
-  	$('#stop_timer').show();
-  	startWatch();
-  })
-
-  $('#stop_timer').click(function(){
-  	$(this).hide();
-  	$('#start_timer').show();
-  	$('#submit_timer').show();
-  	stopWatch();
-  })
-
-
-  function openTimerPopup() {
-      window.open("http://www.w3schools.com","popupWindow", "width=800, height=400, scrollbars=yes");
-  }
 
 	var jTask = {
 		showArchived: false,
@@ -767,7 +727,6 @@
         if ($.DOMCached.get("started", namespace)) {
           jTask.timer[namespace]++;
           $.DOMCached.set("timer", jTask.timer[namespace], false, namespace);
-          // $("#timer-container").siblings(".tracking-timer").eq(0).text(jTask.hms(jTask.timer[namespace]));
           $("#timer-container").children().text(jTask.hms(jTask.timer[namespace]));
         }
       }, 1000);
