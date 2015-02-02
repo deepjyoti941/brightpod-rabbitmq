@@ -37,40 +37,13 @@
                   </div>
                   <div class="col-md-2">
                     <div id="timer-container">
-<!--                       <span id="current-timer"></span>
- -->                      <a href="#" class="start-timer" title="Timer play/pause" id="tracking-button-create"></a>
-<!--                       <input type="button" id="tracking-button-create" class="btn btn-sm btn-success col-lg-6 pull-right" value="Start">
- -->                    </div>
+                     <button class="btn btn-success start-timer" title="Timer play/pause" id="tracking-button-create">START</button>
+                   </div>
                   </div>
                 </div>
                 <p style="display: none" id="tracking-create-status"></p>
               </div>
               <div id="tracking-form-list" class="tracking-form"></div>
-
-<!--               <div id="tracking-form-update" class="tracking-form" style="display: none">
-                <p>
-                  <label for="tracking-task-name">Task name</label>
-                  <input type="text" name="tracking-task-name" id="tracking-task-name" class="form-control"/>
-                </p>
-                <p>
-                  <label for="tracking-task-estimate">Estimate</label>
-                  <input type="text" name="tracking-task-estimate" id="tracking-task-estimate" class="form-control" />
-                </p>
-                <p>
-                  <input type="checkbox" name="tracking-task-completed" id="tracking-task-completed" /> Task is completed<br />
-                  <input type="checkbox" name="tracking-task-archived" id="tracking-task-archived" /> Task is archived
-                </p>
-                <p>
-                  <label>Created at</label>
-                  <span id="created"></span>
-                </p>
-
-                <p>
-                  <input type="button" id="tracking-button-update" class="btn btn-warning" value="Update" />
-                  <a href="#" class="tracking-cancel btn btn-default" rel="tracking-form-update">Cancel</a>
-                </p>
-                <p style="display: none" id="tracking-update-status"></p>
-              </div> -->
               <div id="tracking-form-remove" class="tracking-form" style="display: none">
                 <p id="tracking-remove-confirm"></p>
                 <p>
@@ -103,8 +76,8 @@
 	                  <div class="col-md-2">
 	                 		<span class="label label-success"><?php echo $row->task_time; ?></span>
 	                 		<span class="label label-success"><?php echo $row->task_date; ?></span>
-	                 		<span><a href="#" class="start-timer" title="Restart timer" id="tracking-button-restart"></a></span>
-	                  </div>
+<!-- 	                 		<span><button class="btn btn-default start-timer" title="Restart timer" id="tracking-button-restart"></button></span>
+ -->	                  </div>
 <!--                <div class="col-md-2">
                   	</div> -->
 							  	</div>

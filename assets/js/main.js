@@ -475,7 +475,9 @@
   })
 
 
-
+  function openTimerPopup() {
+      window.open("http://www.w3schools.com","popupWindow", "width=800, height=400, scrollbars=yes");
+  }
 
 	var jTask = {
 		showArchived: false,
@@ -483,6 +485,12 @@
 		intervals: [],
 		timer: [],
 		bind: function () {
+      $("#timer-popup").on("click", function (e) {
+        e.preventDefault();
+        window.open("http://localhost:8000/timer/timerPopup","popupWindow", "width=1200, height=400, scrollbars=yes");
+
+      });
+
 			$(".tracking-create").on("click", function (e) {
 				e.preventDefault();
 				$(".tracking-form").hide();
@@ -510,10 +518,25 @@
 				$("#tracking-remove-confirm").html("Are you sure you want to delete <strong>" + $(this).attr("rel") + "</strong>?");
 				$("#tracking-form-remove").show();
 			});
+
 			$(".tracking-remove-all").on("click", function (e) {
 				e.preventDefault();
-				$(".tracking-form").hide();
-				$("#tracking-form-remove-all").show();
+        var confirmation = confirm("Press a button!");
+        if (confirmation == true) {
+          $(this).hide();
+          $.DOMCached.flush_all();
+          $("#tracking-form-remove-all").hide();
+          $(".tracking-remove-all ").hide();
+          $("#tracking-task-name").val("");
+          $("#project_list").val('0');
+          $('#task_list option').val('0');
+          $('#task_list option').text('select a tasklist');
+          $.DOMCached.flush_all();
+          var timer_dom = '<button class="btn btn-success start-timer" title="Timer play/pause" id="tracking-button-create">START</button>';
+          $('#timer-container').empty();
+          $('#timer-container').append(timer_dom);
+          jTask.index();
+        } else {}
 			});
 			$("#tracking-show-archived").bind("click change", function () {
 				jTask.showArchived = $(this).is(":checked");
@@ -546,47 +569,53 @@
         $(".loader").show();
         var current_storage = $.DOMCached.getStorage();
         console.log(current_storage);
-        var data = {};
-        for (namespace in current_storage) {
-          data.task_name = namespace;
-          data.timer = jTask.hms($.DOMCached.get("timer", namespace));
-          data.timer_duration = $.DOMCached.get("timer", namespace);
-          data.project_id = $.DOMCached.get("project_id", namespace);
-          data.created_date = $.DOMCached.get("created", namespace);
-          var project_id = $.DOMCached.get("project_id", namespace);
-          var task_list_details = $.DOMCached.get("task_list_details", namespace);
-          data.task_list_id = task_list_details.id;
 
-        }
+        if ($("#tracking-task-name").val() == '' || $("#project_list").val()==0 || $("#task_list").val()==0) {
 
-        console.log(data);
-        setTimeout(function() {
+          alert('you must select task name with project and task list');
+          $(".loader").hide();
+
+        } else {
+
+          var data = {};
+          for (namespace in current_storage) {
+            data.task_name = $("#tracking-task-name").val();
+            data.timer = jTask.hms($.DOMCached.get("timer", namespace));
+            data.timer_duration = $.DOMCached.get("timer", namespace);
+            data.project_id = $("#project_list").val();
+            data.created_date = $.DOMCached.get("created", namespace);
+            data.task_list_id = $("#task_list").val();
+          }
+
+          console.log(data);
+
           $.ajax({
             type: "POST",
             data: data,
             url: "/timer/saveTask",
             success: function (data) {
               $(".loader").hide();
+              $.DOMCached.flush_all();
+
             },
             error: function() {
               alert('some error occured');
             }
           });
-        },2000)
-
+        
         var project_name = $('#project_list option:selected').text();    
         var task_list_dom = '<li class="list-group-item"><div class="row"><div class="col-md-6"><span class="task-name-style">'+data.task_name+'</span><span rel="'+data.project_id+'"class="label label-default">'+project_name+'</span></div>';
-            task_list_dom += '<div class="col-md-2"><span class="label label-success">'+data.timer+'</span>&nbsp<span class="label label-success">'+data.created_date+'</span><span><a href="#" class="start-timer" title="Restart timer" id="tracking-button-restart"></a></span></div>';
+            task_list_dom += '<div class="col-md-2"><span class="label label-success">'+data.timer+'</span>&nbsp<span class="label label-success">'+data.created_date+'</span></div>';
         $("#task-list").prepend(task_list_dom);
         $(".tracking-remove-all ").hide();
         $("#tracking-task-name").val("");
         $("#project_list").val('0');
         $('#task_list option').val('0');
         $('#task_list option').text('select a tasklist');
-        $.DOMCached.flush_all();
-        var timer_dom = '<a href="#" class="start-timer" title="Timer play/pause" id="tracking-button-create"></a>';
+        var timer_dom = '<button class="btn btn-success start-timer" title="Timer play/pause" id="tracking-button-create">START</button>';
         $('#timer-container').empty();
         $('#timer-container').append(timer_dom);
+        }
 
       });
   
@@ -622,7 +651,7 @@
           });
           $('#task_list option').val('0');
           $('#task_list option').text('select a tasklist');
-          var timer_dom = '<a href="#" class="start-timer" title="Timer play/pause" id="tracking-button-create"></a>';
+          var timer_dom = '<button class="btn btn-success start-timer" title="Timer play/pause" id="tracking-button-create">START</button>';
           $('#timer-container').empty();
           $('#timer-container').append(timer_dom);
         }
@@ -635,33 +664,14 @@
 				jTask.index();		
 			});
 
-			$("#tracking-button-remove-all").on("click", function () {
-        $(this).hide();
-				$.DOMCached.flush_all();
-				$("#tracking-form-remove-all").hide();
-        $(".tracking-remove-all ").hide();
-        $("#tracking-task-name").val("");
-        $("#project_list").val('0');
-        $('#task_list option').val('0');
-        $('#task_list option').text('select a tasklist');
-        $.DOMCached.flush_all();
-        var timer_dom = '<a href="#" class="start-timer" title="Timer play/pause" id="tracking-button-create"></a>';
-        $('#timer-container').empty();
-        $('#timer-container').append(timer_dom);
-				jTask.index();		
-			});
-
       $('.tracking-form').on('click','#timer-container #tracking-button-create', function (e) {
         e.preventDefault();
-        if ($("#tracking-task-name").val() == '' || $("#project_list").val()==0 || $("#task_list").val()==0) {
-          alert('you must select task name with project and task list')
-        } else {
+
           var task_list_details = {};
           task_list_details.id = $('#task_list').val();
           task_list_details.name = $('#task_list option:selected').text();
           var namespace = $("#tracking-form-create :input[name='tracking-task-name']").val();   
-          if ($.DOMCached.get('estimate', namespace) === null) {
-            $.DOMCached.set('estimate', $("#tracking-form-create :input[name='tracking-task-estimate']").val(), false, namespace);
+          if ($.DOMCached.get('timer', namespace) === null) {
             $.DOMCached.set('timer', 0, false, namespace);
             $.DOMCached.set('project_id', $('#project_list').val(), false, namespace);
             $.DOMCached.set('task_list_details', task_list_details, false, namespace);
@@ -675,65 +685,23 @@
             started[namespace] = $.DOMCached.get("started", namespace);
             jTask.timer[namespace] = $.DOMCached.get("timer", namespace);
             console.log(started[namespace]);
-            //$("#tracking-form-create").hide().find("input:text").val("");
             console.log(jTask.hms(jTask.timer[namespace]));
-            var timer_dom = '<span class="tracking-timer">' + jTask.hms(jTask.timer[namespace]) + '</span><a href="#" class="tracking-power tracking-power-on' + (started[namespace] ? ' tracking-power-on' : '') + '" title="Timer on/off" rel="' + namespace + '"></a>'
-            timer_dom += '<a href="#" class="pull-right" title="Save Task" id="save-task"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span></a>&nbsp'
+            var timer_dom = '<span class="tracking-timer">' + jTask.hms(jTask.timer[namespace]) + '</span><button class="btn btn-default tracking-power tracking-power-on' + (started[namespace] ? ' tracking-power-on' : '') + '" title="Timer on/off" rel="' + namespace + '"></button>'
+            timer_dom += '<button class="btn btn-success pull-right" title="Save Task" id="save-task">SAVE</button>&nbsp'
             $('.tracking-remove-all').show();
             $('#timer-container').empty();
             $('#timer-container').append(timer_dom);
-            //jTask.index();
             jTask.toggleTimer($(this), namespace);
 
           } else {
             $("#tracking-create-status").text("Task with the same name already exists.").show();
           }
-        }
 			});
       
       $(".save-tasks").on("click", function() {
         var data = $.parseJSON(localStorage.dom_storage);
         console.log(localStorage.dom_storage);
       });
-
-			$("#tracking-button-update").on("click", function () {
-				var ns = $(this).attr("rel");
-				var namespace = $("#tracking-form-update :input[name='tracking-task-name']").val();
-				
-				if (ns === namespace) {
-					// update
-					$.DOMCached.set('estimate', $("#tracking-form-update :input[name='tracking-task-estimate']").val(), false, namespace);
-					if ($("#tracking-form-update input[name='tracking-task-completed']").is(":checked")) {
-						$.DOMCached.set("completed", true, false, namespace);
-						$.DOMCached.set("started", false, false, namespace);
-					} else {
-						$.DOMCached.set("completed", false, false, namespace);
-					}
-					if ($("#tracking-form-update input[name='tracking-task-archived']").is(":checked")) {
-						$.DOMCached.set("archived", true, false, namespace);
-						$.DOMCached.set("started", false, false, namespace);
-					} else {
-						$.DOMCached.set("archived", false, false, namespace);
-					}
-				} else {
-					// rename
-					if ($.DOMCached.getNamespace(namespace) === null) {
-						var timer = $.DOMCached.get('timer', ns),
-							created = $.DOMCached.get('created', ns);
-						$.DOMCached.set('estimate', $("#tracking-form-update :input[name='tracking-task-estimate']").val(), false, namespace);
-						$.DOMCached.set('timer', timer, false, namespace);
-						$.DOMCached.set('created', created, false, namespace);
-						$.DOMCached.deleteNamespace(ns);
-					} else {
-						$("#tracking-update-status").text("Task with the same name already exists.").show();
-						return;e
-					}			
-				}
-				$(this).attr("rel", "");
-				$("#tracking-update-status").hide().text("");
-				$("#tracking-form-update").hide().find("input:text").val("");
-				jTask.index();
-			});
 		},
 		index: function () {
 			var p = '',
@@ -757,9 +725,7 @@
           this.timerScheduler(namespace);
         }
 			}
-			// if (p === '') {
-			// 	p = '<p><label>No tasks</label></p>';
-			// }
+
 			$("#tracking-form-list").empty().append(p).show();
       $("#tracking-form-create").show();
 		},
@@ -775,9 +741,8 @@
         $('#task_list option').val(task_list_details.id);
         $('#task_list option').text(task_list_details.name);
         $('#project_list').val(project_id);
-        // var current_timer_dom = '<span class="tracking-timer">' + this.hms(jTask.timer[namespace]) + '</span>';
-        var current_timer_dom = '<span class="tracking-timer">' + this.hms(jTask.timer[namespace]) + '</span><a href="#" class="tracking-power' + (started[namespace] ? ' tracking-power-on' : '') + '" title="Timer on/off" rel="' + namespace + '"></a>';
-        current_timer_dom += '<a href="#" class="pull-right" title="Save Task" id="save-task"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span></a>&nbsp'
+        var current_timer_dom = '<span class="tracking-timer">' + this.hms(jTask.timer[namespace]) + '</span><button class="btn btn-default tracking-power' + (started[namespace] ? ' tracking-power-on' : '') + '" title="Timer on/off" rel="' + namespace + '"></button>';
+        current_timer_dom += '<button class="btn btn-success pull-right" title="Save Task" id="save-task">SAVE</button>&nbsp'
         console.log(namespace);
         $('#tracking-task-name').val(namespace);
         $('#timer-container').empty();

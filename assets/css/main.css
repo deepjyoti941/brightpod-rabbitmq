@@ -273,7 +273,7 @@ border-left-color: #f0ad4e;
   width: 30px;
 }
 
-#task-list a.start-timer{
+#task-list .start-timer{
   background: url(../images/control_power.png) 0 0 no-repeat;
   bottom: -24px;
   display: block;
@@ -294,24 +294,24 @@ border-left-color: #f0ad4e;
   font-weight: bold;
 }
 
-#timer-container a.tracking-power{
+#timer-container .tracking-power{
   background: url(../images/control_power.png) 0 0 no-repeat;
-  bottom: -24px;
+  bottom: 0px;
   display: block;
-  height: 48px;
+  height: 33px;
   position: absolute;
-  right: 50px;
-  width: 30px;
+  right: 86px;
+  width: 40px;
 }
 
-#timer-container a.tracking-power-on{
+#timer-container .tracking-power-on{
   background: url(../images/control_power_blue.png) 0 0 no-repeat;
-  bottom: -24px;
+  bottom: 0px;
   display: block;
-  height: 48px;
+  height: 33px;
   position: absolute;
-  right: 50px;
-  width: 30px;
+  right: 86px;
+  width: 40px;
 }
 
 .tracking-item a.tracking-power{

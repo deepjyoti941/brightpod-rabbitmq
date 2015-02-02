@@ -39,6 +39,8 @@
           <li <?php if ( '/'.$this->uri->uri_string() == '/timer'): ?> class="active"<?php endif; ?>><a href="/timer">Timer</a></li>
           <li class="loader" style="color:#ffffff; opacity: 0.6; display: none"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+        </ul>
       </div>
     </div>
   </div>

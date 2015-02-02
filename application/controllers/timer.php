@@ -19,6 +19,16 @@ class Timer extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function timerPopup() {
+		$data['projects'] = $this->timer_model->getProjects();
+		$data['tasks'] = $this->timer_model->getTasks();
+		
+		$this->load->view('pop_up_header');
+		$this->load->view('timer', $data);
+		$this->load->view('footer');
+	}
+
+
 	public function projects() {
 		$data = $this->timer_model->getProjects();
 		echo json_encode($data);
