@@ -439,11 +439,48 @@
   	});
   });
 
-  $(".mannual-time").on('click', '.dropdown-menu', function (e) {
-    e.stopPropagation();
-  });
 
+  // $(".mannual-time").on('click', '.dropdown-menu', function (e) {
+  //   e.stopPropagation();
+  // });
 
+    /* 
+    * mannual time start here
+    */
+   $("#mannual-date").datetimepicker({
+       pickTime: false
+   });
+
+   $("#start-time").datetimepicker({
+        pickDate: false,
+        minuteStepping: 5
+   });
+
+   $("#stop-time").datetimepicker({
+        pickDate: false,
+        minuteStepping: 5
+   })
+
+   $("#apply-mannual-timer").on("click", function(e) {
+    e.preventDefault();
+    $.DOMCached.flush_all();
+
+    var start = moment($("#start-time-input").val(), ["h:mm A"]);
+    var stop = moment($("#stop-time-input").val(), ["h:mm A"]);
+    var diff = moment.utc(moment(stop).diff(moment(start))).format("HH:mm:ss");
+
+    $.DOMCached.set('created', $("#mannual-date-input").val(), false, false);
+
+    $.DOMCached.set('timer', jTask.hmsToSec(diff), false, false);
+    var timer_dom = '<span class="tracking-timer">' + diff + '</span>';
+    timer_dom += '<button class="btn btn-success pull-right" title="Save Task" id="save-task">SAVE</button>&nbsp';
+    $('.tracking-remove-all').show();
+    $('#timer-container').empty();
+    $('#timer-container').append(timer_dom);
+   })
+    /* 
+    * mannual time end here
+    */
 	var jTask = {
 		showArchived: false,
 		showCompleted: false,
@@ -461,6 +498,7 @@
 				$(".tracking-form").hide();
 				$("#tracking-form-create").show();
 			});
+
 			$(".tracking-form").on("click",".tracking-item .tracking-update", function (e) {
 				e.preventDefault();
 				$(".tracking-form").hide();
@@ -768,7 +806,12 @@
 				}
 			}
 			return time.join(':');
-		}
+		},
+    hmsToSec: function(hms) {
+      var a = hms.split(':');
+      var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]); 
+      return seconds;
+    }
 	};
 
 	jTask.init();

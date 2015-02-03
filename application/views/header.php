@@ -11,7 +11,9 @@
   <link href="<?php echo base_url('assets/css/bootstrap.min.css')?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/css/font-awesome.min.css')?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/css/toastr.css')?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/css/date-time-picker.css')?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/css/main.css')?>" rel="stylesheet">
+
   <link href="<?php echo base_url('assets/lib/wysiwyg/css/bootstrap3-wysiwyg5.css')?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/lib/toastr/toastr.css')?>" rel="stylesheet">
 

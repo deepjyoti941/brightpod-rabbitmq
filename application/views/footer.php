@@ -50,6 +50,8 @@
   <script src="<?php echo base_url('assets/lib/toastr/toastr.js')?>"></script>
   <script src="<?php echo base_url('assets/lib/bootbox/bootbox.min.js')?>"></script>
   <script src="<?php echo base_url('assets/js/moment.js')?>"></script>
+  <script src="<?php echo base_url('assets/js/date-time-picker.js')?>"></script>
+
   <script src="<?php echo base_url('assets/js/jquery.json-2.2.min.js')?>"></script>
   <script src="<?php echo base_url('assets/js/domcached-0.1-jquery.js')?>"></script>
 
