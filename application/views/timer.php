@@ -20,11 +20,11 @@
 	    <div class="row">
 	    	<div class="col-md-6">
 	    		<label>start</label>
-					<input type="text" name="basic_example_3" id="from-time" value="" class="form-control">
+					<input type="text" name="from-time" id="from-time" value="" class="form-control">
 	    	</div>
 	    	<div class="col-md-6">
 	    		<label>stop</label>
-					<input type="text" name="basic_example_3" id="to-time" value="" class="form-control">
+					<input type="text" name="to-time" id="to-time" value="" class="form-control">
 	    	</div>
 	    </div>
 	    <br>

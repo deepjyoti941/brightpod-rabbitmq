@@ -14,8 +14,6 @@
   <link href="<?php echo base_url('assets/css/main.css')?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/lib/wysiwyg/css/bootstrap3-wysiwyg5.css')?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/lib/toastr/toastr.css')?>" rel="stylesheet">
-  <link rel="stylesheet" media="all" type="text/css" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css" />
-  <link href="<?php echo base_url('assets/css/jquery-ui-timepicker-addon.css')?>" rel="stylesheet">
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 

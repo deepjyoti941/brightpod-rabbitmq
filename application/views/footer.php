@@ -41,12 +41,7 @@
   <!--some footer content here -->
   <script src="<?php echo base_url('assets/lib/js/pusher.min.js')?>"></script>
   <script src="<?php echo base_url('assets/js/jquery.min.js')?>"></script>
-  <script type="text/javascript" src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
   
-  <script src="<?php echo base_url('assets/js/jquery-ui-timepicker-addon.js')?>"></script>
-  <script src="<?php echo base_url('assets/js/jquery-ui-timepicker-addon-i18n.min.js')?>"></script>
-  <script src="<?php echo base_url('assets/js/jquery-ui-sliderAccess.js')?>"></script>
-
   <script src="<?php echo base_url('assets/lib/js/jquery.cookie.js')?>"></script>
 
   <script src="<?php echo base_url('assets/js/bootstrap.min.js')?>"></script>

@@ -444,19 +444,6 @@
   });
 
 
-  $('#from-time').timepicker({
-    timeFormat: 'hh:mm tt'
-  });
-
-  $('#to-time').timepicker({
-    timeFormat: 'hh:mm tt'
-  });
-
-  $('#alt_example_4').datetimepicker({
-    altField: "#alt_example_4_alt",
-    altFieldTimeOnly: false
-  });
-
 	var jTask = {
 		showArchived: false,
 		showCompleted: false,
