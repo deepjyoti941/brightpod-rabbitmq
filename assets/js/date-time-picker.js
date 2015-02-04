@@ -52,8 +52,8 @@
 		icons = {
 		    time: 'glyphicon glyphicon-time',
 		    date: 'glyphicon glyphicon-calendar',
-		    up: 'icon-chevron-up',
-		    down: 'icon-chevron-down'
+		    up: 'fa fa-chevron-up',
+		    down: 'fa fa-chevron-down'
 		},
 
         picker = this,
@@ -967,11 +967,11 @@
                 '<div class="timepicker-picker">' +
                     '<table class="table-condensed">' +
 						'<tr>' +
-							'<td><button type="button" class="btn btn-time" data-action="incrementHours"><i class="icon-chevron-up"></i></button></td>' +
+							'<td><button type="button" class="btn btn-time" data-action="incrementHours"><i class="fa fa-chevron-up"></button></td>' +
 							'<td class="separator"></td>' +
-							'<td>' + (picker.options.useMinutes ? '<button type="button" class="btn btn-time" data-action="incrementMinutes"><i class="icon-chevron-up"></i></button>' : '') + '</td>' +
+							'<td>' + (picker.options.useMinutes ? '<button type="button" class="btn btn-time" data-action="incrementMinutes"><i class="fa fa-chevron-up"></button>' : '') + '</td>' +
                             (picker.options.useSeconds ?
-                                '<td class="separator"></td><td><button type="button" class="btn btn-time" data-action="incrementSeconds"><i class="icon-chevron-up"></i></button></td>' : '') +
+                                '<td class="separator"></td><td><button type="button" class="btn btn-time" data-action="incrementSeconds"><i class="fa fa-chevron-up"></button></td>' : '') +
 							(picker.options.use24hours ? '' : '<td class="separator"></td>') +
 						'</tr>' +
 						'<tr>' +
@@ -984,11 +984,11 @@
 							'<td><button type="button" class="btn btn-green" data-action="togglePeriod"></button></td>') +
 						'</tr>' +
 						'<tr>' +
-							'<td><button type="button" class="btn btn-time" data-action="decrementHours"><i class="icon-chevron-down"></i></a></td>' +
+							'<td><button type="button" class="btn btn-time" data-action="decrementHours"><i class="fa fa-chevron-down"></i></a></td>' +
 							'<td class="separator"></td>' +
-							'<td>' + (picker.options.useMinutes ? '<button type="button" class="btn btn-time" data-action="decrementMinutes"><i class="icon-chevron-down"></i></button>' : '') + '</td>' +
+							'<td>' + (picker.options.useMinutes ? '<button type="button" class="btn btn-time" data-action="decrementMinutes"><i class="fa fa-chevron-down"></i></button>' : '') + '</td>' +
                             (picker.options.useSeconds ?
-                                '<td class="separator"></td><td><button type="button" class="btn btn-time" data-action="decrementSeconds"><i class="icon-chevron-down"></i></button></td>' : '') +
+                                '<td class="separator"></td><td><button type="button" class="btn btn-time" data-action="decrementSeconds"><i class="fa fa-chevron-down"></i></button></td>' : '') +
 							(picker.options.use24hours ? '' : '<td class="separator"></td>') +
 						'</tr>' +
                     '</table>' +
