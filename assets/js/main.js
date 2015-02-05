@@ -644,8 +644,7 @@
           $("#tracking-create-status").hide().text("");
           started[namespace] = $.DOMCached.get("started", namespace);
           jTask.timer[namespace] = $.DOMCached.get("timer", namespace);
-          console.log(started[namespace]);
-          console.log(jTask.hms(jTask.timer[namespace]));
+
           var timer_dom = '<span class="tracking-timer">' + jTask.hms(jTask.timer[namespace]) + '</span><button class="btn btn-default tracking-power tracking-power-on' + (started[namespace] ? ' tracking-power-on' : '') + '" title="Timer on/off" rel="' + namespace + '"></button>'
           timer_dom += '<button class="btn btn-success pull-right" title="Save Task" id="save-task">SAVE</button>&nbsp'
           $('.tracking-remove-all').show();
@@ -703,7 +702,9 @@
         $('#project_list').val(project_id);
         var current_timer_dom = '<span class="tracking-timer">' + this.hms(jTask.timer[namespace]) + '</span><button class="btn btn-default tracking-power' + (started[namespace] ? ' tracking-power-on' : '') + '" title="Timer on/off" rel="' + namespace + '"></button>';
         current_timer_dom += '<button class="btn btn-success pull-right" title="Save Task" id="save-task">SAVE</button>&nbsp'
-        console.log(namespace);
+        var header_timer_dom = '<span class="tracking-timer">' + this.hms(jTask.timer[namespace]) + '</span>';
+        $(".flip-container").show();
+        $(".flip-container .timer").append(header_timer_dom);
         $('#tracking-task-name').val(namespace);
         $('#timer-container').empty();
         $('#timer-container').append(current_timer_dom);
@@ -721,16 +722,16 @@
       this.runningTask();
 		},
 
-    currentTimerScheduler: function (namespace) {
-      clearInterval(this.intervals[namespace]);
-      this.intervals[namespace] = setInterval(function () {
-        if ($.DOMCached.get("started", namespace)) {
-          jTask.timer[namespace]++;
-          $.DOMCached.set("timer", jTask.timer[namespace], false, namespace);
-          $("#timer-container").children().text(jTask.hms(jTask.timer[namespace]));
-        }
-      }, 1000);
-    },
+    // currentTimerScheduler: function (namespace) {
+    //   clearInterval(this.intervals[namespace]);
+    //   this.intervals[namespace] = setInterval(function () {
+    //     if ($.DOMCached.get("started", namespace)) {
+    //       jTask.timer[namespace]++;
+    //       $.DOMCached.set("timer", jTask.timer[namespace], false, namespace);
+    //       $("#timer-container").children().text(jTask.hms(jTask.timer[namespace]));
+    //     }
+    //   }, 1000);
+    // },
 		timerScheduler: function (namespace) {
 			clearInterval(this.intervals[namespace]);
 			this.intervals[namespace] = setInterval(function () {
@@ -738,6 +739,9 @@
 					jTask.timer[namespace]++;
 					$.DOMCached.set("timer", jTask.timer[namespace], false, namespace);
 					$(".tracking-power[rel='" + namespace + "']").siblings(".tracking-timer").eq(0).text(jTask.hms(jTask.timer[namespace]));
+          $(".flip-container .timer .tracking-timer").text(jTask.hms(jTask.timer[namespace]));
+          $(".flip-container .description").text(namespace);
+
 				}
 			}, 1000);
 		},

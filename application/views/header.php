@@ -42,6 +42,20 @@
           <li class="loader" style="color:#ffffff; opacity: 0.6; display: none"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <?php if ( '/'.$this->uri->uri_string() != '/timer'): ?>
+            <div class="flip-container vertical" ontouchstart="this.classList.toggle('hover');">
+              <div class="flipper">
+                <div class="front">
+                  <div class="timer pull-right">
+                  </div>
+                </div>
+                <div class="back">
+                  <div class="description pull-right" id="task-description">
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
         </ul>
       </div>
     </div>
