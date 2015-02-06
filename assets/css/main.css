@@ -333,6 +333,27 @@ background:#ddd;
     background: url(../images/control_power_blue.png) 0 0 no-repeat;
   }
 
+
+  .popup_timer_container .tracking-power{
+    background: url(../images/control_power.png) 0 0 no-repeat;
+    display: block;
+    height: 35px;
+    position: absolute;
+    width: 44px;
+    margin-left: 56px;
+  }
+
+  .popup_timer_container .tracking-power-on{
+    background: url(../images/control_power_blue.png) 0 0 no-repeat;
+    display: block;
+    height: 35px;
+    position: absolute;
+    width: 44px;
+    margin-left: 56px;
+  }
+
+
+
   #tracking-holder{
     height: 275px;
     margin: 30px auto 0;
@@ -655,4 +676,32 @@ transform: rotateY(-180deg);
   0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
   50% {opacity: 1.0;}
   100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
+}
+
+@keyframes pulsate {
+    /* animation rules */
+  0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+  50% {opacity: 1.0;}
+  100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
+}
+
+@-moz-keyframes pulsate {
+    /* -moz-animation rules */
+  0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+  50% {opacity: 1.0;}
+  100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
+}
+
+.popup_timer {
+  margin-left: 211px;
+  font-family: initial;
+  font-size: 45px;
+}
+.popup_timer_buttons {
+  font-family: initial;
+
+}
+.popup_custom {
+  margin-top: 22px;
+  padding: 8px;
 }

@@ -3,38 +3,45 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-body">
-          <div class="row">
-            <div id="tracking-content">
-              <div id="tracking-form-create" class="tracking-form">
-                <div class="row">
-                  <div class="col-md-2 col-md-offset-5">
-                  <div id="tracking-form-list" class="tracking-form"></div>
-
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-4">
-                  <label>Task Name</label>
-                    <input type="text" name="tracking-task-name" id="tracking-task-name" class="form-control" placeholder="what are you working on?">
-                  </div>
-                  <div class="col-md-4">
-                    <label>Task List Name</label>
-                    <select class="form-control" id="task_list">
-                      <option value="0">select a tasklist</option>
-                    </select>                    
-                  </div>
-                  <div class="col-md-4">
-                    <label>Timer</label>
-                    <div id="timer-container">
-                    </div>
-                  </div>
-                </div>
-                <p style="display: none" id="tracking-create-status"></p>
-              </div>
-
-            </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button class="tracking-remove-all btn btn-danger pull-right custom-position" style="display:none">Discard</button>
           </div>
         </div>
+        <div class="row">
+          <div id="tracking-content">
+            <div id="tracking-form-create" class="tracking-form">
+              <div class="row">
+                <div class="col-md-3">
+                  <input type="text" name="tracking-task-name" id="tracking-task-name" class="form-control" placeholder="what are you working on?">
+                </div>
+                <div class="col-md-3">
+                  <select class="form-control" id="project_list">
+                    <option value="0">select a project</option>
+                    <?php foreach ($projects as $key=>$row): ?>
+                     <option value="<?php echo $row->project_id; ?>"><?php echo $row->name; ?></option>
+                   <?php endforeach ?>
+                 </select>
+               </div>
+               <div class="col-md-3">
+                <select class="form-control" id="task_list">
+                  <option value="0">select a tasklist</option>
+                </select>                    
+              </div>
+              <div class="col-md-3">
+                <div id="timer-container" class="modal_timer_container">
+                 <button class="btn btn-success start-timer" title="Timer play/pause" id="tracking-button-create">START</button>
+               </div>
+             </div>
+           </div>
+         </div>
+        </div>
+        </div>
+<!--         <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-success btn-lg btn-block popup_custom">SAVE</button>
+          </div>
+        </div> -->
       </div>
     </div>
   </div>

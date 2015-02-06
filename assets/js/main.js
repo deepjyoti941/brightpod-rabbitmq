@@ -489,8 +489,39 @@
 		bind: function () {
       $("#timer-popup").on("click", function (e) {
         e.preventDefault();
-        window.open("http://localhost:8000/timer/timerPopup","popupWindow", "width=1200, height=400, scrollbars=yes");
+        window.open("http://localhost:8000/timer/timerPopup","popupWindow",'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600,height=650');
 
+      });
+      $("#start_popup_timer").on("click", function (e) {
+        $(this).hide();
+        e.preventDefault();
+        $.DOMCached.flush_all();
+
+        var task_list_details = {};
+        task_list_details.id = $('.popup_timer_container #task_list').val();
+        task_list_details.name = $('.popup_timer_container #task_list option:selected').text();
+        var namespace = $(".popup_timer_container #popup-task-name").val();
+        if ($.DOMCached.get('timer', namespace) === null) {
+          $.DOMCached.set('timer', 0, false, namespace);
+          $.DOMCached.set('project_id', $('.popup_timer_container #project_list').val(), false, namespace);
+          $.DOMCached.set('task_list_details', task_list_details, false, namespace);
+
+
+          var started = [];
+          var d = new Date();
+          var created = [d.getFullYear(), d.getMonth() + 1, d.getDate()]; 
+          $.DOMCached.set('created', created.join("-"), false, namespace);
+          started[namespace] = $.DOMCached.get("started", namespace);
+          jTask.timer[namespace] = $.DOMCached.get("timer", namespace);
+
+          var popup_timer_dom = '<span class="popup_timer">' + jTask.hms(jTask.timer[namespace]) + '</span>';
+          var pop_timer_buttons = '<button class="btn btn-default popup_timer_buttons tracking-power tracking-power-on' + (started[namespace] ? ' tracking-power-on' : '') + '" title="Timer on/off" rel="' + namespace + '"></button>'
+          $('#popup_timer').empty();
+          $('#popup_timer').append(popup_timer_dom);
+          $('.popup_timer_content').prepend(pop_timer_buttons);
+          jTask.toggleTimer($(this), namespace);
+
+        }
       });
 
 			$(".tracking-remove-all").on("click", function (e) {
@@ -522,6 +553,11 @@
 				e.preventDefault();
 				jTask.toggleTimer($(this), $(this).attr('rel'));
 			});
+
+      $('.popup_timer_container').on('click','.popup_timer_content .tracking-power', function (e) {
+        e.preventDefault();
+        jTask.toggleTimer($(this), $(this).attr('rel'));
+      });
 
       $('.tracking-form').on('click','#timer-container #save-task', function (e) {
         e.preventDefault();
@@ -703,11 +739,21 @@
         var current_timer_dom = '<span class="tracking-timer">' + this.hms(jTask.timer[namespace]) + '</span><button class="btn btn-default tracking-power' + (started[namespace] ? ' tracking-power-on' : '') + '" title="Timer on/off" rel="' + namespace + '"></button>';
         current_timer_dom += '<button class="btn btn-success pull-right" title="Save Task" id="save-task">SAVE</button>&nbsp'
         var header_timer_dom = '<span class="tracking-timer">' + this.hms(jTask.timer[namespace]) + '</span>';
+        var popup_timer_dom = '<span class="popup_timer">' + this.hms(jTask.timer[namespace]) + '</span>';
+        var pop_timer_buttons = '<button class="btn btn-default popup_timer_buttons tracking-power tracking-power-on' + (started[namespace] ? ' tracking-power-on' : '') + '" title="Timer on/off" rel="' + namespace + '"></button>'
+        var task_save_btn = '<button class="btn btn-success pull-right" title="Save Task" id="save-task">SAVE</button>&nbsp';
+        $("#popup_timer").empty();
+        $("#popup_timer").append(popup_timer_dom);
+        $('#start_popup_timer').remove();
+        $('.popup_timer_content').prepend(pop_timer_buttons);
+
         $(".flip-container").show();
         $(".flip-container .timer").append(header_timer_dom);
         $('#tracking-task-name').val(namespace);
         $('#timer-container').empty();
         $('#timer-container').append(current_timer_dom);
+        $(".modal_timer_container").append(task_save_btn);
+
         var save_button = '<span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>'
         var started = [];
         started[namespace] = $.DOMCached.get("started", namespace);
@@ -740,6 +786,7 @@
 					$.DOMCached.set("timer", jTask.timer[namespace], false, namespace);
 					$(".tracking-power[rel='" + namespace + "']").siblings(".tracking-timer").eq(0).text(jTask.hms(jTask.timer[namespace]));
           $(".flip-container .timer .tracking-timer").text(jTask.hms(jTask.timer[namespace]));
+          $(".popup_timer_container .popup_timer").text(jTask.hms(jTask.timer[namespace]));
           $(".flip-container .description").text(namespace);
 
 				}
