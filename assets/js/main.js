@@ -518,7 +518,7 @@
 		bind: function () {
       $("#timer-popup").on("click", function (e) {
         e.preventDefault();
-        window.open("http://localhost:8000/timer/timerPopup","popupWindow",'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600,height=650');
+        window.open("http://deepjyotipc.cloudapp.net/timer/timerPopup","popupWindow",'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600,height=650');
       });
       $("#start_popup_timer").on("click", function (e) {
         e.preventDefault();
