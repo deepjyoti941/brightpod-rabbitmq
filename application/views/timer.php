@@ -16,8 +16,8 @@
        Add Manually
        <span class="caret"></span>
      </button>
-<!--      <a href="" class="btn btn-default" id="timer-popup" title="timer popup"><i class="fa fa-sign-out"></i></a>
- -->     <ul class="dropdown-menu" role="menu">
+     <a href="" class="btn btn-default" id="timer-popup" title="timer popup"><i class="fa fa-sign-out"></i></a>
+     <ul class="dropdown-menu" role="menu">
        <div class="row">
         <div class="col-md-4">
          <label>start</label>

@@ -699,6 +699,7 @@ transform: rotateY(-180deg);
 }
 .popup_timer_buttons {
   font-family: initial;
+  margin-left: 48px;
 
 }
 .popup_custom {

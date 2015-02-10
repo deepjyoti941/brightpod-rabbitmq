@@ -4,7 +4,9 @@
 			<span class="popup_timer">0:00:00</span>
 		</div>
 		<div class="col-md-12 popup_timer_content" style="padding-left: 210px;">
-			<button class="btn btn-default popup_timer_buttons" id="start_popup_timer">START</button>
+			<button class="btn btn-success popup_timer_buttons" id="start_popup_timer">START</button>
+			<button class="btn btn-success popup_timer_buttons" style="display:none" id="play_popup_timer">PLAY</button>
+			<button class="btn btn-danger popup_timer_buttons" style="display:none" id="stop_popup_timer">STOP</button>
 		</div>
 	</div>
 	<div class="row">
