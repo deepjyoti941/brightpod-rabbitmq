@@ -41,12 +41,20 @@
           <li <?php if ( '/'.$this->uri->uri_string() == '/timer'): ?> class="active"<?php endif; ?>><a href="/timer">Timer</a></li>
           <li class="loader" style="color:#ffffff; opacity: 0.6; display: none"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right header-timer-buttons" style="padding: 6px;display:none">
+          <?php if ( '/'.$this->uri->uri_string() != '/timer'): ?>
+            <button class="btn btn-success" style="display:none" id="header-start-timer">start</button>
+            <button class="btn btn-danger" style="display:none" id="header-stop-timer">stop</button>
+            <button class="btn btn-primary" style="display:none" id="header-save-timer">save</button>
+          <?php endif; ?>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
           <?php if ( '/'.$this->uri->uri_string() != '/timer'): ?>
             <div class="flip-container vertical" ontouchstart="this.classList.toggle('hover');">
               <div class="flipper">
                 <div class="front">
                   <div class="timer pull-right">
+
                   </div>
                 </div>
                 <div class="back">
@@ -55,6 +63,7 @@
                 </div>
               </div>
             </div>
+
           <?php endif; ?>
         </ul>
       </div>

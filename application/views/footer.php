@@ -37,11 +37,27 @@
          </div>
         </div>
         </div>
-<!--         <div class="row">
-          <div class="col-md-12">
-            <button class="btn btn-success btn-lg btn-block popup_custom">SAVE</button>
-          </div>
-        </div> -->
+        <div class="row">
+         <div class="col-md-12 task-list-group">
+           <ul class="list-group ul-task-list" id="task-list">
+             <?php foreach ($tasks as $key=>$row): ?>
+               <li class="list-group-item">
+                <div class="row">
+                 <div class="col-md-6">
+                  <span class="task-name-style"><?php echo $row->task_name; ?></span>
+                  <span rel="<?php echo $row->project_id; ?>" class="label label-default"><?php echo $row->name; ?></span>
+                </div>
+
+                <div class="col-md-2">
+                 <span class="label label-success"><?php echo $row->task_time; ?></span>
+                 <span class="label label-success"><?php echo $row->task_date; ?></span>
+               </div>
+             </div>
+           </li>
+         <?php endforeach ?>
+        </ul>
+        </div>
+        </div>
       </div>
     </div>
   </div>

@@ -386,8 +386,8 @@
    */
 
    $('.timer_button').click(function(e) {
-    e.preventDefault(); //cancel native click event
-    $("#timer_modal").modal('show'); //insert retrieved data into modal, and then show it
+    e.preventDefault();
+    $("#timer_modal").modal('show');
     $("#save-task").remove();
     if ($('#project_list > option').length == 1) {
     	$.ajax({
@@ -404,7 +404,36 @@
     			alert('Ajax did not succeed');
     		}
     	});
+      $.ajax({
+        type: "POST",
+        url: "/timer/getTasks",
+        success: function (data) {
+          console.log(JSON.parse(data));
+          $.each(JSON.parse(data),function(i,obj) {
+            var task_list = "<li class='list-group-item'><div class='row'><div class='col-md-6'><span class='task-name-style'>"+obj.task_name+"</span><span rel='"+obj.project_id+"' class='label label-default'>"+obj.name+"</span></div><div class='col-md-2'><span class='label label-success'>"+obj.task_time+"</span><span class='label label-success'>"+obj.task_date+"</span></div></div></li>";
+            $("#task-list").prepend(task_list); 
+          });
+        },
+        error: function() {
+          alert('Ajax did not succeed');
+        }
+      });
     };
+    var current_storage = $.DOMCached.getStorage();
+    for (namespace in current_storage) {
+    if ($(".modal_timer_container").find("#save-task").length == 0 && $.DOMCached.get("started", namespace)) {
+
+        var task_save_btn = '<button class="btn btn-success pull-right" title="Save Task" id="save-task">SAVE</button>&nbsp';
+        $(".modal_timer_container").append(task_save_btn);
+
+      }
+    if (!$.DOMCached.get("started", namespace)) {
+        var task_save_btn = '<button class="btn btn-success pull-right" title="Save Task" id="save-task">SAVE</button>&nbsp';
+        $(".modal_timer_container").append(task_save_btn);
+      };
+    }
+
+
   });
 
   function doc_keyUp(e) {
@@ -439,10 +468,6 @@
   	});
   });
 
-
-  // $(".mannual-time").on('click', '.dropdown-menu', function (e) {
-  //   e.stopPropagation();
-  // });
 
     /* 
     * mannual time start here
@@ -482,31 +507,39 @@
     * mannual time end here
     */
 
-      $("#play_popup_timer").on("click", function (e) {
+      $(".header-timer-buttons").on("click","#header-start-timer", function (e) {
         e.preventDefault();
         var $this = $(this);
         $this.hide();
-        $("#stop_popup_timer").show();
+        $(".header-timer-buttons #header-stop-timer").show();
         var current_storage_play = $.DOMCached.getStorage();
         for (namespace in current_storage_play) {
           if (!$.DOMCached.get("started", namespace)) {
-            $.DOMCached.set("started", true, false, namespace);
+            jTask.toggleTimer($(this), namespace);
+            $(".modal_timer_container").find(".tracking-power").addClass("tracking-power-on");
           };
         }
 
       });
 
-      $("#stop_popup_timer").on("click", function (e) { 
+      $(".header-timer-buttons").on("click","#header-stop-timer", function (e) { 
         e.preventDefault();
         var $this = $(this);
         $this.hide();
-        $("#play_popup_timer").show();
+        $("#header-start-timer").show();
         var current_storage_stop = $.DOMCached.getStorage();
         for (namespace in current_storage_stop) { 
           if ($.DOMCached.get("started", namespace)) {
-            $.DOMCached.set("started", false, false, namespace);
+            jTask.toggleTimer($(this), namespace);
+            //remove class tracking-power-on
+            $(".modal_timer_container").find(".tracking-power").removeClass("tracking-power-on");
+
           }
         }
+      });
+      $(".header-timer-buttons").on("click","#header-save-timer", function (e) { 
+        e.preventDefault();
+        $('.timer_button').click();
       });
 
 	var jTask = {
@@ -544,10 +577,8 @@
           jTask.timer[namespace] = $.DOMCached.get("timer", namespace);
 
           var popup_timer_dom = '<span class="popup_timer">' + jTask.hms(jTask.timer[namespace]) + '</span>';
-          // var pop_timer_buttons = '<button class="btn btn-default popup_timer_buttons tracking-power tracking-power-on' + (started[namespace] ? ' tracking-power-on' : '') + '" title="Timer on/off" rel="' + namespace + '"></button>'
           $('#popup_timer').empty();
           $('#popup_timer').append(popup_timer_dom);
-          // $('.popup_timer_content').prepend(pop_timer_buttons);
           jTask.toggleTimer($(this), namespace);
 
         }
@@ -584,11 +615,6 @@
 				e.preventDefault();
 				jTask.toggleTimer($(this), $(this).attr('rel'));
 			});
-
-      // $('.popup_timer_container').on('click','.popup_timer_content .tracking-power', function (e) {
-      //   e.preventDefault();
-      //   jTask.toggleTimer($(this), $(this).attr('rel'));
-      // });
 
       $('.tracking-form').on('click','#timer-container #save-task', function (e) {
         e.preventDefault();
@@ -687,7 +713,7 @@
 				$.DOMCached.deleteNamespace($(this).attr("rel"));
 				$(this).attr("rel", "");
 				$("#tracking-form-remove").hide();
-				jTask.index();		
+				jTask.index();
 			});
 
       $('.tracking-form').on('click','#timer-container #tracking-button-create', function (e) {
@@ -750,29 +776,34 @@
         current_timer_dom += '<button class="btn btn-success pull-right" title="Save Task" id="save-task">SAVE</button>&nbsp'
         var header_timer_dom = '<span class="tracking-timer">' + this.hms(jTask.timer[namespace]) + '</span>';
         var popup_timer_dom = '<span class="popup_timer">' + this.hms(jTask.timer[namespace]) + '</span>';
-        // var pop_timer_buttons = '<button class="btn btn-default popup_timer_buttons tracking-power tracking-power-on' + (started[namespace] ? ' tracking-power-on' : '') + '" title="Timer on/off" rel="' + namespace + '"></button>'
-        var task_save_btn = '<button class="btn btn-success pull-right" title="Save Task" id="save-task">SAVE</button>&nbsp';
+        
         $("#popup_timer").empty();
         $("#popup_timer").append(popup_timer_dom);
         $('#start_popup_timer').remove();
-        // $('.popup_timer_content').prepend(pop_timer_buttons);
 
         $(".flip-container").show();
         $(".flip-container .timer").append(header_timer_dom);
         $('#tracking-task-name').val(namespace);
         $('#timer-container').empty();
         $('#timer-container').append(current_timer_dom);
-        $(".modal_timer_container").append(task_save_btn);
 
         var save_button = '<span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>'
         var started = [];
         started[namespace] = $.DOMCached.get("started", namespace);
         if (started[namespace]) {
-          $('#stop_popup_timer').show();
+          $("#stop_popup_timer").show();
+          $("#header-stop-timer").show();
+          $("#header-save-timer").show();
+
+        }else {
+          $("#header-start-timer").show();
+          $("#header-save-timer").show();
+
         }
         if (started[namespace] || !started[namespace]) {
-          $('.tracking-remove-all').show();
-          $('#start_popup_timer').show();
+          $(".tracking-remove-all").show();
+          $("#start_popup_timer").show();
+          $(".header-timer-buttons").show();
         }
       }
     },
@@ -802,9 +833,14 @@
 				this.timer[namespace] = $.DOMCached.get("timer", namespace);
 				this.timerScheduler(namespace);
 				jQ.addClass("tracking-power-on");
+        $(".header-timer-buttons #header-start-timer").hide();
+        $(".header-timer-buttons #header-stop-timer").show();
+
 			} else {
 				$.DOMCached.set("started", false, false, namespace);
 				jQ.removeClass("tracking-power-on");
+        $(".header-timer-buttons #header-start-timer").show();
+        $(".header-timer-buttons #header-stop-timer").hide();
 			}
 		},
 		hms: function (secs) {

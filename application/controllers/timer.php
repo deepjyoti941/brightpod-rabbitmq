@@ -40,6 +40,11 @@ class Timer extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function getTasks() {
+		$data = $this->timer_model->getTasks();
+		echo json_encode($data);
+	}
+
 	public function saveTask() {
 		$this->timer_model->saveTask($this->input->post('task_name'), $this->input->post('timer'), $this->input->post('timer_duration'), $this->input->post('project_id'), $this->input->post('created_date'), $this->input->post('task_list_id'));
 
