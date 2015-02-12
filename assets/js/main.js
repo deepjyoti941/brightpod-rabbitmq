@@ -775,11 +775,11 @@
         var current_timer_dom = '<span class="tracking-timer">' + this.hms(jTask.timer[namespace]) + '</span><button class="btn btn-default tracking-power' + (started[namespace] ? ' tracking-power-on' : '') + '" title="Timer on/off" rel="' + namespace + '"></button>';
         current_timer_dom += '<button class="btn btn-success pull-right" title="Save Task" id="save-task">SAVE</button>&nbsp'
         var header_timer_dom = '<span class="tracking-timer">' + this.hms(jTask.timer[namespace]) + '</span>';
-        var popup_timer_dom = '<span class="popup_timer">' + this.hms(jTask.timer[namespace]) + '</span>';
+        // var popup_timer_dom = '<span class="popup_timer">' + this.hms(jTask.timer[namespace]) + '</span>';
         
-        $("#popup_timer").empty();
-        $("#popup_timer").append(popup_timer_dom);
-        $('#start_popup_timer').remove();
+        // $("#popup_timer").empty();
+        // $("#popup_timer").append(popup_timer_dom);
+        // $('#start_popup_timer').remove();
 
         $(".flip-container").show();
         $(".flip-container .timer").append(header_timer_dom);
